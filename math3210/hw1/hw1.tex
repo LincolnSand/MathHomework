@@ -1,0 +1,163 @@
+\documentclass[answers]{exam}
+\title{Foundations of Analysis, HW 1}
+\author{James Cameron}
+\date{}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{graphicx}
+\everymath{\displaystyle}
+
+\pagestyle{head}
+\header{\bfseries\large Foundations of Analysis}{\bfseries\large Homework 1 \ifprintanswers (solutions) \fi}{\bfseries\large Fall, 2023}
+\headrule
+
+\DeclareMathOperator{\sech}{sech}
+\newcommand{\NN}{\mathbb{N}}
+\newcommand{\RR}{\mathbb{R}}
+\newcommand{\QQ}{\mathbb{Q}}
+\newcommand{\ZZ}{\mathbb{Z}}
+\newcommand{\dV}{\;\mathrm{d}V}
+\newcommand{\dA}{\;\mathrm{d}A}
+\newcommand{\dx}{\;\mathrm{d}x}
+\newcommand{\dy}{\;\mathrm{d}y}
+\newcommand{\dz}{\;\mathrm{d}z}
+\pointname{}
+\newcommand{\cA}{\mathcal{A}}
+\newcommand{\Bb}{\mathcal{B}}
+\newcommand{\Ww}{\mathcal{W}}
+\newcommand{\Dd}{\mathcal{D}}
+\newcommand{\Ss}{\mathcal{S}}
+\newcommand{\Ee}{\mathcal{E}}
+\DeclareMathOperator{\im}{im}
+\begin{document}
+% \maketitle
+
+% \noindent
+% This week on the homework you will get practice with induction. \\
+
+
+% \noindent
+ This is due Saturday 9/2 by 11:59 pm on Gradescope. Please either neatly write up your solutions or type them up. You can find a .tex template on Canvas. Your proofs should be written in complete sentences and paragraphs, using a combination of words and symbols. They should be \textbf{correct, clear, and concise}. You will be graded on all three, especially the first two!
+
+\noindent
+
+
+\begin{questions}
+
+\question Let $\NN$ be the natural numbers $\{0,1,2,3,4,\dots \}$, $O \subseteq \NN$ be the odd numbers $O=\{1,3,5,7,\dots \}$ and $E \subseteq \NN$ be the even numbers $\{0,2,4,6,\dots \}$.
+\begin{parts}
+\part[1] What is $E \cup O$?
+\part[1] What is $\NN \smallsetminus E$?
+\part[1] What is $O \cap E$?
+\part[1] What is $\NN \smallsetminus (E \cap O)$?
+\end{parts}
+\begin{solution}
+\begin{parts}
+\part $E \cup O = \NN$.
+This is true because any $n \in \NN$ can only ever be
+an even number (a member of $E$) exclusive or be an odd number (a member of $O$).
+And it has to be one of them. So, therefore the union of $E$ and $O$
+must be the set of all natural numbers.
+\part $\NN \smallsetminus E =  O$. This follows from the reasoning above.
+If a natural number isn't even, then it must be odd.
+\part $O \cap E = \varnothing$. Since all even numbers are not odd
+and all odd numbers are not even,
+the only thing that would be in their intersection would be the empty set.
+\part $\NN \smallsetminus (E \cap O) = \NN$. This is pretty obvious since
+$(E \cap O)$ is $\varnothing$. And $A \smallsetminus \varnothing = A$
+for any set $A$.
+\end{parts}
+\end{solution}
+ 
+\question Recall that for $a,b \in \RR$ the interval $(a,b)$ is the open inverval between $a$ and $b$ (so $a,b \not\in (a,b)$), that $[a,b]$ is the closed interval (so $a,b \in (a,b)$), and that $[a,b)$ and $(b,a]$ are the half open invervals. The rays $(a,\infty)$, $[a,\infty)$, $(-\infty,a)$, $(-\infty,a]$ are also (hopefully!\footnote{Ask me if not!}) familiar from past classes. 
+
+Let $\cA=\{ (x,y) \subseteq \RR: 0<x ~\textrm{and}~ y<1 \}$.
+
+\begin{parts}
+
+\part[2] What is $\cap \cA$? This is some interval or union of intervals, say what it is. Be sure to justify your answer.
+\part[2] What is $\cup \cA$? This is again some interval or union of intervals, say what it is. Be sure to justify your answer.
+\end{parts}
+\begin{solution}
+\begin{parts}
+\part $\cap \cA = (0, 1)$. This is because all of the intervals must overlap
+this region in order to be valid members of the set. If we consider an
+interval to contain all the numbers within it, then all of these intervals
+in the set must contains the numbers between 0 and 1. It is not inclusive
+because the overlap range uses stricly less than instead of less than or equal to.
+\part $\cup \cA = (-\infty, \infty)$. This is because,
+if we consider an interval to be a set containing all
+the numbers within that interval range, then every real number
+would appear in either the $a$ and/or the $b$ position, so they would
+belong to the set. Therefore the interval of the union would be the
+interval containing all the real numbers.
+\end{parts}
+\end{solution}
+
+\question[4] Show that if $A$ and $B$ are subsets of $X$ then $X \smallsetminus (A \cap B) = (X \smallsetminus A) \cup (X \smallsetminus B)$.
+\begin{solution}
+This is true because $X \smallsetminus (A \cap B)$
+eliminates all of the elements of $X$ that are both in $A$ and in $B$.
+Let's compare this to $(X \smallsetminus A) \cup (X \smallsetminus B)$.
+This is taking the elements in $X$ that are not in $A$ and adding them
+to the elements in $X$ that are not in $B$.
+Well, in the case that an element is in $B$, but is not in $A$,
+the second set being unioned would add it back and so
+it would end up in the final set.
+The same holds for the opposite case where an element in $X$ is in $A$ and not in $B$:
+The first set adds it back and so it ends up in the final set.
+The only time an element in $X$ wouldn't end up in the final set
+is if it is in both $A$ and $B$. This is because it then is in neither
+the first set or the second set being unioned, and so it never gets "added back"
+into the final set. And that is exactly the definition of subtracting the
+intersection of $A$ and $B$ from $X$.
+\end{solution}
+
+\question[4] Show that if $f: X \to Y$ is injective if and only if for every pair of subsets $A,B \subset X$ we have that $f(A \cap B) = f(A) \cap f(B)$.
+
+\begin{solution}
+Suppose that $f(A) = a \in Y, f(B) = b \in Y$.
+Well, by the definition of injective functions,
+$a = b \implies f(A) = f(B)$.
+In other words, all function mappings from the domain to the codomain are unique.
+Therefore, $\forall x \in (a \cap b) \implies \exists X \in (A \cap B)$
+where $f(X) = x$.
+And since functions can only ever map a value in the domain to a
+single value in the codomain, that means that the opposite also holds:
+$\forall X \in (A \cap B) \implies \exists x \in (a \cap b)$ where $x = f(X)$.
+Therefore, if we substitute in the definition $a$ and $b$, it is equivalent to:
+$f(A \cap B)= f(A) \cap f(B)$.
+\end{solution}
+
+\question Suppse that $f:X \to Y$ and $g:Y \to Z$ are functions.
+\begin{parts}
+\part[3] Show that if $g \circ f$ is onto, then $g$ is onto.
+\part[1] Give an example to show that if $g$ is onto then $g \circ f$ is not necessarily onto.
+\end{parts}
+
+\begin{solution}
+\begin{parts}
+\part Let us consider the case where $g \circ f$ is onto and $g$ is not.
+In that case, for $g \circ f \implies \forall z \in Z, \exists x \in X$.
+But in the case of $g$, $g \implies \exists z \in Z, \forall y \in Y, g(y) \neq z$.
+This is logically impossible. $g \circ f$ is telling us that all elements in $Z$
+must have a mapping to them. But $g$ is telling us that there are elements in $Z$
+where no mapping to them exists. In other words, $f$ transports some elements into
+$Y$ from $X$, but once they are in $X$, there is no way to construct a mapping
+so that each element in $Z$ is in the range, no matter how $f$ did the mapping.
+Therefore, if $g \circ f$ is onto, then $g$ must be as well.
+If this weren't the case, we'd end up with a logical contradiction.
+\part Let $A = \{a, b\}, g: A \longrightarrow A, f: A \longrightarrow A$.
+Now, $g(x) = x$ and $f(x) = a$.
+In this case, $g$ (the identity function) is trivially onto.
+$a = g(a); b = g(b)$.
+But $g \circ f$ is not onto.
+This is because of the fact that $f$ always maps to $a$, so $g$ has
+no option but to map $f$'s output to $a$.
+This means there is no way for $g \circ f$ to ever output $b$.
+$(g \circ f)(a) = a; (g \circ f)(b) = a;$.
+Therefore, $g$ is onto, but $g \circ f$ is not.
+\end{parts}
+\end{solution}
+\end{questions}
+\end{document}
