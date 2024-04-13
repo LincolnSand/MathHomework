@@ -1,0 +1,194 @@
+\documentclass{article}
+
+\usepackage{amsfonts}
+\usepackage{graphicx}
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage{listings}
+\usepackage{hyperref}
+
+
+\DeclareMathOperator{\sech}{sech}
+\newcommand{\NN}{\mathbb{N}}
+\newcommand{\RR}{\mathbb{R}}
+\newcommand{\QQ}{\mathbb{Q}}
+\newcommand{\ZZ}{\mathbb{Z}}
+\newcommand{\dV}{\;\mathrm{d}V}
+\newcommand{\dA}{\;\mathrm{d}A}
+\newcommand{\dx}{\;\mathrm{d}x}
+\newcommand{\dy}{\;\mathrm{d}y}
+\newcommand{\dz}{\;\mathrm{d}z}
+\newcommand{\cA}{\mathcal{A}}
+\newcommand{\Bb}{\mathcal{B}}
+\newcommand{\Ww}{\mathcal{W}}
+\newcommand{\Dd}{\mathcal{D}}
+\newcommand{\Ss}{\mathcal{S}}
+\newcommand{\Ee}{\mathcal{E}}
+\DeclareMathOperator{\im}{im}
+
+\tolerance=1
+\emergencystretch=\maxdimen
+\hyphenpenalty=10000
+\hbadness=10000
+
+\setlength\parindent{18pt}
+
+\begin{document}
+
+\Large{Lincoln Sand}
+
+
+\textbf{H1.}
+
+\textbf{128.19}:
+
+Consider an ellipse with the equation $\frac{x^2}{a^2} + \frac{y^2}{b^2} = 1$,
+where $a$ is the major axis and $b$ is the semi-minor axis. The foci
+are at $(c, 0)$ and $(-c, 0)$, where $c = \sqrt{a^2 - b^2}$.
+
+Let $P(x, y)$ be a point on the ellipse. We want to prove that the sum of squares of the distance
+from $P$ to the foci is constant and always equal to $2 a^2$.
+
+Distance from $P$ to the first focus:
+The distance $P F_1$ is given by $P F_1 = \sqrt{(x-c)^2 + y^2}$.
+
+Distance from $P$ to the second focus:
+The distance $P F_2$ is given by $P F_2 = \sqrt{(x+c)^2 + y^2}$.
+
+We need to prove that $P F_1^2 + P F_2^2$ is constant for any point on the ellipse.
+\[P F_1^2 = (x-c)^2 + y^2 = x^2 - 2 c x + c^2 + y^2\]
+\[P F_2^2 = (x+c)^2 + y^2 = x^2 + 2 c x + c^2 + y^2\]
+
+\[P F_1^2 + P F_2^2 = 2 x^2 + 2 c^2 + 2 y^2\]
+Since $P$ lies on the ellipse, substituting $y^2 = b^2 - \frac{b^2}{a^2} x^2$ gives:
+\[P F_1^2 + P F_2^2 = 2 x^2 + 2 c^2 + 2 b^2 - \frac{2 b^2}{a^2} x^2\]
+\[P F_1^2 + P F_2^2 = 2 a^2 + 2 c^2 - 2 c^2\]
+\[P F_1^2 + P F_2^2 = 2 a^2\]
+
+\textbf{128.26}:
+
+We can rewrite the given equation as:
+\[y^2 = p x - \frac{p}{2a} x^2\]
+This can be written in standard form
+where $b^2 = \frac{p}{2a}$.
+
+We will prove in the following order:
+
+1. $N P$ is perpendicular to the axis of the ellipse.
+
+2. $P G$ is the minimum distance from $G$ to the curve.
+
+3. $P G$ is perpendicular to the tangent at $P$.
+
+1. By construction, $N P$ is drawn perpendicular to the major axis
+$A A'$. Any line perpendicular to the major axis
+and passing through a point must also pass through the corresponding
+point on the ellipse. This is true by the reflective property of ellipses.
+
+2. For $P G$ to be the minimum distance from $G$ to the ellipse,
+it must be perpendicular to the curve at $P$. In an ellipse,
+the shortest distance from a point outside the ellipse to the ellipse
+itself is along the line that passes through the nearest focus.
+Since $N P$ is perpendicular to the major axis and intersects the ellipse at $P$,
+it implies that $N P$ is the shortest distance from $N$ to the ellipse,
+and hence $P G$ must be the shortest distance from $G$ to the ellipse.
+
+3. Given $y^2 = x(p - \frac{p}{2a} x)$, let's differentiate this with respect to $x$
+to find the slope of the tangent line.
+
+We get:
+\[2y \frac{dy}{dx} = p - \frac{p}{a} x\]
+\[\implies \frac{dy}{dx} = \frac{p-\frac{p}{a}x}{2y}\]
+
+At point $P$, the line $N P$ is vertical, so $x$ is a constant and $y$ varies.
+Since $N P$ is perpendicular to the major axis $A A'$, it is also the normal
+to the ellipse at point $P$. Therefore, the slope of the tangent at $P$
+must be horizontal, which means $\frac{dy}{dx}$ at $P$ must be $0$.
+
+\textbf{168.1}:
+
+We will use the formula:
+\[crd\left(\frac{\theta}{2}\right)^2 = R^2 - \left(\frac{crd(\theta)}{2}\right)^2\]
+
+\[crd(30^\circ)^2 = R^2 - \left(\frac{crd(60^\circ)}{2}\right)^2\]
+\[\implies crd(30^\circ) = \sqrt{R^2 - \left(\frac{R}{2}\right)^2}\]
+\[\implies crd(30^\circ) = \frac{R \sqrt{3}}{2} = \frac{60 \sqrt{3}}{2}\]
+
+Using the same forumula, 
+We get:
+\[crd(15^\circ) = \sqrt{60^2 - \left(\frac{crd(30^\circ)}{2}\right)^2}\]
+\[crd(7.5^\circ) = \sqrt{60^2 - \left(\frac{crd(15^\circ)}{2}\right)^2}\]
+
+\textbf{168.4}:
+
+Let's consider a cyclic quadrilateral $ABCD$ inscribed in a circle, where:
+\[\angle ADB = 180^\circ - \alpha\]
+\[\angle BDC = 180^\circ - \beta\]
+\[\angle ADC = 180^\circ - (\alpha + \beta)\]
+
+The sides $AD$ and $BC$ are not adjacent and thus will form the diagonals
+of the quadrilateral when connected. The other sides are $AB$, $CD$, $BD$, and $AC$.
+
+Now, according to Ptolemy's theorem:
+\[AD \cdot BC + AB \cdot CD = AC \cdot BD\]
+
+In terms of chord lengths in a circle of radius $R$, where $R = 60$
+to fit the ancient Greek chord system, we can express the sides as follows:
+\[AD = crd(180^\circ - \alpha)\]
+\[BC = crd(180^\circ - \beta)\]
+\[AB = crd(\beta)\]
+\[CD = crd(\alpha)\]
+\[AC = crd(180^\circ - (\alpha + \beta))\]
+\[BC = crd(\alpha + \beta)\]
+
+Substituting this into Ptolemy's theorem gives us:
+\[crd(180^\circ - \alpha) \cdot crd(180^\circ - \beta) + crd(\alpha) \cdot crd(\beta)\]
+\[= crd(180^\circ - (\alpha + \beta)) \cdot crd(\alpha + \beta)\]
+
+We need to prove that:
+\[120 \cdot crd(180^\circ - (\alpha + \beta))\]
+\[= crd(180^\circ - \alpha) \cdot crd(180^\circ - \beta) - crd(\alpha) \cdot crd(\beta)\]
+
+To align this with the equation derived from Ptolemy's theorem, we need
+to consider the property of chord lenghts where $crd(\theta) = crd(360^\circ - \theta)$.
+This implies that $crd(\alpha + \beta) = crd(180^\circ - (\alpha + \beta))$ in a semicircle.
+
+Thus, the equation becomes:
+\[crd(180^\circ - \alpha) \cdot crd(180^\circ - \beta) + crd(\alpha) \cdot crd(\beta)\]
+\[= crd(180^\circ - (\alpha + \beta)) \cdot crd(180^\circ - (\alpha + \beta))\]
+
+Rearranging and multiplying both sides by $120$ gives:
+\[120 \cdot [crd(180^\circ - \alpha) \cdot crd(180^\circ - \beta) - crd(\alpha) \cdot crd(\beta)]\]
+\[= 120 \cdot [crd(180^\circ - (\alpha + \beta)^2)]\]
+
+This equation demonstrates the sum formula.
+
+\textbf{168.22}:
+
+First, let's confirm this is a valid triangle.
+The sum of any two sides should be larger than the third side.
+
+\[4 + 7 > 10\]
+\[4 + 10 > 7\]
+\[7 + 10 > 4\]
+
+Method 1: Heron's formula
+
+\[A = \sqrt{s(s-a)(s-b)(s-c)}\]
+
+where $s = \frac{a+b+c}{2}$.
+
+For our triangle,
+$s = \frac{21}{2} = 10.5$
+
+\[A = \sqrt{10.5(10.5 - 4)(10.5 - 7)(10.5 - 10)}\]
+
+Method 2: Heron's alternative formula
+
+\[A = \frac{1}{4} \sqrt{(a+b+c)(-a + b + c)(a - b + c)(a + b - c)}\]
+
+\[A = \frac{1}{4} \sqrt{(4+7+10)(-4+7+10)(4-7+10)(4+7-10)}\]
+
+Both methods give approximately $10.93$ square units.
+
+\end{document}

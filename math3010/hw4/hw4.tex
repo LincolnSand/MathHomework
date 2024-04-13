@@ -1,0 +1,226 @@
+\documentclass{article}
+
+\usepackage{amsfonts}
+\usepackage{graphicx}
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage{listings}
+\usepackage{hyperref}
+
+
+\DeclareMathOperator{\sech}{sech}
+\newcommand{\NN}{\mathbb{N}}
+\newcommand{\RR}{\mathbb{R}}
+\newcommand{\QQ}{\mathbb{Q}}
+\newcommand{\ZZ}{\mathbb{Z}}
+\newcommand{\dV}{\;\mathrm{d}V}
+\newcommand{\dA}{\;\mathrm{d}A}
+\newcommand{\dx}{\;\mathrm{d}x}
+\newcommand{\dy}{\;\mathrm{d}y}
+\newcommand{\dz}{\;\mathrm{d}z}
+\newcommand{\cA}{\mathcal{A}}
+\newcommand{\Bb}{\mathcal{B}}
+\newcommand{\Ww}{\mathcal{W}}
+\newcommand{\Dd}{\mathcal{D}}
+\newcommand{\Ss}{\mathcal{S}}
+\newcommand{\Ee}{\mathcal{E}}
+\DeclareMathOperator{\im}{im}
+
+\tolerance=1
+\emergencystretch=\maxdimen
+\hyphenpenalty=10000
+\hbadness=10000
+
+\setlength\parindent{18pt}
+
+\begin{document}
+
+\textbf{D1:}
+
+\textbf{48.21}: In Zeno's Achilles paradox, assume the quick runner
+Achilles is racing against a tortoise. Assume further that the
+tortoise has a 500-yard head start but that Achilles speed is
+fifty times that of the tortoise. Finally, assume that the
+tortoise moves 1 yard in 5 seconds. Determine the time t
+it will take until Achilles overtakes the tortoise and
+the distance d he will have traveled. Note that Achilles
+must first travel 500 yards to reach the point where the
+tortoise started. This will take 50 seconds. But in that
+time the tortoise will move 10 yards further. Continue
+this analysis by writing down the sequence of distances
+that Achilles must travel to reach the point the tortoise
+had already been. Show that the sum of this infinite sequence
+of distances is equal to the distance d calculated first.
+
+$\text{Speed of the tortoise} = \frac{1}{5}$
+
+$\text{Speed of Achilles} = 50 \times \frac{1}{5} = 10$
+
+$\text{Tortoise equation} = \frac{1}{5} t + 500$
+
+$\text{Achilles equation} = 10 t$
+
+$\frac{1}{5} t + 500 = 10 t \implies t + 2500 = 50 t \implies 2500 = 49 t \implies t = \frac{2500}{49} \approx 51.020$
+
+
+For the sum:
+
+1. 500 yards
+
+2. 10 yards
+
+3. 0.2 yards
+
+4. 0.004 yards
+
+5. $8 \times 10^{-5}$ yards
+
+6. $1.6 \times 10^{-6}$ yards
+
+7. $3.2 \times 10^{-8}$ yards
+
+8. $6.4 \times 10^{-10}$ yards
+
+9. $1.28 \times 10^{-11}$ yards
+
+10. $2.56 \times 10^{-13}$ yards
+
+11. $5.12 \times 10^{-15}$ yards
+
+The sum of these distances is approximately $510.204$ yards, which is pretty much equal
+to the distance d. If we add infinitely many terms, they will converge to the same value.
+
+
+\textbf{D2:} In Book VI of Elements, Euclid gives the following
+argument for the Pythagorean Theorem based on similar triangles.
+Show that the three triangles in the figure are similar, and
+hence prove the Pythagorean Theorem by equating ratios to
+corresponding sides. [Stillwell Mathematics and its History. p. 10]
+
+Let's first demonstrate similarity.
+
+All three triangles share the same right angle.
+
+The small triangle on the left shares angle $A$ with the large triangle, and the
+small triangle on the right shares angle $B$ with the large triangle.
+
+Since the angles in a triangle must sum to 180 degrees, the third angle in the smaller
+triangles must be equal to each other.
+
+$\frac{a}{c} = \frac{c_1}{a}$
+
+$a^2 = c_1 \cdot c$
+
+$\frac{b}{c} = \frac{c_2}{b}$
+$b^2 = c_2 \cdot c$
+
+Since $c = c_1 + c_2$,
+
+$a^2 + b^2 = c_1 \cdot c + c_2 \cdot c$
+
+$\implies a^2 + b^2 = c \cdot (c_1 + c_2)$
+
+$\implies a^2 + b^2 = c^2$
+
+
+\textbf{D3:} Show that the Golden ratio $\phi$ is irrational.
+
+$\phi = \frac{1 + \sqrt{5}}{2}$
+
+Let's prove this by contradiction.
+
+Assume that $\phi$ is rational and expressed in lowest terms as $\frac{a}{b}$.
+
+$\phi = \frac{1 + \sqrt{5}}{2} = \frac{a}{b}$
+
+$\implies 2a = b + b \sqrt{5}$
+
+$\implies 2a - b = b \sqrt{5}$
+
+$\implies (2a - b)^2 = (b \sqrt{5})^2$
+
+$\implies 4 a^2 - 4 a b + b^2 = 5 b^2$
+
+$\implies 4 a^2 - 4 a b - b^2 = 0$
+
+$\implies a(4a - 4b) = b^2$
+
+Since $a$ and $b$ are integers, then $4a - 4b$ is also an integer.
+Let's call it $k$ such that $a = \frac{b^2}{k}$.
+
+Now, $k$ must perfectly divide $b^2$ since $a$ is an integer. And since $k = 4a - 4b$,
+it must also divide $4b$ perfectly. But that means that both $a$ and $b$
+share $k$ in common and thus we have a contradiction that $\frac{a}{b}$ is
+in lowest terms. Thus, $\phi$ is irrational.
+
+
+\textbf{D4:} Check Euclid's construction of the regular pentagon.
+Suppose the collinear points A, B, C have distances
+$a = AB, \phi a = AC$. Construct the isosceles
+triangle $\triangle (BDC)$ with $a = BD = CD$.
+Let M be the bisector between B and C.
+Let the angle $\alpha = \angle (ACD)$.
+
+\textbf{a.} Find the length of $DM$ using the triangle $\triangle (BMD)$.
+
+Since $M$ is the midpoint of $BC$, we know that $BM = MC = \frac{a}{2}$.
+Now, $\triangle BMD$ is a right triangle.
+
+Using the Pythagorean Theorem:
+
+$DM = \sqrt{BD^2 + BM^2} = \sqrt{a^2 - \left(\frac{a}{2}\right)^2}$
+
+\textbf{b.} Show that $AD = AC$ using the triangle $\triangle (AMD)$.
+
+$\triangle AMD$ is an isosceles triangle with $AM = MC$ because $M$ is the
+midpoint of $AC$ and $AC = \phi a$. Hence, $AM = MC = \frac{\phi a}{2}$.
+We know $DM$ from part a. Now, using the fact that $\triangle AMD$ is isosceles
+with $AM = MD$, it follows that $AD = AC$.
+
+\textbf{c.} Express the angles of triangle $\triangle (ABD)$ in
+terms of $\alpha$ and show that $\alpha = 72^{\circ}$. Thus
+it is the central angle of a sector of the regular pentagon.
+Hint: The sum of the interior angles of any triangle is $180^{\circ}$.
+
+\newpage
+
+\textbf{D5:} Essay on Mathematics of Antiquity proposal
+
+Working title: Large Numbers and The Sand Reckoner
+
+Essay topic description:
+
+I want to write an essay about the invention of the Sand Reckoner
+by Archimedes and how he came up with it and why it works.
+
+Interesting fact:
+
+Archimedes ended up discovering and proving the law of exponents in the process.
+
+Style manual I will use:
+
+MLA
+
+Two internet references:
+
+1.
+
+https://web.calstatela.edu/faculty/hmendel/Ancient
+\%20Mathematics/Archimedes/SandReckoner/SandReckoner.html
+
+2.
+
+https://web.calstatela.edu/faculty/hmendel/Ancient
+\%20Mathematics/Archimedes/SandReckoner/Ch.1/Ch1.html
+
+3. (bonus)
+
+https://www.famousscientists.org/how-archimedes-invented-the-beast-number/
+
+1. Eureka Man: The Life and Legacy of Archimedes
+
+It covers the Sand Reckoner in Chapter 4.
+
+2. The Sand Reckoner translated by Thomas L Heath
+
+\end{document}

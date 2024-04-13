@@ -1,0 +1,275 @@
+\documentclass[12]{amsart}
+\usepackage{amssymb}
+\usepackage{eucal}
+\usepackage{amscd}
+\usepackage{graphicx}
+\usepackage{mathtools}
+\usepackage{xcolor}
+\usepackage{bm}
+
+
+\newtheorem{thm}{Theorem}
+\newtheorem*{extracredit}{Extra Credit Problem}
+\newtheorem{lem}[thm]{Lemma}
+\newtheorem{cor}[thm]{Corollary}
+\newtheorem{pro}[thm]{Proposition}
+\theoremstyle{definition}
+\newtheorem{rem}[thm]{Remark}
+
+\newtheorem{exm}[thm]{Example}
+\newtheorem{xca}{Problem}
+\newcommand{\probl}{Problem}
+\newtheorem*{exer}{\probl}
+\newenvironment{exercise}[1]{\renewcommand{\probl}{#1}\begin{exer}}
+{\end{exer}}
+\newcommand{\be}{\begin{equation*}}
+\newcommand{\ee}{\end{equation*}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\cl}{\overline}
+\newcommand{\sskip}{\newpage}
+\newcommand{\norm}[1]{\lVert#1\rVert}
+\newcommand{\m}[1]{$ #1 $}
+\newcommand{\lskip}{\bigskip}
+
+
+\DeclareMathOperator{\im}{im} \DeclareMathOperator{\rank}{rank}
+\DeclareMathOperator{\Mor}{Mor} \DeclareMathOperator{\coker}{coker}
+\DeclareMathOperator{\supp}{supp} \DeclareMathOperator{\For}{For}
+\DeclareMathOperator{\Hom}{Hom} \DeclareMathOperator{\End}{End}
+\DeclareMathOperator{\Int}{Int} \DeclareMathOperator{\order}{order}
+\DeclareMathOperator{\ad}{ad} \DeclareMathOperator{\Ad}{Ad}
+\DeclareMathOperator{\GL}{GL} \DeclareMathOperator{\SL}{SL}
+\DeclareMathOperator{\SO}{SO} \DeclareMathOperator{\Sp}{Sp}
+\DeclareMathOperator{\SU}{SU} \DeclareMathOperator{\tr}{tr}
+\DeclareMathOperator{\Aut}{Aut} \DeclareMathOperator{\re}{Re}
+\DeclareMathOperator{\imag}{Im} \DeclareMathOperator{\Card}{Card}
+\newcommand{\Sd}{\ensuremath{\surd}}
+
+
+\begin{document}
+
+\centerline{ \bf Math 3220-1: Homework 7, due 03/13/2024}
+\bigskip
+\centerline{ \bf Show all work. Homework has to be uploaded to GradeScope.}
+\bigskip
+\noindent Name (PRINT): Lincoln Sand\hskip 2.5in ID: u1358804
+\smallskip
+
+\hrule
+
+\bigskip
+\begin{xca} %4
+Let
+$$
+C=
+\begin{bmatrix}
+1 & -1\\
+4& -6\\
+-1&2
+\end{bmatrix}
+\text{ and } D=
+\begin{bmatrix}
+2&0 &1 \\
+-1 & 1 &3
+\end{bmatrix}
+$$
+Find $CD$ and $DC$.
+\end{xca}
+
+
+$CD:$
+
+$2 \cdot \begin{bmatrix}
+    1 \\
+    4 \\
+    -1
+\end{bmatrix} -1 \cdot \begin{bmatrix}
+    -1 \\
+    -6 \\
+    2
+\end{bmatrix} = \begin{bmatrix}
+    3 \\
+    14 \\
+    -4
+\end{bmatrix}$
+
+$0 \cdot \begin{bmatrix}
+    1 \\
+    4 \\
+    -1
+\end{bmatrix} + 1 \cdot \begin{bmatrix}
+    -1 \\
+    -6 \\
+    2
+\end{bmatrix} = \begin{bmatrix}
+    -1 \\
+    -6 \\
+    2
+\end{bmatrix}$
+
+$1 \cdot \begin{bmatrix}
+    1 \\
+    4 \\
+    -1
+\end{bmatrix} + 3 \cdot \begin{bmatrix}
+    -1 \\
+    -6 \\
+    2
+\end{bmatrix} = \begin{bmatrix}
+    -2 \\
+    -14 \\
+    5
+\end{bmatrix}$
+
+So, $CD = \begin{bmatrix}
+    3 & -1 & -2 \\
+    14 & -6 & -14 \\
+    -4 & 2 & 5
+\end{bmatrix}$.
+
+$DC:$
+
+$1 \cdot \begin{bmatrix}
+    2 \\
+    -1
+\end{bmatrix} + 4 \cdot \begin{bmatrix}
+    0 \\
+    1
+\end{bmatrix} -1 \cdot \begin{bmatrix}
+    1 \\
+    3
+\end{bmatrix} = \begin{bmatrix}
+    1 \\
+    0
+\end{bmatrix}$
+
+$-1 \cdot \begin{bmatrix}
+    2 \\
+    -1
+\end{bmatrix} -6 \cdot \begin{bmatrix}
+    0 \\
+    1
+\end{bmatrix} + 2 \cdot \begin{bmatrix}
+    1 \\
+    3
+\end{bmatrix} = \begin{bmatrix}
+    0 \\
+    1
+\end{bmatrix}$
+
+So, $CD = \begin{bmatrix}
+    1 & 0 \\
+    0 & 1
+\end{bmatrix}$.
+
+
+\sskip
+\begin{xca}
+Let
+$$
+A=
+\begin{bmatrix}
+3 & -1\\
+2 & 1
+\end{bmatrix}
+\text{ and } B=
+\begin{bmatrix}
+2 & 5 \\
+-2 & 2
+\end{bmatrix}
+$$
+Find  $\det(A)$, $\det(B)$, $A^{-1}$, $B^{-1}$.
+\end{xca}
+
+
+$\det(A) = 3 \cdot 1 - (-1 \cdot 2) = 3 + 2 = 5$.
+
+$\det(B) = 2 \cdot 2 - (5 \cdot -2) = 4 + 10 = 14$.
+
+$A^{-1} = \frac{1}{5} \begin{bmatrix}
+    1 & 1 \\
+    -2 & 3
+\end{bmatrix}$.
+
+$B^{-1} = \frac{1}{14} \begin{bmatrix}
+    2 & -5 \\
+    2 & 2
+\end{bmatrix}$.
+
+\sskip
+
+\begin{xca}
+Find the matrix of the linear transformation of $\R^2$ which reflects each point through the diagonal line $y=x$ (this transformation
+interchanges $x$ and $y$ coordinates of each point).
+\end{xca}
+
+
+Let's look at what happens to the bases:
+
+$e_1 = \begin{bmatrix}
+    1 \\
+    0
+\end{bmatrix} \to \begin{bmatrix}
+    0 \\
+    1
+\end{bmatrix}$
+
+$e_2 = \begin{bmatrix}
+    0 \\
+    1
+\end{bmatrix} \to \begin{bmatrix}
+    1 \\
+    0
+\end{bmatrix}$
+
+
+Thus, the transformation matrix is: $\begin{bmatrix}
+    0 & 1 \\
+    1 & 0
+\end{bmatrix}$.
+
+
+
+\sskip
+
+
+
+\begin{xca}
+Prove that if $K:\R^p \to \R^q$ and $L:\R^q\to \R^r$ are linear transformations, then
+$$
+\norm{L\circ K}\leq \norm{L}\,\norm{K}
+$$
+\end{xca}
+
+
+Recall:
+\[\norm{T} = \sup_{\norm{x} = 1} \norm{T(x)}\]
+
+
+Consider an arbitrary vector $x \in \R^p$ with $\norm{x} = 1$.
+
+First, observe that:
+\[\norm{K(x)} \leq \norm{K} \norm{x} = \norm{K}\]
+
+And:
+\[\norm{L\circ K} = \norm{L(K(x))}\]
+
+Applying the definition of the norm of $L$, we get that:
+\[\norm{L(K(x))} \leq \norm{L} \norm{K(x)}\]
+
+But, we've established that $\norm{K(x)} \leq \norm{K}$, so:
+\[\norm{L(K(x))} \leq \norm{L} \norm{K}\]
+
+Since this inequality holds for any $x$ with $\norm{x} = 1$, it also
+holds for the supremum of $\norm{(L\circ K)(x)}$ over all such $x$,
+which is exactly $\norm{L\circ K}$:
+\[\norm{L\circ K} \leq \norm{L} \norm{K}\]
+
+\[\qed\]
+
+
+\end{document}

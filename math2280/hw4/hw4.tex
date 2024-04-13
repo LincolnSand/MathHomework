@@ -1,0 +1,138 @@
+\documentclass{article}
+
+\usepackage{amsfonts}
+\usepackage{graphicx}
+\usepackage{amssymb}
+\usepackage{amsmath}
+
+\setlength\parindent{18pt}
+
+\begin{document}
+
+
+Textbook Section 2.3:
+
+13) Separate variables in Eq. (12) and substitute
+$u = v \sqrt{\frac{p}{g}}$ to obtain the upward-motion
+velocity function given in Eq. (13) with initial condition
+$v(0) = v_0$.
+
+Equation 12:
+
+\[\frac{dv}{dt} = -g - pv^2 = -g \left( 1+\frac{p}{g}v^2 \right).\]
+
+Remember:
+
+\[\int \frac{1}{1 + u^2}du = tan^{-1}(u) + C\]
+
+Equation 13:
+
+\[v(t) = \sqrt{\frac{g}{p}}tan(C_1 - t \sqrt{pg})\]
+
+with
+
+\[C_1 = tan^{-1} \left( v_0 \sqrt{\frac{p}{g}} \right).\]
+
+
+
+Work:
+
+\[-g \left( 1+\frac{p}{g}v^2 \right)\]
+with
+\[u = v \sqrt{\frac{p}{g}}\]
+\[\implies du = \sqrt{\frac{p}{g}} dv\]
+yields:
+\[\frac{du}{dt} = -g(1 + u^2)\]
+\[\implies \sqrt{\frac{p}{g}} \int \frac{dv}{1 + u^2} = \int -gdt\]
+\[\implies \sqrt{\frac{p}{g}} tan^{-1}(u) = -gt + u_0\]
+\[\implies tan^{-1}(u) = \sqrt{\frac{p}{g}} \cdot (-gt + u_0)\]
+\[\implies tan^{-1}(u)= -\sqrt{pg}t + \sqrt{\frac{p}{g}} u_0\]
+\[\implies u = tan \left( \sqrt{\frac{p}{g}} u_0 - \sqrt{pg}t \right) \]
+\[v \sqrt{\frac{p}{g}} = tan \left( \sqrt{\frac{p}{g}} u_0 - \sqrt{pg}t \right)\]
+\[v = \sqrt{\frac{g}{p}} tan \left( tan^{-1} \left( \sqrt{\frac{p}{g}} v_0 \right) - \sqrt{pg}t \right)\]
+
+
+
+14) Integrate the velocity function in Eq. (13) to obtain
+the upward-motion function in Eq. (14) with initial
+condition $y(0) = y_0$.
+
+Recall:
+
+\[\int tan(u)du = -ln \left| cos(u) \right| + C\]
+
+Equation 14:
+
+\[y(t) = y_0 + \frac{1}{p}ln \left| \frac{cos(C_1 - t \sqrt{pg})}{cos(C_1)} \right| \]
+
+
+
+Work:
+
+\[\frac{dy}{dt} = \sqrt{\frac{g}{p}} tan \left( C1 - \sqrt{pg}t \right)\]
+
+Let $u = C1 - \sqrt{pg}t$.
+$\implies du = -\sqrt{pg} dt$.
+
+
+\[\implies \frac{dy}{du} = -\sqrt{\frac{g}{p}} tan(u)\]
+\[\implies dy = -\sqrt{\frac{g}{p}} tan(u) du\]
+\[-\sqrt{\frac{p}{g}} dy = tan(u) du\]
+\[-\sqrt{\frac{p}{g}} \int dy = \int tan(u) du\]
+\[-\sqrt{\frac{p}{g}} y = -ln \left| cos(u) \right| + u_0\]
+\[y = \frac{g}{p} (-u_0 + ln \left| cos(u) \right|)\]
+Since $y(0) = y_0$, then the inside of $ln$ must be $1$.
+And since $cos(C1 - \sqrt{pg}t)$ at $t = 0$ is $C1$,
+we have to divide it out.
+\[y = y_0 + \frac{g}{p} \left( ln \left| \frac{cos(C1 - \sqrt{pg}t)}{cos(C_1)} \right| \right)\]
+
+Not sure how $\frac{g}{p}$ is supposed to become $\frac{1}{p}$.
+
+
+
+Textbook Section 2.4:
+
+4) $y' = x - y, y(0) = 1; y(x) = 2e^{-x} + x - 1$
+
+For euler's method with step size of 0.25:
+We get an approximation of y at 0.5 of $0.625$.
+
+For euler's method with step size of 0.1:
+We get an approximation of y at 0.5 of $0.681$.
+
+The actual value of y at 0.5 is $0.713$.
+
+
+Textbook Section 2.5:
+
+4) $y' = x - y, y(0) = 1; y(x) = 2e^{-x} + x - 1$
+
+\begin{center}
+\begin{tabular}{ c c c }
+    x & approximation & actual \\
+    0.1 & 0.9100 & 0.9097 \\
+    0.2 & 0.8381 & 0.8375 \\
+    0.3 & 0.7824 & 0.7816 \\
+    0.4 & 0.7416 & 0.7406 \\
+    0.5 & 0.7142 & 0.7131
+\end{tabular}
+\end{center}
+
+
+
+Textbook Section 2.6:
+
+4) $y' = x - y, y(0) = 1; y(x) = 2e^{-x} + x - 1$
+
+\begin{center}
+\begin{tabular}{ c c c }
+    x & approximation & actual \\
+    0.25 & 0.80762 & 0.80762 \\
+    0.5 & 0.71309 & 0.71306
+\end{tabular}
+\end{center}
+
+
+
+
+\end{document}

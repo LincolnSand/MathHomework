@@ -1,0 +1,200 @@
+\documentclass{article}
+
+\usepackage{amsfonts}
+\usepackage{graphicx}
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage{listings}
+\usepackage{xcolor}
+\usepackage{xparse}
+\usepackage{booktabs}
+
+\NewDocumentCommand{\codeword}{v}{%
+\texttt{\textcolor{blue}{#1}}%
+}
+
+\lstset{language=C,keywordstyle={\bfseries \color{blue}}}
+
+
+\DeclareMathOperator{\sech}{sech}
+\newcommand{\NN}{\mathbb{N}}
+\newcommand{\RR}{\mathbb{R}}
+\newcommand{\QQ}{\mathbb{Q}}
+\newcommand{\ZZ}{\mathbb{Z}}
+\newcommand{\dV}{\;\mathrm{d}V}
+\newcommand{\dA}{\;\mathrm{d}A}
+\newcommand{\dx}{\;\mathrm{d}x}
+\newcommand{\dy}{\;\mathrm{d}y}
+\newcommand{\dz}{\;\mathrm{d}z}
+\newcommand{\cA}{\mathcal{A}}
+\newcommand{\Bb}{\mathcal{B}}
+\newcommand{\Ww}{\mathcal{W}}
+\newcommand{\Dd}{\mathcal{D}}
+\newcommand{\Ss}{\mathcal{S}}
+\newcommand{\Ee}{\mathcal{E}}
+\DeclareMathOperator{\im}{im}
+
+\newcommand{\lskip}{\newpage}
+
+
+\setlength\parindent{18pt}
+
+\begin{document}
+
+\Large{Lincoln Sand}
+
+
+\textbf{1.} Consider a sequential circuit that implements the following function in a self-driving car.
+In every second, the car's position within the lane is determined with cameras and fed as input to the
+sequential circuit. Accordingly, the car's steering wheel is moved to one of 2 positions: Left, Right.
+The car's position can be "Middle of a lane", "Drifting to the right edge of the lane", and "Drifting
+to the left edge of the lane". If the car is in the "Middle", the steering position is left unchanged.
+If the car is drifting to one of the edges of the lane, the steering is moved away from the edge, i.e.,
+steering should be moved right if the car is near the left edge of the lane. (40 points)
+
+    1. What are the states for the circuit controlling the steering?
+    2. What are the inputs to the circuit and what values can those inputs have?
+    3. Draw the finite state table and finite state diagram for this circuit.
+
+1.
+
+State $S_0$: Steering in the middle position (no change needed).
+
+State $S_1$: Steering is moved to the left (to correct from drifting to the right).
+
+State $S_2$: Steering is moved to the right (to correct from drifting to the left).
+
+2.
+
+$X = 0$: The car is in the middle of the lane.
+
+$X = 1$: the car is drifting to the right edge of the lane.
+
+$X = 2$: The car is drifting to the left edge of the lane.
+
+3. 
+
+\begin{table}[htbp]
+\centering
+\begin{tabular}{@{}llll@{}}
+\toprule
+Current State & Input (X) & Next State & Output (Y) \\ \midrule
+$S_0$ (Middle)   & 0          & $S_0$         & 1 (No change) \\
+$S_0$ (Middle)   & 1          & $S_1$         & 0 (Steer left) \\
+$S_0$ (Middle)   & 2          & $S_2$         & 2 (Steer right) \\
+$S_1$ (Left)     & 0          & $S_0$         & 1 (No change) \\
+$S_1$ (Left)     & 1          & $S_1$         & 0 (Steer left) \\
+$S_1$ (Left)     & 2          & $S_2$         & 2 (Steer right) \\
+$S_2$ (Right)    & 0          & $S_0$         & 1 (No change) \\
+$S_2$ (Right)    & 1          & $S_1$         & 0 (Steer left) \\
+$S_2$ (Right)    & 2          & $S_2$         & 2 (Steer right) \\ \bottomrule
+\end{tabular}
+\end{table}
+
+This table produces this FSM behavior:
+
+State $S_0$ (Middle):
+
+Stays in $S_0$ on input $X = 0$.
+
+Moves to $S_1$ on input $X = 1$.
+
+Moves to $S_2$ on input $X = 2$.
+
+State $S_1$ (Left):
+
+Moves to $S_0$ on input $X = 0$.
+
+Stays in $S_1$ on input $X = 1$.
+
+Moves to $S_2$ on input $X = 2$.
+
+State $S_2$ (Right):
+
+Moves to $S_0$ on input $X = 0$.
+
+Moves to $S_1$ on input $X = 1$.
+
+Stays in $S_2$ on input $X = 2$.
+
+
+\newpage
+
+
+\textbf{2.} Consider the following circuit to control a moving walkway. Every 2 seconds,
+the circuit examines two weight sensors and decides if the walkway will travel Northward
+or Southward or be turned off. There is a weight sensor in the North half of the walkway
+and a weight sensor in the South half of the walkway. If both sensors detect zero weight,
+the walkway is turned off. If the walkway is off and both sensors detect weight, the walkway
+remains off. If the walkway is off and one of the sensors detects a weight, the walkway
+starts moving in the opposite direction, i.e., if the North weight sensor detects a weight,
+the walkway starts moving Southward. Once the walkway is in motion, it retains that motion
+until both weight sensors detect zero weight. (60 points)
+
+    1. What are the states for the circuit controlling the walkway?
+    2. What are the inputs to the circuit and what values can those inputs have?
+    3. Draw the finite state table and finite state diagram for this circuit.
+
+1.
+
+State $S_0$: The walkway is turned off.
+
+State $S_1$: The walkway is moving Northward.
+
+State $S_2$: The walkway is moving Southward.
+
+2.
+
+$X = 00$: No weight on either sensor ($\text{North sensor} = 0$, $\text{South sensor} = 0$).
+
+$X = 01$: Weight detected only on South sensor ($\text{North sensor} = 0$, $\text{South sensor} = 1$).
+
+$X = 10$: Weight detected only on North sensor ($\text{North sensor} = 1$, $\text{South sensor} = 0$).
+
+$X = 11$: Weight detected on both sensors ($\text{North sensor} = 1$, $\text{South sensor} = 1$).
+
+3.
+
+\begin{table}[htbp]
+\centering
+\begin{tabular}{@{}llll@{}}
+\toprule
+Current State & Input (X) & Next State & Output (Y) \\ \midrule
+$S_0$ (Off)      & 00          & $S_0$         & Off \\
+$S_0$ (Off)      & 01          & $S_1$         & Move Northward \\
+$S_0$ (off)      & 10          & $S_2$         & Move Southward \\
+$S_0$ (Off)      & 11          & $S_0$         & Off \\
+$S_1$ (North)    & 00          & $S_0$         & Off \\
+$S_1$ (North)    & 01          & $S_1$         & Move Northward \\
+$S_1$ (North)    & 10          & $S_1$         & Move Northward \\
+$S_1$ (North)    & 11          & $S_1$         & Move Northward \\
+$S_2$ (South)    & 00          & $S_0$         & Off \\
+$S_2$ (South)    & 01          & $S_2$         & Move Southward \\
+$S_2$ (South)    & 10          & $S_2$         & Move Southward \\
+$S_2$ (South)    & 11          & $S_2$         & Move Southward \\ \bottomrule
+\end{tabular}
+\end{table}
+
+This table produces this FSM behavior:
+
+State $S_0$ (Off):
+
+Stays in $S_0$ on input $00$ and $11$.
+
+Moves to $S_1$ on input $01$.
+
+Moves to $S_2$ on input $10$.
+
+State $S_1$ (North):
+
+Moves to $S_0$ on input $00$.
+
+Stays in $S_1$ on input $01$, $10$, and $11$.
+
+State $S_2$ (South):
+
+Moves to $S_0$ on input $00$.
+
+Stays in $S_2$ on input $01$, $10$, and $11$.
+
+\end{document}

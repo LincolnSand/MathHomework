@@ -1,0 +1,305 @@
+\documentclass{article}
+
+\usepackage{amsfonts}
+\usepackage{graphicx}
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage{listings}
+
+
+\DeclareMathOperator{\sech}{sech}
+\newcommand{\NN}{\mathbb{N}}
+\newcommand{\RR}{\mathbb{R}}
+\newcommand{\QQ}{\mathbb{Q}}
+\newcommand{\ZZ}{\mathbb{Z}}
+\newcommand{\dV}{\;\mathrm{d}V}
+\newcommand{\dA}{\;\mathrm{d}A}
+\newcommand{\dx}{\;\mathrm{d}x}
+\newcommand{\dy}{\;\mathrm{d}y}
+\newcommand{\dz}{\;\mathrm{d}z}
+\newcommand{\cA}{\mathcal{A}}
+\newcommand{\Bb}{\mathcal{B}}
+\newcommand{\Ww}{\mathcal{W}}
+\newcommand{\Dd}{\mathcal{D}}
+\newcommand{\Ss}{\mathcal{S}}
+\newcommand{\Ee}{\mathcal{E}}
+\DeclareMathOperator{\im}{im}
+
+
+\setlength\parindent{18pt}
+
+\begin{document}
+
+Section 4.1:
+
+2) Transform the given differential equation or system into an equivalent system of first-order differential equations.
+
+\[x'' + 4x - x^3 = 0\]
+
+For the equation above, we can introduce the following variables:
+\[y_1 = x, y_2 = x'\]
+
+Then, we can express the original equation as a system
+of first-order differential equations:
+\[y_1' = y_2\]
+\[y_2' = -4y_1 + y_1^3\]
+
+
+8) Transform the given differential equation or system into an equivalent system of first-order differential equations.
+
+\[t^3 x^3 - 2 t^2 x'' + 3 t x' + 5 x = ln(t)\]
+
+Introduce the following variables:
+
+\[y_1 = x, y_2 = x'\]
+
+Then, we can express the original equation as a system
+of first-order differential equations:
+\[y_1' = y_2\]
+\[y_2' = \frac{1}{2t^2} (t^3 y_1^3 - 3 t y_2 - 5 y_1 - ln(t))\]
+
+
+24)
+
+30) 
+
+32)
+
+
+Section 5.1:
+
+6) Let $A_1 = \begin{bmatrix}
+    2 & 1 \\
+    -3 & 2
+\end{bmatrix}$, $A_2 = \begin{bmatrix}
+    1 & 3 \\
+    -1 & -2
+\end{bmatrix}$, $B = \begin{bmatrix}
+    2 & 4 \\
+    1 & 2
+\end{bmatrix}$.
+
+a) Show that $A_1 B = A_2 B$
+
+Both $A_1 B$ and $A_2 B$ give the matrix:
+
+\[\begin{bmatrix}
+    5 & 10 \\
+    -4 & -8
+\end{bmatrix}\]
+
+if you do the matrix multiplication.
+
+b) Let $A = A_1 - A_2$ and use part a) to show that $AB = 0$
+
+\[A = \begin{bmatrix}
+    1 & -2 \\
+    -2 & 4
+\end{bmatrix}\]
+
+\[AB = \begin{bmatrix}
+    0 & 0 \\
+    0 & 0
+\end{bmatrix} = 0\]
+
+Hence, $AB = 0$.
+
+The actual matrix arithmetic has been omitted for brevity since it's pretty simple.
+
+
+12) Write the given system in the form:
+x' = P(t)x + f(t)
+
+x' = 3x - 2y, y' = 2x + y
+
+\[\begin{bmatrix}
+    x' \\
+    y'
+\end{bmatrix} = \begin{bmatrix}
+    3 & -2 \\
+    2 & 1
+\end{bmatrix} \begin{bmatrix}
+    x \\
+    y
+\end{bmatrix}\]
+
+Let $x = \begin{bmatrix}
+    x \\
+    y
+\end{bmatrix}$.
+
+So,
+\[x' = \begin{bmatrix}
+    3 & -2 \\
+    2 & 1
+\end{bmatrix} x + \begin{bmatrix}
+    0 \\
+    0
+\end{bmatrix}\]
+
+14) Write the given system in the form:
+x' = P(t)x + f(t)
+
+$x' = tx - e^t y + cos(t), y' = e^{-t} x + t^2 y - sin(t)$
+
+\[\begin{bmatrix}
+    x' \\
+    y'
+\end{bmatrix} = \begin{bmatrix}
+    t & -e^t \\
+    e^{-t} & t^2
+\end{bmatrix} \begin{bmatrix}
+    x \\
+    y
+\end{bmatrix} + \begin{bmatrix}
+    cos(t) \\
+    -sin(t)
+\end{bmatrix}\]
+
+Let $x = \begin{bmatrix}
+    x \\
+    y
+\end{bmatrix}$.
+
+So,
+\[x' = \begin{bmatrix}
+    t & -e^t \\
+    e^{-t} & t^2
+\end{bmatrix} x + \begin{bmatrix}
+    cos(t) \\
+    -sin(t)
+\end{bmatrix}\]
+
+24) First verify that the given vectors are solutions of the given system.
+Then use the Wronskian to show that they are linearly independent.
+Finally, write the general solution of the system.
+
+\[x' = \begin{bmatrix}
+    3 & -1 \\
+    5 -3
+\end{bmatrix} x; x_1 = e^{2t} \begin{bmatrix}
+    1 \\
+    1
+\end{bmatrix}, x_2 = e^{-2t} \begin{bmatrix}
+    1 \\
+    5
+\end{bmatrix}\]
+
+\[x_1' = \frac{d}{dt} \left( e^{2t} \begin{bmatrix}
+    1 \\
+    1
+\end{bmatrix} \right) = 2 e^{2t} \begin{bmatrix}
+    1 \\
+    1
+\end{bmatrix}\]
+
+Now we multiply the matrix with $x_1$:
+\[\begin{bmatrix}
+    3 & -1 \\
+    5 & -3
+\end{bmatrix} e^{2t} \begin{bmatrix}
+    1 \\
+    1
+\end{bmatrix} = e^{2t} \begin{bmatrix}
+    3 - 1 \\
+    5 - 3
+\end{bmatrix} = 2 e^{2t} \begin{bmatrix}
+    1 \\
+    1
+\end{bmatrix}\]
+
+This confirms that $x_1$ is a valid solution.
+
+\[x_2' = \frac{d}{dt}\left( e^{-2t} \begin{bmatrix}
+    1 \\
+    5
+\end{bmatrix} \right) = -2 e^{-2t} \begin{bmatrix}
+    1 \\
+    5
+\end{bmatrix}\]
+
+Now multiply the matrix with $x_2$:
+\[\begin{bmatrix}
+    3 & -1 \\
+    5 & -3
+\end{bmatrix} e^{-2t} \begin{bmatrix}
+    1 \\
+    5
+\end{bmatrix} = e^{-2t} \begin{bmatrix}
+    3-5 \\
+    5-15
+\end{bmatrix} = -2 e^{-2t} \begin{bmatrix}
+    1 \\
+    5
+\end{bmatrix}\]
+
+This confirms that $x_2$ is also a valid solution.
+
+Now we'll use the Wronskian to show that they are linearly independent:
+\[W(x_1, x_2) = det \left( \begin{bmatrix}
+    x_{1_1} & x_{2_1} \\
+    x_{1_2} & x_{2_2}
+\end{bmatrix} \right) = det \left( \begin{bmatrix}
+    e^{2t} & e^{-2t} \\
+    e^{2t} & 5e^{-2t}
+\end{bmatrix} \right) = e^{2t} \cdot 5e^{-2t} - e^{2t} \cdot e^{-2t} = 4 \neq 0\]
+
+Since the Wronskian is non-zero, $x_1$ and $x_2$ are linearly independent.
+
+Finally, the general solution of the system is:
+
+\[x(t) = c_1 x_1 + c_2 x_2 = c_1 e^{2t} \begin{bmatrix}
+    1 \\
+    1
+\end{bmatrix} + c_2 e^{-2t} \begin{bmatrix}
+    1 \\
+    5
+\end{bmatrix}\]
+
+where $c_1$ and $c_2$ are arbitrary constants.
+
+
+26) First verify that the given vectors are solutions of the given system. Then use the Wronskian to show that they are linearly independent. Finally, write the general solution of the system.
+
+\[x' = \begin{bmatrix}
+    3 & -2 & 0 \\
+    -1 & 3 & -2 \\
+    0 & -1 & 3
+\end{bmatrix} x; x_1 = e^t \begin{bmatrix}
+    2 \\
+    2 \\
+    1
+\end{bmatrix}, x_2 = e^{3t} \begin{bmatrix}
+    -2 \\
+    0 \\
+    1
+\end{bmatrix}, x_3 = e^{5t} \begin{bmatrix}
+    2 \\
+    -2 \\
+    1
+\end{bmatrix}\]
+
+We can verify that $x_1$, $x_2$, and $x_3$ are valid solutions just like we did in 24.
+They all will come out as valid solutions if you do this.
+
+The Wronskian is:
+\[det \left( \begin{bmatrix}
+    2e^t & -2e^{3t} & 2e^{5t} \\
+    2e^t & 0 & -2e^{5t} \\
+    e^t & e^{3t} & e^{5t}
+\end{bmatrix} \right)\]
+
+If you calculate this determinant, it comes out as non-zero.
+Therefore, $x_1$, $x_2$, and $x_3$ are linearly independent.
+
+Finally, the general solution of the system is:
+
+\[x(t) = c_1 x_1 + c_2 x_2 + c_3 x_3\]
+
+where $c_1$, $c_2$, and $c_3$ are arbitrary constants.
+
+
+36)
+
+
+\end{document}

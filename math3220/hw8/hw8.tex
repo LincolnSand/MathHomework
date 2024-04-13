@@ -1,0 +1,303 @@
+
+%\documentclass[draft]{amsart}
+%\input seteps
+\documentclass[12]{amsart}
+\usepackage{amssymb}
+\usepackage{eucal}
+\usepackage{amscd}
+\usepackage{graphicx}
+\usepackage{mathtools}
+\usepackage{xcolor}
+\usepackage{bm}
+
+
+
+\newtheorem{thm}{Theorem}
+\newtheorem*{extracredit}{Extra Credit Problem}
+\newtheorem{lem}[thm]{Lemma}
+\newtheorem{cor}[thm]{Corollary}
+\newtheorem{pro}[thm]{Proposition}
+\theoremstyle{definition}
+\newtheorem{rem}[thm]{Remark}
+
+\newtheorem{exm}[thm]{Example}
+\newtheorem{xca}{Problem}
+\newcommand{\probl}{Problem}
+\newtheorem*{exer}{\probl}
+\newenvironment{exercise}[1]{\renewcommand{\probl}{#1}\begin{exer}}
+ {\end{exer}}
+ \newcommand{\be}{\begin{equation*}}
+ \newcommand{\ee}{\end{equation*}}
+ \newcommand{\R}{\mathbb{R}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Q}{\mathbb{Q}}
+%\newcommand{\e}{\text{e}}
+\newcommand{\C}{\mathbb{C}}
+%%%
+\newcommand{\cl}{\overline}
+\newcommand{\sskip}{\newpage%%
+}
+\newcommand{\norm}[1]{\lVert#1\rVert}
+\newcommand{\m}[1]{$ #1 $}
+\newcommand{\lskip}{\bigskip}
+\newcommand{\der}[2]{\frac{\partial#1}{\partial #2}}
+
+
+\DeclareMathOperator{\im}{im} \DeclareMathOperator{\rank}{rank}
+\DeclareMathOperator{\Mor}{Mor} \DeclareMathOperator{\coker}{coker}
+\DeclareMathOperator{\supp}{supp} \DeclareMathOperator{\For}{For}
+\DeclareMathOperator{\Hom}{Hom} \DeclareMathOperator{\End}{End}
+\DeclareMathOperator{\Int}{Int} \DeclareMathOperator{\order}{order}
+\DeclareMathOperator{\ad}{ad} \DeclareMathOperator{\Ad}{Ad}
+\DeclareMathOperator{\GL}{GL} \DeclareMathOperator{\SL}{SL}
+\DeclareMathOperator{\SO}{SO} \DeclareMathOperator{\Sp}{Sp}
+\DeclareMathOperator{\SU}{SU} \DeclareMathOperator{\tr}{tr}
+\DeclareMathOperator{\Aut}{Aut} \DeclareMathOperator{\re}{Re}
+\DeclareMathOperator{\imag}{Im} \DeclareMathOperator{\Card}{Card}
+\newcommand{\Sd}{\ensuremath{\surd}}
+
+
+\begin{document}
+
+\centerline{ \bf Math 3220-1: Homework 8, due 03/29/2024}
+\bigskip
+\centerline{ \bf Show all work. Homework has to be uploaded to GradeScope.}
+\bigskip
+\noindent Name (PRINT):\hskip 2.5in ID:
+\smallskip
+
+\hrule
+
+\bigskip
+
+
+\begin{xca}
+Let
+$$
+f(x,y)=
+\begin{cases}
+0 &\text{ if $xy\neq 0 $} \\
+1 & \text{ if $xy=0.$}
+\end{cases}
+$$
+Show that the partial derivatives $\der{f}{x}$ and $\der{f}{y}$ exist at the point $(0,0)$ but $f$ is not continuous at $(0,0)$. Show also that if $\bf{u}$ is a unit vector different from $\bf{i}$ or $\bf{j}$ then the directional derivative $D_{\bf{u}}f(0,0)$ does not exist.
+
+\end{xca}
+
+
+Partial derivative with respect to x:
+
+\[\frac{\partial f}{\partial x}(0, 0) = \lim_{h \to 0} \frac{f(0 + h, 0) - f(0, 0)}{h}\]
+
+Since $f(0, 0) = 1$ and $f(h, 0) = 1$ for any $h \neq 0$, the difference
+in the numerator is always $0$ for $h \neq 0$, making this limit $0$.
+
+
+Partial derivative with respect to y:
+
+\[\frac{\partial f}{\partial y}(0, 0) = \lim_{h \to 0} \frac{f(0, 0 + h) - f(0, 0)}{h}\]
+
+which is $0$ by the same reasoning as for the first partial derivative.
+
+So, $\frac{\partial f}{\partial x}(0, 0) = \frac{\partial f}{\partial y}(0, 0) = 0$.
+
+
+Continuity at $(0, 0)$:
+
+Consider the path $y = x$. Along this path:
+\[\lim_{x \to 0} f(x, x) = \lim_{x \to 0} 0 = 0\]
+which is different from $f(0, 0) = 1$. Hence, $f$ is not continuous at $(0, 0)$.
+
+
+The directional derivative of $f$ at $(0, 0)$ in the direction of the unit vector
+$u = (u_1, u_2)$ is defined as:
+\[D_{u} f(0, 0) = \lim_{t \to 0} \frac{f(t u_1, t u_2) - f(0, 0)}{t}\]
+
+If $u$ is neither $i$ nor $j$, then both $u_1$ and $u_2$ are non-zero. In this
+case, for $t \neq 0$, $f(t u_1, t u_2) = 0$. However, as $t$ approaches $0$, this
+directional derivative does not approach a single value because it oscillates between
+$0$ and $1$ depending on the path taken. Therefore, the directional derivative
+does not exist for any unit vector $u$ that is not along the x or y-axis.
+
+
+\sskip
+
+\begin{xca}
+Show that if $f:\R\to\R$ is a smooth function and $z=f(x^2y)$, then $x\der{z}{x}=2y\der{z}{y}.$
+  \end{xca}
+
+
+Compute $\frac{\partial z}{\partial x}$:
+
+Applying the chain rule:
+\[\frac{\partial z}{\partial x} = \frac{d f(u)}{du} \cdot \frac{\partial (x^2 y)}{\partial x}\]
+
+Here, $u = x^2 y$, so:
+\[\frac{\partial (x^2 y)}{\partial x} = 2xy\]
+
+Therefore,
+\[\frac{\partial z}{\partial x} = f'(x^2 y) \cdot 2xy\]
+
+
+Compute $\frac{\partial z}{\partial y}$:
+
+Using the chain rule gives us the final value of:
+\[\frac{\partial z}{\partial y} = f'(x^2 y) \cdot x^2\]
+
+
+Show $x \frac{\partial z}{\partial x} = 2y \frac{\partial z}{\partial y}$:
+\[x \cdot \frac{\partial z}{\partial x} = 2x^2 y f'(x^2 y)\]
+\[2y \cdot \frac{\partial z}{\partial y} = 2x^2 y f'(x^2 y)\]
+
+
+\sskip
+\begin{xca} %2
+
+\bigskip
+
+If $F(x,y)=(f_1(x,y), f_2(x,y))$ is a differentiable function from $\R^2$ to $\R^2$ and if we define
+$G:\R^2\to\R^2$ by $G(s,t)=F(st,s+t)$, find an expression for the differential matrix of $G$ in terms of the partial derivatives
+of $f_1$ and $f_2$.
+
+
+\end{xca}
+
+
+Partial derivatives of $G_1$:
+\[\frac{\partial G_1}{\partial s} = \frac{\partial f_1}{\partial x} \cdot t + frac{\partial f_1}{\partial y}\]
+\[\frac{\partial G_1}{\partial t} = \frac{\partial f_1}{\partial x} \cdot s\]
+
+Partial derivatives of $G_2$:
+\[\frac{\partial G_1}{\partial s} = \frac{\partial f_2}{\partial x} \cdot t + frac{\partial f_2}{\partial y}\]
+\[\frac{\partial G_1}{\partial t} = \frac{\partial f_2}{\partial x} \cdot s\]
+
+So,
+\[J_G(s, t) = \begin{bmatrix}
+    \frac{\partial f_1}{\partial x} \cdot t + \frac{\partial f_1}{\partial y} & \frac{\partial f_1}{\partial x} \cdot s \\
+    \frac{\partial f_2}{\partial x} \cdot t + \frac{\partial f_2}{\partial y} & \frac{\partial f_2}{\partial x} \cdot s
+\end{bmatrix}\]
+
+
+\sskip
+
+
+\begin{xca} %3
+
+\bigskip
+
+Suppose $U$ and $V$ are open subsets of $\R^p$ and $F:U\to V$ has an inverse function $G:V\to U$. This means $F\circ G(y)=y$ for all $y\in V$
+and $G\circ F(x)=x$ for all $x\in U$. Show that if $F$ is differentiable on $U$ and $G$ is differentiable on $V$, then the differential matrix $DF(x)$ is non-singular at each $x\in U$, and for each $x\in U$,
+$$
+DF(x)^{-1}=DG(y)
+$$
+where $y=F(x)$.
+
+\end{xca}
+
+
+Given that $F$ and $G$ are inverses, we have:
+\[F(G(y)) = y \forall y \in V\]
+\[G(F(x)) = x \forall x \in U\]
+
+Differentiating both sides of $G(F(x)) = x$ with respect to $x$ gives:
+\[D(G \circ F)(x) = D G(F(x)) \cdot D F(x) = I\]
+
+Similarly, differentiating $F(G(y)) = y$ with respect to $y$ gives:
+\[D(F \circ G)(y) = D F(G(y)) \circ D G(y) = I\]
+
+
+Now, for the implications:
+
+$D G(F(x)) \cdot D F(x) = I$ implies that $D F(x)$ has a right inverse,
+which is $D G(F(x))$.
+
+$D F(G(y)) \circ D G(y) = I$ implies that $D F(x)$ has a left inverse,
+which is $D G(y)$, where $y = F(x)$.
+
+
+Thus, we have:
+\[D F(x) \cdot D G(F(x)) = D G(F(X)) \cdot D F(x) = I\]
+
+
+Therefore, $D F(x)$ is non-singular for each $x \in U$, and its inverse
+is given by $D F(x)^{-1} =  D G(y)$ where $y = F(x)$.
+
+
+\sskip
+
+
+
+\begin{xca} %5
+
+\bigskip
+
+For the function $f(x,y)=x^2+y^3+xy$, find the gradient at the point $(1,1)$, the direction of greatest ascent of $f$ at this point, and a direction in which the rate of increase of this function is $0$ (the answer to the last two questions should be unit vectors).
+
+
+\end{xca}
+
+
+\[\frac{\partial f}{\partial x} = 2x + y\]
+\[\frac{\partial f}{\partial y} = 3y^2 + x\]
+
+Evaluating at $(1,1)$:
+\[\frac{\partial f}{\partial x}(1, 1) = 2(1) + 1 = 3\]
+\[\frac{\partial f}{\partial y}(1, 1) = 3(1)^2 + 1 = 4\]
+
+So, the gradient of $f$ at $(1, 1)$ is $\nabla f(1, 1) = (3, 4)$.
+
+
+Direction:
+
+To get the direction, we just take the gradient at the point and normalize the vector.
+
+The magnitude of $(3, 4)$ is $\sqrt{3^2 + 4^2} = \sqrt{9 + 16} = \sqrt{25} = 5$.
+
+So, the unit vector for the greatest ascent is $\left(\frac{3}{5}, \frac{4}{5}\right)$.
+
+
+Direction with zero rate of increase:
+
+The direction with zero rate of increase is perpendicular to the gradient.
+The perpendicular vector is $(-4, 3)$. Now, we normalize it to get
+$\left(-\frac{4}{5}, \frac{3}{5}\right)$.
+
+
+\sskip
+
+\begin{xca} %6
+
+\bigskip
+
+Find the tangent space at $(2,4,1)$ for the parameterized surface in $\R^3$ parameterized by the function $G:U\to\R^3$, where
+$$
+U=\{(u,v)\in\R^2: u>0, v>0\}\text{ and } G(u,v)=(uv,u^2,v^2).
+$$
+\end{xca}
+
+
+To find the tangent space on a parameterized surface, we need to calculate
+the partial derivatives of the parameterization function at that point.
+These partial derivatives will give us the basis vectors for the tangent space.
+
+We first need to solve the following system:
+\[uv = 2\]
+\[u^2 = 4\]
+\[v^2 = 1\]
+
+This gives us $u = 2$ ($u > 0$) and $v = 1$ ($v > 0$).
+
+Partial derivatives:
+\[G_u(u, v) = (v, 2u, 0)\]
+\[G_v(u, v) = (u, 0, 2v)\]
+
+Let's now compute the values at $(2, 1)$:
+\[G_u(2, 1) = (1, 4, 0)\]
+\[G_v(2, 1) = (2, 0, 2)\]
+
+These two vectors, $(1, 4, 0)$ and $(2, 0, 2)$ form a basis for the
+tangent space at the point $(2, 4, 1)$ at the surface.
+
+
+\end{document}

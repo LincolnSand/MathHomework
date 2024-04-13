@@ -1,0 +1,119 @@
+\documentclass{article}
+
+\usepackage{amsfonts}
+\usepackage{graphicx}
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage{listings}
+
+
+\DeclareMathOperator{\sech}{sech}
+\newcommand{\NN}{\mathbb{N}}
+\newcommand{\RR}{\mathbb{R}}
+\newcommand{\QQ}{\mathbb{Q}}
+\newcommand{\ZZ}{\mathbb{Z}}
+\newcommand{\dV}{\;\mathrm{d}V}
+\newcommand{\dA}{\;\mathrm{d}A}
+\newcommand{\dx}{\;\mathrm{d}x}
+\newcommand{\dy}{\;\mathrm{d}y}
+\newcommand{\dz}{\;\mathrm{d}z}
+\newcommand{\cA}{\mathcal{A}}
+\newcommand{\Bb}{\mathcal{B}}
+\newcommand{\Ww}{\mathcal{W}}
+\newcommand{\Dd}{\mathcal{D}}
+\newcommand{\Ss}{\mathcal{S}}
+\newcommand{\Ee}{\mathcal{E}}
+\DeclareMathOperator{\im}{im}
+
+
+\setlength\parindent{18pt}
+
+\begin{document}
+
+1. System A takes 500 seconds to run a program. The same program
+takes 450 seconds to run on a new system B. What is the
+speedup provided by B over A? What is the performance improvement of B over A?
+
+Speedup: The formula for speedup is
+\[\frac{\text{Execution Time of A}}{\text{Execution Time of B}}.\]
+
+Performance Improvement: The formula for performance improvement is
+\[\left(\frac{\text{Execution Time of A $-$ Execution Time of B}}{\text{Execution Time of A}}\right) \times 100\%.\]
+
+We are given that Execution Time of A = 500 seconds and
+Execution Time of B = 450 seconds.
+
+Plugging this in gives $1. \overline{11}$ times faster for speedup and gives $10\%$
+for performance improvement.
+
+
+2. System A has two processors. Program X takes 230 seconds to execute on one
+of the processors. Program Y takes 230 seconds to execute in parallel on the
+other processor. System B has a single processor that can execute only one program at a time.
+Program X takes 100 seconds to execute on this processor. Program Y takes 100 seconds to execute
+on this processor. Which system would you pick if you cared about overall system throughput
+for a workload that is a mix of programs X and Y?
+
+The total time taken by System A to complete both Program X and Program Y
+is 230 seconds since they can be done in parallel.
+
+The total time taken by System B to complete both Program X and Program Y
+is 200 seconds since it has to complete each program sequentially (100 seconds each).
+
+Therefore, System B would be the better option for throughput for a workload mix of
+Program X and Program Y because it completes them 30 seconds faster than System A.
+
+
+3. A program executes 600 billion instructions. It executes on an AMD processor that has
+an average CPI of 0.8 and a clock frequency of 3.2 GHz. How many seconds does the program
+take to execute? What is the cycle time of this AMD processor? Assume that an IBM processor takes
+100 seconds to execute the program. What is the speedup provided by the IBM processor, relative to the AMD processor?
+
+Execution Time for the ADM processor:
+
+The formula is given by: \[\frac{\text{Number of Instructions $\times$ CPI}}{\text{Clock Frequency}}\]
+
+Plugging in the given values of Number of Instructions = 600 billion, CPI = 0.8,
+Clock frequency = 3.2 GHz
+gives us 150 seconds to execute using the ADM processor.
+
+Cycle time for the ADM processor:
+
+The formula is given by: \[\frac{1}{\text{Clock Frequency}}\]
+
+Plugging in the Clock Frequency = 3.2 GHz gives us a cycle time of 3.125 nanoseconds.
+
+Speedup by the IBM processor:
+
+The formula is given by: \[\frac{\text{Execution Time on AMD}}{\text{Execution time on IBM}}\]
+
+Plugging in Execution Time on AMD = 150 seconds and Execution time on IBM = 100 seconds
+gives us a speedup of 1.5 times faster.
+
+
+4. Colin designs a 4 GHz processor where two important programs, A and B, take one second each to execute.
+Program A has a CPI of 1 and program B has a CPI of 1.25. Nisha is tasked with designing the company's next-generation
+processor. She comes up with an idea that improves the CPI of A to 0.6 and the CPI of B to 1.0. But the idea is so
+complex that the processor can only be implemented with a cycle time of 0.33 ns. Does Nisha's new processor out-perform
+Colin's processor on program A? Does Nisha's new processor out-perform Colin's processor on program B?
+
+The formula for Execution Time is:
+\[\frac{\text{Number of Instructions $\times$ CPI}}{\text{Clock Frequency}}\]
+
+Colin's processor: $4 \text{GHz} = 4 \times 10^9 \text{Hz}$.
+Nisha's processor: $\frac{1}{\text{Cycle Time}} = \frac{1}{0.33 \text{ns}} = \frac{1}{0.33 \times 10^{-9}} \text{Hz}$
+
+Plugging in the values given, we get that:
+
+Program A takes approximately $0.792$ seconds to execute on Nisha's processor.
+
+Program B takes approximately $1.056$ seconds to execute on Nisha's processor.
+
+Comparing these results with Colin's processor:
+
+For Program A, Nisha's processor performs better than Colins's (0.792 seconds vs 1 second).
+
+For Program B, Nisha's processor performs worse than Colin's (1.056 seconds vs 1 second).
+
+
+\end{document}

@@ -1,0 +1,215 @@
+\documentclass[answers]{exam}
+\title{Foundations of Analysis, HW 3}
+\author{James Cameron}
+\date{}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{graphicx}
+\usepackage{amsthm}
+
+\newtheorem{thm}{Theorem}
+\newtheorem{hthm}[thm]{*Theorem}
+\newtheorem{lemma}[thm]{Lemma}
+\newtheorem{cor}[thm]{Corollary}
+\newtheorem{obs}[thm]{Observation}
+\newtheorem{prop}[thm]{Proposition}
+\newtheorem{con}[thm]{Conjecture}
+\newtheorem{exer}[thm]{Exercise}
+
+\newtheorem{scho}[thm]{Scholium}
+\newtheorem*{Thm}{Theorem}
+\newtheorem*{Con}{Conjecture}
+\newtheorem*{Axiom}{Axiom}
+
+\theoremstyle{remark}
+\newtheorem{remark}[thm]{Remark}
+\newtheorem{notation}[thm]{Notation}
+
+
+\theoremstyle{definition}
+\newtheorem{Def}[thm]{Definition}
+\newtheorem{example}[thm]{Example}
+\newtheorem{ques}[thm]{Question}
+\everymath{\displaystyle}
+
+\pagestyle{head}
+\header{\bfseries\large Foundations of Analysis}{\bfseries\large Homework 6 \ifprintanswers (solutions) \fi}{\bfseries\large Fall, 2023}
+\headrule
+
+\DeclareMathOperator{\sech}{sech}
+\newcommand{\NN}{\mathbb{N}}
+\newcommand{\RR}{\mathbb{R}}
+\newcommand{\QQ}{\mathbb{Q}}
+\newcommand{\ZZ}{\mathbb{Z}}
+\newcommand{\dV}{\;\mathrm{d}V}
+\newcommand{\dA}{\;\mathrm{d}A}
+\newcommand{\dx}{\;\mathrm{d}x}
+\newcommand{\dy}{\;\mathrm{d}y}
+\newcommand{\dz}{\;\mathrm{d}z}
+\pointname{}
+\newcommand{\cA}{\mathcal{A}}
+\newcommand{\Bb}{\mathcal{B}}
+\newcommand{\Ww}{\mathcal{W}}
+\newcommand{\Dd}{\mathcal{D}}
+\newcommand{\Ss}{\mathcal{S}}
+\newcommand{\Ee}{\mathcal{E}}
+\DeclareMathOperator{\im}{im}
+\begin{document}
+% \maketitle
+
+% \noindent
+% This week on the homework you will get practice with induction. \\
+
+
+% \noindent
+ This is due Wednesday 10/18 by 11:59 pm on Gradescope. Please either neatly write up your solutions or type them up. You can find a .tex template on Canvas. Your proofs should be written in complete sentences and paragraphs, using a combination of words and symbols. They should be \textbf{correct, clear, and concise}. You will be graded on all three, especially the first two!
+
+\noindent
+
+
+\begin{questions}
+
+\question[4] Directly from the definition of continuity, show that $f: \RR_{>0} \to \RR$ defined by $f(x)=1/x$ is continuous at every $a \in \RR_{>0}$.
+\begin{solution}
+
+$f(x) = \frac{1}{x}$ and we want to show that f is continuous at some arbitrary point.
+Let's call this point a. Let $\epsilon > 0$. We need to find a $\delta > 0$ such that,
+$0 < |x - a| < \delta \implies |\frac{1}{x} - \frac{1}{a}| < \epsilon$.
+
+Recall:
+\[\left| \frac{1}{x} - \frac{1}{a} \right| = \left| \frac{a-x}{ax} \right| = \frac{|a-x|}{ax}\]
+
+Since it has to be less than $\epsilon$, that means that $\frac{|a-x|}{ax} < \epsilon$.
+
+For $\delta$, we can do:
+
+\[|x-a| < \delta \implies \frac{|a-x|}{ax} < \epsilon\]
+
+Now we have to rewrite $\delta$ in terms of $\epsilon$.
+For $|a-x| < \delta$, we can get:
+
+\[\frac{|a-x|}{ax} \leq \frac{\delta}{a(a-\delta)} \leq \frac{\delta}{a(a-z^2 \epsilon/2)}\]
+\[= \frac{2\delta}{a^2 \epsilon} \leq \epsilon\]
+
+We have now shown that for every $\epsilon > 0$, we can find a $\delta > 0$,
+such that if $|x - a| < \delta$, $|\frac{1}{x} - \frac{1}{a}| < \epsilon$.
+This means that the function $f(x) = \frac{1}{x}$ is continous forall of $\RR_{>0}$.
+
+\end{solution}
+
+\question[4] Show that $f: \RR \to \RR$ defined by $f(x)= \begin{cases}
+0 &x=0 \\
+\sin(1/x) & x \not=0
+\end{cases}$ is \emph{not} continuous at $x=0$. \textbf{Hint:} use the sequential formulation of continuity.
+\begin{solution}
+
+The function is continuous at 0 if, forall sequences $(x_n)_{n=1}^{\infty}$ in $\RR$
+that converges to 0, the sequence $(f(x_n))_{n=1}^{\infty}$ converges to f(0) = 0.
+
+Consider the sequence defined by $x_n = \frac{1}{2 \pi n}$.
+This sequence converges to 0 as n goes to infinity.
+But we have,
+
+\[f(x_n) = sin(2 \pi n) = 0\]
+
+So the sequence $f(x_n)$ is constantly 0 and thus trivially converges to 0.
+
+Now consider the sequence $y_n = \frac{1}{2 \pi n + \frac{\pi}{2}}$.
+This sequence also converges to 0 as n goes to infinity.
+However, we have,
+
+\[f(y_n) = sin(2 \pi n + \frac{\pi}{2}) = 1\]
+
+Since the numbers aren't both 0, the function is not continuous at x = 0.
+
+\end{solution}
+
+
+\question[4] Show that if $h: \RR \to \RR$ is bounded then $g: \RR \to \RR$ defined by $g(x)=xh(x)$ is continuous at $0$. This let's you conclude that $f: \RR \to \RR$ defined by $f(x)= \begin{cases}
+0 &x=0 \\
+x\sin(1/x) & x \not=0
+\end{cases}$ is continous on all of $\RR$.
+\begin{solution}
+
+To show that g(x) = xh(x)g(x) = xh(x) is continuous at 0,
+we need to show that for every $\epsilon > 0$,
+there exists a $\delta > 0$ such that $|x| < \delta \implies |g(x) - g(0)| < \epsilon$.
+
+Since g(0) = 0, we want to show that $|xh(x)| < \epsilon$ whenever $|x| < \delta$.
+Given $\epsilon > 0$, let $\delta = \frac{\epsilon}{M}$ where M is the bound of the function.
+We get:
+
+\[xh(x) \leq |x|M \leq \frac{\epsilon}{M} M = \epsilon\]
+
+Therefore g is continous at 0.
+
+For f(x), we know that $h(x) = sin(\frac{1}{x})$ is bounded, so,
+by the argument above $g(x) = xsin(\frac{1}{x})$ is also continous at 0.
+Since f(x) = 0 when x = 0 and $f(x) = xsin(\frac{1}{x})$ otherwise,
+it is clear that f is continous at 0. And because $f(x) = xsin(\frac{1}{x})$
+is continous forall other values, it means that f is continuous forall of $\RR$.
+
+
+\end{solution}
+
+\question[4] Suppose that $f: [a,b] \to \RR$ and $g: [a,b] \to \RR$ are continuous and that $f(a) \ge g(a)$, $f(b) \le g(b)$. Show that there is some $x \in [a,b]$ with $f(x)=g(x)$. \textbf{Hint:} Intermediate value theorem.
+\begin{solution}
+
+Recall:
+Let $h(x) = f(x) - g(x)$. If f and g are continous, so is h.
+
+Since $f(a) \geq g(a)$ and $f(b) \leq g(b)$, then
+$h(a) \geq 0$ and $h(b) \leq 0$.
+
+Now, from the Intermediate Value Theorem, since h is continous on the closed
+interval [a, b] and changes sign, there must be an $x \in [a, b]$
+such that h(x) = 0. i.e. $\exists x \in [a, b]$ such that
+$f(x) - g(x) = 0$ or $f(x) = g(x)$.
+
+\end{solution}
+
+\question
+\begin{parts}
+\part[2] Give an example of a continuous function $f: D \to \RR$ with $D \subseteq \RR$ and a Cauchy sequence $\{a_n\}$ in $D$ such that $\{f(a_n)\}$ is not Cauchy.
+\begin{solution}
+
+Consider $f: (0, 1) \to \RR$ defined by $f(x) = \frac{1}{x}$. The domain D
+is a subset of $\RR$ and f is continous on D.
+
+Let $\{a_n\}$ be the sequence on D defined by $a_n = \frac{1}{n}$.
+The sequence is a Cauchy sequence in D since forall D, $\exists N$
+such that forall $n, m \geq N$, we get:
+
+\[|a_n - a_m| = \left| \frac{1}{n} - \frac{1}{m} \right| = \frac{|n-m}{nm} < \epsilon\]
+
+But $\{f(a_n)\}$ is not Cauchy even though $\{a_n\}$ is and f is continous.
+The continuity of f is not sufficient to preserve the Cauchy
+property of the sequence since the function is not uniformly continous on D.
+
+
+\end{solution}
+\part[2] Recall that $f: D \to \RR$ is \emph{uniformly continuous} if for all $\epsilon>0$ there is a $\delta>0$ such that if $x,y \in D$ and $|x-y|<\delta$, then $|f(x)-f(y)| < \epsilon$ (You met this concept on the week 7 worksheet).
+
+Show that if $f: D \to \RR$ is \emph{uniformly continuous} then if $\{a_n\}$ is a Cauchy sequence in $D$ then $\{f(a_n)\}$ is also Cauchy.
+\begin{solution}
+
+Suppose that $\{a_n\}$ is a Cauchy sequence in D.
+This implies that forall $\epsilon' > 0$, $\exists N$
+such that forall $n, m \geq N$, we get $|a_n - a_m| < \epsilon'$.
+
+Since f is uniformly continous, it allows us to select $\epsilon' = \delta$.
+This means that if $|a_n - a_m| < \delta$, then $|f(a_n) - f(a_m) \epsilon$.
+
+So, for any $\epsilon > 0$, we choose $\delta$ as described above and let N
+be a value such that $|a_n - a_m| < \delta$ when $n, m \geq N$.
+So, forall $n, m \geq N$, we end up with:
+
+\[|f(a_n) - f(a_m)| < \epsilon\]
+
+We have shown that $\{f(a_n)\}$ is Cauchy.
+
+\end{solution}
+\end{parts}
+
+\end{questions}
+\end{document}

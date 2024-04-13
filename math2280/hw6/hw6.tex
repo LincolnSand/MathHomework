@@ -1,0 +1,395 @@
+\documentclass{article}
+
+\usepackage{amsfonts}
+\usepackage{graphicx}
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage{listings}
+
+
+\DeclareMathOperator{\sech}{sech}
+\newcommand{\NN}{\mathbb{N}}
+\newcommand{\RR}{\mathbb{R}}
+\newcommand{\QQ}{\mathbb{Q}}
+\newcommand{\ZZ}{\mathbb{Z}}
+\newcommand{\dV}{\;\mathrm{d}V}
+\newcommand{\dA}{\;\mathrm{d}A}
+\newcommand{\dx}{\;\mathrm{d}x}
+\newcommand{\dy}{\;\mathrm{d}y}
+\newcommand{\dz}{\;\mathrm{d}z}
+\newcommand{\cA}{\mathcal{A}}
+\newcommand{\Bb}{\mathcal{B}}
+\newcommand{\Ww}{\mathcal{W}}
+\newcommand{\Dd}{\mathcal{D}}
+\newcommand{\Ss}{\mathcal{S}}
+\newcommand{\Ee}{\mathcal{E}}
+\DeclareMathOperator{\im}{im}
+
+
+\setlength\parindent{18pt}
+
+\begin{document}
+
+Section 3.4:
+
+2) Determine the period and frequency of the simple harmonic motion of a body of mass 0.75 kg on the
+end of a spring with spring constant 48 N/m.
+
+The period T of a simple harmonic oscillator, is given by:
+
+\[T = 2 \pi \sqrt{\frac{m}{k}}\]
+
+Plugging in the values, we get:
+
+\[T = 2 \pi \sqrt{\frac{0.75}{48}} \approx 2 \pi \cdot 0.125 \approx 0.785s\]
+
+Frequency f is given by:
+
+\[f = \frac{1}{T}\]
+
+So,
+
+\[f = \frac{1}{0.785} \approx 1.27 Hz\]
+
+Thus, the period is approximately 0.785 seconds and
+the frequency is approximately 1.27 hertz.
+
+
+5) Two pendulums are of lengths $L_1$ and $L_2$ and - when located at their respective distances $R_1$
+and $R_2$ from the center of the earth - have periods $p_1$ and $p_2$. Show that
+\[\frac{p_1}{p_2} = \frac{R_1 \sqrt{L_1}}{R_2 \sqrt{L_2}}\].
+
+The period of a simple pendulum is given by:
+
+\[p = 2 \pi \sqrt{\frac{L}{g}}\]
+
+where L is the length of the pendulum
+and g is the acceleration due to gravity.
+
+\[g = \frac{G M}{R^2}\]
+
+where G is the gravitational constant,
+M is the mass of the earth,
+and R is the distance from the center of the earth.
+
+So,
+\[p = 2 \pi \sqrt{\frac{L}{\frac{G M}{R^2}}}\]
+
+So,
+\[p_1 = 2 \pi \sqrt{\frac{L_1}{\frac{G M}{R_1^2}}}\]
+\[p_2 = 2 \pi \sqrt{\frac{L_2}{\frac{G M}{R_2^2}}}\]
+
+So,
+\[\frac{p_1}{p_2} = \frac{2 \pi \sqrt{\frac{L_1}{\frac{G M}{R_1^2}}}}{2 \pi \sqrt{\frac{L_2}{\frac{G M}{R_2^2}}}}\]
+
+Simplifying this gives us,
+
+\[\frac{p_1}{p_2} = \sqrt{\frac{L_1 R_2^2}{L_2 R_1^2}}\]
+
+Then, multiply both the numerator and denominator by $R_1 \sqrt{L_1}$:
+
+\[\frac{p_1}{p_2} = \frac{R_1 \sqrt{L_1}}{R_2 \sqrt{L_2}}\]
+
+
+15) A mass m is attached to both a spring (with given spring constant k) and a dashpot (with given damping constant c).
+The mass is set in motion with initial position $x_0$ and initial velocity $v_0$. Find the position function x(t) and
+determine whether the motion is overdamped, critically damped, or underdamped. If it is underdamped, write the
+position function in the form $x(t) = C_1 e^{-pt} cos(\omega_1 t - \alpha_1)$. Also, find the undamped
+position function $u(t) = C_0 cos(\omega_0 t - \alpha_0)$ that would result if the mass were set in
+motion with the same initial position and velocity, but with the dashpot disconnected (so c = 0).
+Finally, construct a figure that illustrates the effect of damping by comparing the graphs of x(t) and u(t).
+
+$m = \frac{1}{2}$, c = 3, k = 4, $x_0 = 2$, $v_0 = 0$
+
+The equation of motion for a damped harmonic oscillator is:
+
+\[m \frac{d^2 x}{d t^2} + c \frac{dx}{dt} + kx = 0\]
+
+Plugging in the given constants, we have:
+
+\[\frac{1}{2} \frac{d^2 x}{d t^2} + 3 \frac{dx}{dt} + 4x = 0\]
+
+First find the characteristic equation of the differential equation:
+
+\[\frac{1}{2} r^2 + 3r + 4 = 0\]
+
+Solving for r, we get:
+
+\[r = -3 \pm \sqrt{5}\]
+
+Since the roots are both real and distinct, the motion is overdamped.
+The general solution for overdamped systems is:
+
+\[x(t) = C_1 e^{r_1 t} + C_2 e^{r_2 t}\]
+
+Now, solve for $C_1$ and $C_2$:
+
+\[x(0) = 2 = C_1 + C_2\]
+\[v(0) = 0 = C_1 r_1 + C_2 r_2\]
+
+Substituting the values of $r_1$ and $r_2$, we get:
+
+\[0 = C_1 (-3 + \sqrt{5}) + C_2 (-3 - \sqrt{5})\]
+
+Since we have two equations and two unknowns, we can solve for $C_1$ and $C_2$.
+
+We get $C_1 = \frac{2(\sqrt{5} - 1)}{4}$ and $C_2 = \frac{2(3-\sqrt{5})}{4}$.
+Therefore, the position function is:
+
+\[x(t) = \frac{2(\sqrt{5} - 1)}{4} e^{(-3 + \sqrt{5})t} + \frac{2(3-\sqrt{5})}{4} e^{(-3 - \sqrt{5})t}\]
+
+Now, for the undamped case, the equation of motion is:
+\[\frac{1}{2} \frac{d^2 u}{d t^2} + 4u = 0\]
+
+Yielding the characteristic equation:
+\[\frac{1}{2}r^2 + 4 = 0\]
+
+So, $r = \pm 2i$, which gives a frequency of $\omega_0 = 2$.
+The general solution for the undamped case is:
+\[u(t) = C_0 cos(\omega_0 t - \alpha_0)\]
+
+Solving for $C_0$ and $\alpha_0$:
+\[u(0) = 2 = C_0 cos(\alpha_0)\]
+\[v(0) = 0 = -C_0 \omega_0 sin(\alpha_0)\]
+
+We get $C_0 = 2$ and $\alpha_0 = 0$ from the above equations.
+So, the undamped equation is:
+
+\[u(t) = 2cos(2t)\]
+
+
+Graph: https://www.desmos.com/calculator/4bv9ucyrbo
+
+
+21) A mass m is attached to both a spring (with given spring constant k) and a dashpot (with given damping constant c).
+The mass is set in motion with initial position $x_0$ and initial velocity $v_0$. Find the position function x(t) and
+determine whether the motion is overdamped, critically damped, or underdamped. If it is underdamped, write the
+position function in the form $x(t) = C_1 e^{-pt} cos(\omega_1 t - \alpha_1)$. Also, find the undamped
+position function $u(t) = C_0 cos(\omega_0 t - \alpha_0)$ that would result if the mass were set in
+motion with the same initial position and velocity, but with the dashpot disconnected (so c = 0).
+Finally, construct a figure that illustrates the effect of damping by comparing the graphs of x(t) and u(t).
+
+m = 1, c = 10, k = 125, $x_0 = 6$, $v_0 = 50$
+
+We have the equation:
+\[\frac{d^2 x}{d t^2} + 10 \frac{dx}{dt} + 125x = 0\]
+
+Assume a solution of the form:
+\[x(t) = e^{rt}\]
+
+Substituting in the equation, we get the characteristic equation:
+\[r^2 + 10r + 125 = 0\]
+The roots are $r = -5 \pm 10i$, so the motion is underdamped.
+
+So, the solution will be of the form:
+\[x(t) = e^{-5t} (C_1 cos(10t) + C_2 sin(10t))\]
+
+Using the initial conditions of $x(0) = 6$ and $v(0) = 50$:
+\[x(0) = 6 = C_1\]
+\[v(0) = 50 = -5C_1 + 10C_2\]
+
+Using the above equations, we get:
+\[C_2 = 8\]
+
+Thus, the solution is:
+\[x(t) = e^{-5t} (6cos(10t) + 8sin(10t))\]
+
+This can be written in our desired form as:
+\[x(t) = C_1 e^{-pt} cos(\omega_1 t - \alpha_1)\]
+where:
+\[C_1 = \sqrt{6^2 + 8^2} = 10\]
+\[p = 5\]
+\[\omega_1 = 10\]
+\[\alpha_1 = \arctan \left( \frac{8}{6} \right) = \arctan \left( \frac{4}{3} \right)\]
+
+Now, for undamped motion:
+\[\frac{d^2 u}{dt^2} + 125u = 0\]
+
+The solution will be of the form:
+\[u(t) = C_0 cos(\omega_0 t - \alpha_0)\]
+where $\omega_0 = \sqrt{\frac{k}{m}} = \sqrt{125} = 5 \sqrt{5}$.
+
+Using the initial conditions from before,
+\[u(0) = 6 = C_0 cos(\alpha_0)\]
+\[v(0) = 50 = -C_0 \omega_0 sin(\alpha_0)\]
+
+Giving us:
+\[\alpha_0 = 0; C_0 = 6\]
+
+Thus, the undamped position function is:
+\[u(t) = 6cos(5\sqrt{5}t)\]
+
+
+Graph: https://www.desmos.com/calculator/cc0xenguxa
+
+
+Section 3.6:
+
+2) Equation 8: $x(t) = C cos(\omega_0 t - \alpha) + \frac{F_0/m}{\omega_0^2 - \omega^2} cos \omega t$.
+
+Express the solution of the given initial value problem as a sum of two oscillation as in Equation 8.
+Throughout, primes denote derivatives with respect to time t. Then graph the solution function x(t)
+in such a way that you can identify and label its period.
+
+x'' + 4x = 5 sin 3t; x(0) = x'(0) = 0
+
+The homogenous equation $x'' + 4x = 0$ has the characteristic equation:
+\[r^2 + 4 = 0\]
+So, $r = \pm 2i$, so the homogenous solution is:
+\[x_h(t) = C_1 cos(2t) + C_2 sin(2t)\]
+
+For the particular solution, we assume it is of the form:
+\[x_p(t) = A cos(3t) + B sin(3t)\]
+
+Since the inhomogenous term is $5 sin(3t)$, then
+$x_p(t) = B sin(3t)$.
+
+\[B'' sin(3t) + 4B sin(3t) = 5 sin(3t)\]
+
+\[\implies x_p(t) = -sin(3t)\]
+
+So, the general solution is:
+\[x(t) = C_1 cos(2t) + C_2 sin(2t) - sin(3t)\]
+
+We can find $C_1$ and $C_2$ using the initial conditions:
+
+\[x(0) = C_1 - 0 = 0; C_1 = 0\]
+\[v(0) = 2C_2 - 3 = 0; C_2 = \frac{3}{2}\]
+
+This gives a final solution to the initial value problem of:
+\[x(t) = \frac{3}{2} sin(2t) - sin(3t)\]
+
+
+Graph: https://www.desmos.com/calculator/irukqqk6ky
+
+The period is $2 \pi$.
+
+
+11) Find and plot both the steady periodic function $x_{sp}(t) = C cos(\omega t - \alpha)$ of the
+given differential equation and the actual solution $x(t) = x_{sp} + x_{u}(t)$ that
+satisfies the given initial conditions.
+
+x'' + 4x' + 5x = 10 cos 3t; x(0) = x'(0) = 0
+
+First we need to find the steady periodic function $x_{sp}$ of:
+\[x'' + 4x' + 5x = 10cos(3t)\]
+
+We assume a solution of the form:
+\[x_{sp}(t) = C cos(3t - \alpha)\]
+
+Plugging this back into the differential equation, we get:
+
+\[-C 9 cos(3t - \alpha) - 4 C 3 sin(3t - \alpha) + 5 C cos(3t - \alpha) = 10 cos(3t)\]
+
+Solving for the constants, we get:
+\[C = \frac{5}{2}; \alpha = 0\]
+
+So the steady periodic function is:
+\[x_{sp}(t) = \frac{5}{2} cos(3t)\]
+
+Now, we have to find the full solution x(t). The general solution of
+$x'' + 4x' + 5x = 0$ is:
+\[x_h(t) = e^{-2t} (C_1 cos(t) + C_2 sin(t))\]
+
+So, the complete solution is:
+\[x(t) = \frac{5}{2} cos(3t) + e^{-2t} (C_1 cos(t) + C_2 sin(t))\]
+
+Using the initial conditions $x(0) = v(0) = 0$, we get:
+\[C_1 = -\frac{5}{2}; C_2 = 5\]
+
+So, the final solution to the initial value problem is:
+\[x(t) = \frac{5}{2} cos(3t) + e^{-2t} (-\frac{5}{2} cos(t) + 5 sin(t))\]
+
+
+Plot: https://www.desmos.com/calculator/vtcnlhhsqd
+
+
+
+15) This problem gives the parameters for a forced mass-spring-dashpot system with equation
+$mx'' + cx' + kx = F_0 cos \omega t$. Investigate the possibility of practical
+resonance of this system. In particular, find the amplitude $C(\omega)$ of
+steady periodic forced oscillations with frequency $\omega$. Sketch the
+graph of $C(\omega)$ and find the practical resonance frequency $\omega$ (if any).
+
+m = 1; c = 2; k = 2; $F_0 = 2$
+
+We have:
+\[x'' + 2x' + 2x = 2 cos \omega t\]
+
+We can find the amplitude of the steady periodic forced oscillations
+if we assume a particular solution of the form:
+\[x_{sp}(t) = C(\omega) cos(\omega t - \alpha)\]
+
+where $C(\omega)$ is the amplitude we want to find.
+
+Plugging the above steady state form back into the differential equation gives us:
+\[-C(\omega) \omega^2 cos(\omega t - \alpha) - 2 C(\omega) \omega sin(\omega t - \alpha) + 2 C(\omega) cos(\omega t - \alpha) = 2 cos(\omega t)\]
+
+Solving that equation gives us:
+\[C(\omega) = \frac{F_0}{\sqrt{(k - m \omega^2)^2 + (c \omega)^2}}\]
+
+If we substitute in the given values, we have:
+\[C(\omega) = \frac{2}{\sqrt{(2 - \omega^2)^2 + (2 \omega)^2}}\]
+
+To find the practical resonance frequency, we have to get the maximum
+of $C(\omega)$. So we have to find when the derivative of $C(\omega)$
+with respect to $\omega$ is 0.
+
+\[\frac{d C(\omega)}{d \omega} = \frac{-4 \omega (2 - \omega^2) + 8 \omega}{((2 - \omega^2)^2 + 4 \omega^2)^\frac{3}{2}}\]
+
+So,
+\[-4 \omega (2 - \omega^2) + 8 \omega = 0\]
+\[\omega^3 - 2 \omega = 0\]
+
+The roots are $\omega = 0, \pm \sqrt{2}$.
+But $\omega$ must be non-negative, so we will discard $-\sqrt{2}$
+as a valid root.
+
+\[C(\sqrt{2}) = \frac{1}{\sqrt{2}}\]
+\[C(0) = 1\]
+
+Therefore, the maximum amplitude occurs at $\omega = 0$
+and the practical resonance frequency is $\omega = 0$.
+
+
+Sketch: https://www.desmos.com/calculator/aevlaufb5n
+
+
+24)
+
+For small angles, the restoring force from the pendulum is:
+\[F_p = m g \theta\]
+
+The restoring force from the spring is:
+\[F_s = kx\]
+
+The equation of motion for the pendulum:
+\[m \frac{d^2 \theta}{d t^2} = -m g \theta - k x\]
+
+The equation of motion for the spring:
+\[m \frac{d^2 x}{d t^2} = -kx -m g \theta\]
+
+Because the oscillations are small, x and $\theta$
+can be related via arclength:
+\[x = L \theta\]
+
+If we substitute these back into the above equations of motion, we get:
+\[m \frac{d^2 \theta}{d t^2} = -m g \theta - k L \theta\]
+\[m \frac{d^2 x}{d t^2} = - k L \theta -m g \theta\]
+
+The general form for the equation for simple harmonic motion is given by:
+\[\frac{d^2 y}{d t^2} = -\omega_0^2 y\]
+
+
+So, we have:
+\[-\omega_0^2 m \theta = -m g - k L \theta\]
+\[\omega_0^2 m \theta = g \theta + \frac{k L \theta}{m}\]
+
+If we solve for $\omega_0^2$, we have:
+\[\omega_0^2 = \frac{g}{L} + \frac{k}{m}\]
+
+Therefore, the natural circular frequency of the mass's motion is:
+\[\omega_0 = \sqrt{\frac{g}{L} + \frac{k}{m}}\]
+
+
+\end{document}

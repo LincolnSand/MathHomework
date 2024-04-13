@@ -1,0 +1,180 @@
+\documentclass{article}
+
+\usepackage{amsfonts}
+\usepackage{graphicx}
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage{listings}
+
+
+\DeclareMathOperator{\sech}{sech}
+\newcommand{\NN}{\mathbb{N}}
+\newcommand{\RR}{\mathbb{R}}
+\newcommand{\QQ}{\mathbb{Q}}
+\newcommand{\ZZ}{\mathbb{Z}}
+\newcommand{\dV}{\;\mathrm{d}V}
+\newcommand{\dA}{\;\mathrm{d}A}
+\newcommand{\dx}{\;\mathrm{d}x}
+\newcommand{\dy}{\;\mathrm{d}y}
+\newcommand{\dz}{\;\mathrm{d}z}
+\newcommand{\cA}{\mathcal{A}}
+\newcommand{\Bb}{\mathcal{B}}
+\newcommand{\Ww}{\mathcal{W}}
+\newcommand{\Dd}{\mathcal{D}}
+\newcommand{\Ss}{\mathcal{S}}
+\newcommand{\Ee}{\mathcal{E}}
+\DeclareMathOperator{\im}{im}
+
+
+\setlength\parindent{18pt}
+
+\begin{document}
+
+1. Beck Exercise 10.6. Consider the maximization problem
+\[\max x_1^2 + 2 x_1 x_2 + 2 x_2^2 - 3 x_1 + x_2\]
+s.t. $x_1 + x_2 = 1$,
+$x_1, x_2 \geq 0$.
+
+i) Is the problem convex?
+
+A twice-differentiable function is convex if and only if its Hessian is positive semidefinite.
+
+The hessian is
+\[H = \begin{bmatrix}
+    2 & 2 \\
+    2 & 4
+\end{bmatrix}\]
+
+which is positive definite. Therefore, it is convex.
+
+ii) Find all the KKT points of the problem.
+
+The only KKT point is:
+\[\begin{bmatrix}
+    x_1 \\
+    x_2 \\
+    \lambda
+\end{bmatrix} = \begin{bmatrix}
+    3 \\
+    -2 \\
+    -1
+\end{bmatrix}\]
+
+iii) Find the optimal solution of the problem.
+
+Since we only have one KKT point (3, -2), it is the optimal/minimum solution.
+It has a value of -6 at that point.
+
+
+2. Beck Exercise 10.8. Consider the problem
+\[\min x_1^2 + 2 x_2^2 + x_1\]
+s.t. $x_1 + x_2 \leq a$,
+where $a \in \RR$ is a parameter.
+
+i) Prove that for any $a \in \RR$, the problem has a unique optimal solution (without actually solving it).
+
+We need to check the convexity of both the objective function and the constraint set.
+
+First, for the objective function:
+$f(x_1, x_2) = x_1^2 + 2x_2^2 + x_1$ is a quadratic function where the quadratic terms are positive.
+This implies f is strictly convex for both $x_1$ and $x_2$.
+
+Second, for the constraint:
+It's linear, so it's convex.
+
+Thus, the optimization problem is convex.
+
+ii) Solve the problem (the solution will be in terms of the parameter a).
+
+If we solve this problem using unconstrained minimzation,
+we get an unconstrained minimizer of:
+\[\begin{bmatrix}
+    x_1 \\
+    x_2
+\end{bmatrix} = \begin{bmatrix}
+    -\frac{1}{2} \\
+    0
+\end{bmatrix}\]
+
+Now we need to check that it is feasible.
+The above point is feasible for $a \geq -\frac{1}{2}$.
+
+Now, for the boundary solutions.
+
+If we substitute $x_2 = a - x_1$ into the objective function, then we get:
+\[f(x_1, a-x_1) = x_1^2 + 2 (a-x_1)^2 + x_1\]
+
+Then minimize this function in terms of $x_1$ and parameter a to find the optimal $x_1$ (and $x_2$).
+
+iii) Let f(a) be the optimal value of the problem with parameter a. Write an explicit expression for f and prove that it is a convex function.
+
+
+
+3. Beck Exercise 11.2. Consider the optimization problem
+\[\min \{a^T x : x^T Q x + 2 b^T x + c \leq 0\},\]
+where $Q \in \RR^{n \times n}$ is positive definite, $a (\neq 0)$, $b \in \RR^n$, and $c \in \RR$.
+i) For which values of Q, b, c is the constraint set non-empty?
+
+Since Q is positive definite, $x^T Q x$ is always non-negative. The constraint
+set is non-empty if the quadratic form $x^T Q x + 2b^T x + c$ can have non-positive values.
+This is generally possible unless the quadratic form is strictly positive $\forall$ x,
+which happens if the quadratic function has a positive minimum. The minimum
+value occurs at $x = -Q^{-1} b$. Substituting this back into the quadratic form
+gives the conditions for non-emptiness.
+
+ii) For which values of Q, b, c are the KKT conditions necessary?
+
+The KKT conditions are necessary for optimality in problems where
+the objective function and the constraints are continuously differentiable,
+and the constraint qualification holds. In this case, since Q is positive definite,
+the quadratic form in the constraint is continuously differentiable. The KKT conditions
+are necessary when the Slater's condition is satisifed, which requires the existence
+of a point where the inequality constraint is strictly satisifed (i.e. $x^T Q x + 2b^T x + c < 0$).
+
+iii) For which values of Q, b, c are the KKT conditions sufficient?
+
+The KKT conditions are sufficient if the problem is convex. A minimzation
+problem is convex if the objective function is convex and the inequality constraints
+are concave. The objective function $a^T x$ is linear (which means it's convex),
+and the constraint is concave if $-x^T Q x - 2b^T x - c$ is concave.
+Since Q is positive definite, the constraint is concave.
+Thus, the KKT conditions are sufficient for any positive definite Q, and any b, c.
+
+iv) Under the conditions of part ii), find the optimal solution of (P) using the KKT conditions.
+
+
+
+4. Beck Exercise 11.4. Consider the optimization problem
+\[\min x_1^2 - x_2^2 - x_3^2\]
+s.t. $x_1^4 + x_2^4 + x_3^4 \leq 1$.
+
+i) Is the problem convex?
+
+The objective function is not convex because its Hessian is not positive definite
+($x_2^2$ and $x_3^2$ have negative coefficients).
+
+Therefore the problem is not convex.
+
+ii) Find all the KKT points of the problem.
+
+The real valued KKT points are:
+\[(x_1, x_2, x_3, \lambda) = (-1, 0, 0, -\frac{1}{2})\]
+\[(x_1, x_2, x_3, \lambda) = (0, -1, 0, \frac{1}{2})\]
+\[(x_1, x_2, x_3, \lambda) = (0, 0, -1, \frac{1}{2})\]
+\[(x_1, x_2, x_3, \lambda) = (0, 0, 1, \frac{1}{2})\]
+\[(x_1, x_2, x_3, \lambda) = (0, 1, 0, \frac{1}{2})\]
+\[(x_1, x_2, x_3, \lambda) = (1, 0, 0, -\frac{1}{2})\]
+
+And some other points involving non-integer powers of 2 and 3.
+
+iii) Find the optimal solution of the problem.
+
+The KKT points that attain the minimum value are:
+\[(x_1, x_2, x_3, \lambda) = (0, -2^{\frac{3}{4}}/2, -2^{\frac{3}{4}}/2, \sqrt{2}/2)\]
+\[(x_1, x_2, x_3, \lambda) = (0, -2^{\frac{3}{4}}/2, 2^{\frac{3}{4}}/2, \sqrt{2}/2)\]
+\[(x_1, x_2, x_3, \lambda) = (0, 2^{\frac{3}{4}}/2, -2^{\frac{3}{4}}/2, \sqrt{2}/2)\]
+\[(x_1, x_2, x_3, \lambda) = (0, 2^{\frac{3}{4}}/2, 2^{\frac{3}{4}}/2, \sqrt{2}/2)\]
+
+The value at these points is $-\sqrt{2}$.
+
+\end{document}

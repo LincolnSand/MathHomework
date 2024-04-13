@@ -1,0 +1,232 @@
+\documentclass{article}
+
+\usepackage{amsfonts}
+\usepackage{graphicx}
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage{listings}
+
+
+\DeclareMathOperator{\sech}{sech}
+\newcommand{\NN}{\mathbb{N}}
+\newcommand{\RR}{\mathbb{R}}
+\newcommand{\QQ}{\mathbb{Q}}
+\newcommand{\ZZ}{\mathbb{Z}}
+\newcommand{\dV}{\;\mathrm{d}V}
+\newcommand{\dA}{\;\mathrm{d}A}
+\newcommand{\dx}{\;\mathrm{d}x}
+\newcommand{\dy}{\;\mathrm{d}y}
+\newcommand{\dz}{\;\mathrm{d}z}
+\newcommand{\cA}{\mathcal{A}}
+\newcommand{\Bb}{\mathcal{B}}
+\newcommand{\Ww}{\mathcal{W}}
+\newcommand{\Dd}{\mathcal{D}}
+\newcommand{\Ss}{\mathcal{S}}
+\newcommand{\Ee}{\mathcal{E}}
+\DeclareMathOperator{\im}{im}
+
+
+\setlength\parindent{18pt}
+
+\begin{document}
+
+\textbf{C1:}
+
+\textbf{28.10}:
+
+\[x + \frac{2}{3}x = \frac{5}{3}x\]
+\[\frac{5}{3}x - \frac{1}{3}\left(\frac{4}{3}x\right) = 10\]
+\[\implies \frac{10}{9}x = 10\]
+\[\implies x = 9\]
+
+
+\textbf{47.3}:
+
+\[\frac{200}{9} = 22 + \frac{2}{9}\]
+
+$\frac{1}{5}$ is the largest unit fraction that is less than or equal to $\frac{2}{9}$.
+
+\[\frac{2}{9} - \frac{1}{5} = \frac{1}{45}\]
+
+Thus, $\frac{200}{9} = 22 + \frac{1}{5} + \frac{1}{45}$.
+
+The greek representation is something like "22 and 1/5 and 1/45"??
+
+
+\textbf{47.7}:
+
+\[\frac{\text{Height of Stick}}{\text{Length of Stick's Shadow}} =
+\frac{\text{Height of Pyramid}}{\text{Length of Pyramid + Length of Shadow}}\]
+
+Let $h = \text{Height of Pyramid}$.
+
+We then get:
+\[\frac{6}{9} = \frac{h}{756 + 342}\]
+
+This works out to $h = 732 \text{ feet}$.
+
+This measurement is most accurate at local noon when the sun is at the highest point
+in the sky and directly south.
+
+
+\textbf{47.8}:
+
+A triangular number is of the form:
+
+\[T_n = 1 + 2 + \dots + n\]
+
+Now, write $T_n$ both forwards and backwards:
+
+\[1 + 2 + 3 + \dots + (n-1) + n\]
+\[n + (n-1) + (n-2) + \dots + 2 + 1\]
+
+Now, sum them together.
+You will note that each term becomes $n+1$. And since we have $n$ of them,
+we get $n(n+1)$. But this is the same as $2 \cdot T_n$.
+Thus, $T_n = \frac{n(n+1)}{2}$.
+
+An oblong number is of the form: $n(n+1)$.
+
+\[n(n+1) = 2 \cdot \frac{n(n+1)}{2} = 2 \cdot T_n\]
+
+Thus, an oblong number is twice that of a triangular number.
+
+
+\textbf{47.10}:
+
+Visual representation proof:
+
+1) Triangular Number to Square
+
+A triangular number $T_n$ can be represented as a triangle of dots.
+
+$8 \cdot T_n$ can be arranged as an octagon.
+
+Adding 1 dot to it at the center turns the octagon into a square.
+
+2) Square to Triangular Number
+
+An odd square can be Visualized as a square grid of dots.
+
+Removing 1 dot from the center of the square and rearranging the dots
+forms an octagon made up of 8 regular triangles.
+
+Algebraic proof:
+
+1) Triangular Number to Square
+
+\[T_n = \frac{n(n+1)}{2}\]
+
+\[\implies 8 \cdot T_n = 8 \cdot \frac{n(n+1)}{2} + 1 = 4n(n+1) + 1\]
+
+Notice that $(2n+1)^2 = 4n^2 + 4n + 1 = 4n(n+1) + 1$.
+
+So, $8 \cdot T_n + 1$ forms a square.
+
+2) Square to Triangular Number
+
+Consider the odd square: $(2n + 1)^2$.
+
+\[(2n + 1)^2 - 1 = 4n^2 + 4n = 4n(n + 1) = 8 \cdot \frac{n(n+1)}{2} = 8 \cdot T_n\]
+
+
+\textbf{47.12}:
+
+1) Using the formula $(n, \frac{n^2 - 1}{2}, \frac{n^2 + 1}{2})$ for an odd $n$:
+
+- (3, 4, 5)
+
+- (5, 12, 13)
+
+- (7, 24, 25)
+
+- (9, 40, 41)
+
+- (11, 60, 61)
+
+2) Using the formula $(m, \left(\frac{m}{2}\right)^2 - 1,
+\left(\frac{m}{2}\right)^2 + 1)$ for any even $m$:
+
+- (4, 3, 5)
+
+- (6, 8, 10)
+
+- (8, 15, 17)
+
+- (10, 24, 26)
+
+- (12, 35, 37)
+
+
+\textbf{C2:}
+
+1. The ancient Egyptians used the formula:
+
+\[\text{Area} = \left(\frac{8}{9} \cdot \text{Diameter}\right)^2\]
+
+For the given problem:
+
+\[\text{Area} = \left(\frac{8}{9} \cdot 12\right)^2\]
+
+2. Modern formula:
+
+\[\text{Area} = \pi \cdot \left(\frac{\text{Diameter}}{2}\right)^2\]
+
+For the given problem:
+
+\[\text{Area} = \pi \cdot 6^2\]
+
+3. The formula for percentage error:
+
+\[\text{Percentage Error} = \left|\frac{\text{Modern Value $-$ Ancient Egyptian Value}}{Modern Value}\right| \cdot 100\%\]
+
+The ancient Egyptian value is approximately $113.78$ square units.
+
+The modern value is approximately $113.10$ square units.
+
+The percentage error is approximately $0.60\%$.
+
+
+\textbf{C3:}
+
+Rectangle:
+
+\[\frac{1}{2}(a + a) \cdot \frac{1}{2}(b + b) = a \cdot b\]
+
+which is the correct formula.
+
+Non-Rectanglular Parallelogram:
+
+For a parallelogram with sides a and b and height h perpendicular to b, the actual
+equation is $b \cdot h$. The ancient Egyptian formula gives
+$\frac{1}{2}(a + a) \cdot \frac{1}{2}(b + b) = a \cdot b$, which overestimates
+the area since $a > h$ (because of the slant of the sides).
+
+Trapezoid:
+
+Let's say the parallel sides are a and b and the other two sides are c and d.
+
+The true area formula is $\frac{1}{2}(a + b) \cdot h$ where h is the height.
+The ancient Egyptian formula is $\frac{1}{2}(a + b) \cdot \frac{1}{2}(c + d)$.
+
+This does not generally equal the actual area formula since $\frac{1}{2}(c + d)$ is
+not necessarily the height.
+
+Other quadralaterals:
+
+The ancient Egyptian formula does not generally result in correct values.
+The formula assumes the shape can be approximated using a product of the average
+of the opposite sides, but this property only holds true for rectangles.
+
+Proof for non-rectangular cases:
+
+For non-rectangular parallelograms, we know that h is always less than
+a or b (whichever side is perpendicular to h). Since the ancient Egyptian formula
+uses the full side lengths instead of the height, it results in an overestimate.
+
+For trapezoids, The height h is independent of the non-parallel side lenghts c and d.
+Thus, the ancient Egyptian formula, which approximates h using c and d does not
+reflect the actual geometry of the trapezoid.
+
+
+\end{document}

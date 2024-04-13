@@ -1,0 +1,236 @@
+\documentclass[answers]{exam}
+\title{Foundations of Analysis, HW 11}
+\author{James Cameron}
+\date{}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{graphicx}
+\usepackage{amsthm}
+
+\newtheorem{thm}{Theorem}
+\newtheorem{hthm}[thm]{*Theorem}
+\newtheorem{lemma}[thm]{Lemma}
+\newtheorem{cor}[thm]{Corollary}
+\newtheorem{obs}[thm]{Observation}
+\newtheorem{prop}[thm]{Proposition}
+\newtheorem{con}[thm]{Conjecture}
+\newtheorem{exer}[thm]{Exercise}
+
+\newtheorem{scho}[thm]{Scholium}
+\newtheorem*{Thm}{Theorem}
+\newtheorem*{Con}{Conjecture}
+\newtheorem*{Axiom}{Axiom}
+
+\theoremstyle{remark}
+\newtheorem{remark}[thm]{Remark}
+\newtheorem{notation}[thm]{Notation}
+
+
+\theoremstyle{definition}
+\newtheorem{Def}[thm]{Definition}
+\newtheorem{example}[thm]{Example}
+\newtheorem{ques}[thm]{Question}
+\everymath{\displaystyle}
+
+\pagestyle{head}
+\header{\bfseries\large Foundations of Analysis}{\bfseries\large Homework 11 \ifprintanswers (solutions) \fi}{\bfseries\large Fall, 2023}
+\headrule
+
+\DeclareMathOperator{\sech}{sech}
+\newcommand{\NN}{\mathbb{N}}
+\newcommand{\RR}{\mathbb{R}}
+\newcommand{\QQ}{\mathbb{Q}}
+\newcommand{\ZZ}{\mathbb{Z}}
+\newcommand{\dV}{\;\mathrm{d}V}
+\newcommand{\dA}{\;\mathrm{d}A}
+\newcommand{\dx}{\;\mathrm{d}x}
+\newcommand{\dt}{\;\mathrm{d}t}
+\newcommand{\dy}{\;\mathrm{d}y}
+\newcommand{\dz}{\;\mathrm{d}z}
+\pointname{}
+\newcommand{\cA}{\mathcal{A}}
+\newcommand{\Bb}{\mathcal{B}}
+\newcommand{\Ww}{\mathcal{W}}
+\newcommand{\Dd}{\mathcal{D}}
+\newcommand{\Ss}{\mathcal{S}}
+\newcommand{\Ee}{\mathcal{E}}
+\DeclareMathOperator{\im}{im}
+\begin{document}
+% \maketitle
+
+% \noindent
+% This week on the homework you will get practice with induction. \\
+
+
+% \noindent
+ This is due Saturday 12/2 by 11:59 pm on Gradescope. Please either neatly write up your solutions or type them up. You can find a .tex template on Canvas. Your proofs should be written in complete sentences and paragraphs, using a combination of words and symbols. They should be \textbf{correct, clear, and concise}. You will be graded on all three, especially the first two!
+
+\noindent
+
+
+\begin{questions}
+
+\question [4] Show that if $\{f_n\}$ is a sequence of \emph{integrable} functions $f_n: [a,b] \to \RR$ converging \emph{uniformly} to $f: [a,b] \to \RR$ that $f$ is integrable and $\lim_{n \to \infty} \int_a^b f_n \dx= \int_a^b f \dx$. \textbf{Hint:} Using uniform convergence you can make $|f(x)-f_n(x)|$ as small as you like on $[a,b]$, so for any $\epsilon$ for $n$ big enough you can show that $f_n - \epsilon < f$ on $[a,b]$, similarly that $f< f_n + \epsilon$.
+
+\begin{solution}
+
+We first need to show that $f$ is integrable. Since $f_n$ are integrable on $[a, b]$
+and $f_n \to f$ uniformly, $f$ must also be bounded. Since the uniform
+limit of continuous functions is continuous, and continuous functions are integrable,
+$f$ is integrable if the $f_n$ are continuous.
+
+Now we have to bound the difference between $f$ and $f_n$ using uniform
+convergence. By the definition of uniform convergence, for every $\epsilon > 0$,
+$\exists$ an $N \in \NN$ such that $\forall n \geq N$ and $\forall x \in [a, b]$,
+we have $|f(x) - f_n(x)| < \frac{\epsilon}{b-a}$.
+This implies $f_n(x) - \frac{\epsilon}{b-a} < f(x) < f_n(x) + \frac{\epsilon}{b-a}$
+$\forall x \in [a, b]$ and $n \geq N$.
+
+Integrating the inequalities
+$f_n(x) - \frac{\epsilon}{b-a} \leq f(x) \leq f_n(x) + \frac{\epsilon}{b-a}$
+over $[a, b]$, we get
+
+$\int_{a}^{b} (f_n(x) - \frac{\epsilon}{b-a}) dx \leq \int_{a}^{b} f(x) dx \leq \int_{a}^{b} (f_n(x) + \frac{\epsilon}{b-a}) dx$.
+
+Simplifying these, we have:
+
+$\int_{a}^{b} f_n(x) dx - \epsilon \leq \int_{a}^{b} f(x) dx \leq \int_{a}^{b} f_n(x) dx + \epsilon$.
+
+Since the above inequality holds $\forall n \geq N$, taking the limit as
+$n \to \infty$ yields
+
+$\lim_{n \to \infty} \int_{a}^{b} f_n(x) dx - \epsilon \leq \int_{a}^{b} f(x) dx \leq \lim_{n \to \infty} \int_{a}^{b} f_n(x) dx + \epsilon$.
+
+Since $\epsilon$ is arbitrary, it follows that
+
+$\lim_{n \to \infty} \int_{a}^{b} f_n(x) dx = \int_{a}^{b} f(x) dx$.
+
+This finishes the proof as we have shown that $f$ is integrable and the limit
+of the integrals of the sequence $\{f_n\}$ is equal to the integral of
+the limit function $f$.
+
+\end{solution}
+
+
+\question[4] Observe that the function defined for $x \not=0$ by $f(x)=x/|x|$ and $f(0)=0$ is differentiable except at $0$, and $f'(x)=0$, which is integrable on $[-1,1]$. But $\int_{-1}^1 f' \dx =0$, while $f(1)-f(-1)=2$. Why does this not contradict the first fundamental theorem of calculus (5.3.1 in your text)?
+
+\begin{solution}
+
+The situation described does not contradict the First Fundamental Theorem of
+Calculus due to the nature of the function $f$ and its derivative $f'$. Let's
+break down the situation and theorem to see why:
+
+The function $f$ is defined as $f(x) = \frac{x}{|x|}$ for $x \neq 0$
+and $f(0) = 0$.
+
+The derivative of $f$ is $0$ $\forall x \neq 0$. This is because $f(x)$ is a piecewise
+constant function ($1$ for $x > 0$, $0$ for $x = 0$, and $-1$ for $x < 0$).
+
+Since $f'(x) = 0$ $\forall x \neq 0$, the integral $\int_{-1}^{1} f'(x) dx$ equals $0$.
+
+$f(1) = 1$ and $f(-1) = -1$, so $f(1) - f(-1) = 2$.
+
+The First Fundamental Theorem of Calculus states that if a function $f$ is
+continuous on $[a, b]$ and has an antiderivative $F$ on $[a, b]$, then
+$\int_{a}^{b} f(x) dx = F(b) - F(a)$.
+
+Why there isn't a contradiction:
+
+$f$ is not continuous at $x = 0$. The theorem requires the function to be continuous
+over the entire interval.
+
+Since $f$ is not continuous at $0$, its derivative $f'$ does not meet the continuity
+requirement of the theorem over the interval $[-1, 1]$.
+
+Therefore, the theorem does not meet the requirements to be applied and so no
+contradiction occurs when the theorem's conclusion does not hold.
+
+\end{solution}
+
+
+\question[4] Compute the derivative with respect to $x$ of $\int_{1/x}^x e^{-t^2} \dt$.
+
+\begin{solution}
+
+We will compute the derivative with respect to $x$ of the integral $\int_{1/x}^x e^{-t^2} \dt$,
+we will use the Leibniz rule for differentiating an integral with variable limits.
+
+The Leibniz rule states that if we have an integral of the form $\int_{a(x)}^{b(x)} f(t, x) dt$,
+then its derivative with respect to $x$ is given by:
+\[\frac{d}{dx} \int_{a(x)}^{b(x)} f(t, x) dt = f(b(x), x) \cdot b'(x) - f(a(x), x) \cdot a'(x) + \int_{a(x)}^{b(x)} \frac{\partial}{\partial x} f(t, x) dt.\]
+
+In our case, $f(t, x) = e^{-t^2}$, $a(x) = \frac{1}{x}$, and $b(x) = x$. Thus, the derivative
+of the integral is:
+\[\frac{d}{dx} \int_{\frac{1}{x}}^{x} e^{-t^2} dt = e^{-x^2} \cdot \frac{d}{dx}(x) - e^{-(\frac{1}{x})^2} \cdot \frac{d}{dx}\left(\frac{1}{x}\right).\]
+
+\[\frac{d}{dx}(x) = 1.\]
+\[\frac{d}{dx}(\frac{1}{x}) = -\frac{1}{x^2}.\]
+
+Substituting these into the equation gives:
+\[\frac{d}{dx} \int_{\frac{1}{x}}^{x} e^{-t^2} dt = e^{-x^2} \cdot 1 - e^{-(\frac{1}{x})^2} \cdot \left(-\frac{1}{x^2}\right) = e^{-x^2} + \frac{e^{-\frac{1}{x^2}}}{x^2}\]
+
+Therefore, the derivative of $\int_{\frac{1}{x}}^{x} e^{-t^2} dt$ with respect to $x$
+is $e^{-x^2} + \frac{e^{-\frac{1}{x^2}}}{x^2}$.
+
+\end{solution}
+
+
+\question[4] Recall that for $a \in \RR_{>0}$ and $x \in \RR$ we defined $a^x$ by $a^x=\exp(\ln(a) x)$. Compute the derivative with respect to $x$ of $a^x$.
+
+\begin{solution}
+
+To compute the derivative of $a^x$ with respect to $x$, where $a$ is a positive real
+number and $x$ is any real number, and $a^x$ is defined as $\exp(\ln(a) \cdot x)$,
+we can use the chain rule.
+
+Let $f(x) = \ln(a) \cdot x$ and $g(f) = \exp(f)$.
+Then the derivative with respect to $x$ of $f(x)$ and $g(f)$ is:
+\[f'(x) = \ln(a)\]
+since $\ln(a)$ is a constant.
+\[g'(f) = \exp(f)\]
+since $\frac{d}{dx} \exp(x) = \exp(x)$.
+
+Thus, applying the chain rule, we get:
+\[\frac{dy}{dx} = g'(f(x)) \cdot f'(x) = \exp(\ln(a) \cdot x) \cdot \ln(a) = a^x \ln(a).\]
+
+\end{solution}
+
+
+\question[4] Note that your solution to the previous problem gives that $a^x$ is strictly monotone, and hence has an inverse. Call this inverse $\log{a}(x)$. Compute the derivative with respect to $x$ of $\log{a}(x)$, and show that for any $x \in \RR_{>0}$ that $\log{a}(x)=\frac{\ln(x)}{\ln(a)}$.
+
+\begin{solution}
+
+To find the derivative of the inverse function of $a^x$, $log_a(x)$, and to show that
+$log_a = \frac{\ln(x)}{\ln(a)}$ for any $x \in \RR_{>0}$, we have to follow a few steps.
+
+First let's find the deriative of $log_a(x)$ with respect to $x$.
+The deriative of the function $log_a(x)$ can be found using the formula:
+\[\frac{d}{dx} log_a(x) = \frac{1}{\frac{d}{dy} a^y}\]
+where $y = log_a(x)$ (i.e. $x = a^y$).
+
+We already know from the previous problem that the derivative of $a^x$ with respect
+to $x$ is $a^x \ln(a)$. Then, substituting $x = a^y$ gives:
+\[\frac{d}{dx} log_a(x) = \frac{1}{a^{log_a(x)} \ln(a)} = \frac{1}{x \ln(a)}.\]
+
+
+Now, let's prove that $log_a(x) = \frac{\ln(x)}{\ln(a)}$.
+
+By definition, $a{log_a(x)} = x$. Thus, $log_a(x)$ is the power to which $a$
+must be raised to get $x$.
+
+Also, $e^{\ln(x)} = x$.
+
+By the property of logarithms, $\ln(a^b) = b \ln(a)$, we can write
+$\ln(x)$ as $\ln(a^{log_a(x)}) = log_a(x) \ln(a)$
+
+Solving for $log_a(x)$, we get that $log_a(x) = \frac{\ln(x)}{\ln(a)}$.
+
+
+Therefore, we have shown both that the derivative of $log_a(x)$ with respect to $x$
+is $\frac{1}{x \ln(x)}$ and that $log_a(x) = \frac{\ln(x)}{\ln(a)}$ for any
+$x \in \RR_{>0}$. This formula is consistent with the change of base formula for logarithms.
+
+\end{solution}
+
+\end{questions}
+\end{document}

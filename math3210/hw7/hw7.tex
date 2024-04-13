@@ -1,0 +1,206 @@
+\documentclass[answers]{exam}
+\title{Foundations of Analysis, HW 3}
+\author{James Cameron}
+\date{}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{graphicx}
+\usepackage{amsthm}
+
+\newtheorem{thm}{Theorem}
+\newtheorem{hthm}[thm]{*Theorem}
+\newtheorem{lemma}[thm]{Lemma}
+\newtheorem{cor}[thm]{Corollary}
+\newtheorem{obs}[thm]{Observation}
+\newtheorem{prop}[thm]{Proposition}
+\newtheorem{con}[thm]{Conjecture}
+\newtheorem{exer}[thm]{Exercise}
+
+\newtheorem{scho}[thm]{Scholium}
+\newtheorem*{Thm}{Theorem}
+\newtheorem*{Con}{Conjecture}
+\newtheorem*{Axiom}{Axiom}
+
+\theoremstyle{remark}
+\newtheorem{remark}[thm]{Remark}
+\newtheorem{notation}[thm]{Notation}
+
+
+\theoremstyle{definition}
+\newtheorem{Def}[thm]{Definition}
+\newtheorem{example}[thm]{Example}
+\newtheorem{ques}[thm]{Question}
+\everymath{\displaystyle}
+
+\pagestyle{head}
+\header{\bfseries\large Foundations of Analysis}{\bfseries\large Homework 7 \ifprintanswers (solutions) \fi}{\bfseries\large Fall, 2023}
+\headrule
+
+\DeclareMathOperator{\sech}{sech}
+\newcommand{\NN}{\mathbb{N}}
+\newcommand{\RR}{\mathbb{R}}
+\newcommand{\QQ}{\mathbb{Q}}
+\newcommand{\ZZ}{\mathbb{Z}}
+\newcommand{\dV}{\;\mathrm{d}V}
+\newcommand{\dA}{\;\mathrm{d}A}
+\newcommand{\dx}{\;\mathrm{d}x}
+\newcommand{\dy}{\;\mathrm{d}y}
+\newcommand{\dz}{\;\mathrm{d}z}
+\pointname{}
+\newcommand{\cA}{\mathcal{A}}
+\newcommand{\Bb}{\mathcal{B}}
+\newcommand{\Ww}{\mathcal{W}}
+\newcommand{\Dd}{\mathcal{D}}
+\newcommand{\Ss}{\mathcal{S}}
+\newcommand{\Ee}{\mathcal{E}}
+\DeclareMathOperator{\im}{im}
+\begin{document}
+% \maketitle
+
+
+% \noindent
+ This is due Saturday 10/28 by 11:59 pm on Gradescope. Please either neatly write up your solutions or type them up. You can find a .tex template on Canvas. Your proofs should be written in complete sentences and paragraphs, using a combination of words and symbols. They should be \textbf{correct, clear, and concise}. You will be graded on all three, especially the first two!
+
+\noindent
+
+
+\begin{questions}
+
+\question Suppose that $f:[a,b] \to \RR$ is continuous, and suppose that $0\not= f(x)$ for any $x \in [a,b]$. Show that there is some $m >0$ such that one of the following is true: either $f(x)>m$ for all $x \in [a,b]$, or $f(x) < -m$ for all $x \in [a,b]$.
+\begin{solution}
+
+Because $f : [a, b] \to \RR$ is continuous on the entire domain and doesn't equal 0,
+by the intermediate value theorem, it must always be positive,
+or it must always be negative.
+
+If f(x) is always positive, then the minimum value
+of the function f(x) on the domain [a, b] is positive.
+So we can just set m to be half the minimum.
+
+On the other hand, if f(x) is always negative, then the
+maximum value of the function f(x) on the domain [a, b] is negative.
+So we can just set m to be half the absolute value of the maximum.
+
+Therefore, we have found an m>0 such that
+f(x) is either always greater than m or always
+less than -m.
+
+\end{solution}
+
+\question Show that if $f: \RR \to \RR$ is a polynomial of odd degree, i.e. $f(x)= \sum_{i=0}^n a_i x^i$, with $n$ odd and $a_n \not=0$, then there is some $x \in \RR$ with $f(x)=0$.
+\begin{solution}
+
+We will first analyze the behavior of f as we approach $\infty$
+and $-\infty$.
+
+As $x \to \infty$, the $a_n x^n$ term dominates the sum
+and since n is odd, the sign is the same as that of
+$a_n$. In other words, as $x \to \infty$,
+$f(x) \to \infty$ if $a_n > 0$ and $f(x) \to -\infty$
+if $a_n < 0$.
+
+Similarly, as $x \to -\infty$, the $a_n x^n$ term dominates the sum
+and since n is odd, the sign is the same as that of
+$a_n$. In other words, as $x \to -\infty$,
+$f(x) \to -\infty$ if $a_n > 0$ and $f(x) \to \infty$
+if $a_n < 0$.
+
+Now, since they are on different signs and we know all polynomials
+are continuous, then by the intermediate value theorem,
+f(x) = 0 somewhere between $-\infty$ and $\infty$.
+
+\end{solution}
+
+\question Show that $f:(0,1) \to \RR$ defined by $f(x)=\sin(1/x)$ is not uniformly continuous.
+\begin{solution}
+
+Our goal is to show that $\exists \epsilon > 0$
+such that $\forall \delta > 0$,
+$\exists x, y \in (0, 1)$
+with $|x-y| < \delta$ and $|f(x) - f(y)| \geq \epsilon$.
+
+Let $\epsilon = 1$. We aim to show that for any
+$\delta > 0$, $\exists x, y \in (0, 1)$
+such that $|x-y| < \delta$, but $|sin(1/x) - sin(1/y)| \geq 1$.
+
+Let $\delta > 0$ be given. Choose an $n \in \NN$ such that
+$\frac{1}{2 \pi n} < \delta$. Now consider the points:
+
+\[x = \frac{1}{2 \pi n}\]
+\[y = \frac{1}{2 \pi n + \pi}\]
+
+Then we have $|x - y| = \frac{\pi}{2 \pi n (2 \pi n + \pi)} < \frac{1}{2 \pi n} < \delta$.
+
+$|sin(1/x) - sin(1/y)| = |0 - 1| = 1 \geq \epsilon$
+
+Therefore, the function is not uniformly continuous on (0, 1).
+
+\end{solution}
+
+\question Show that $f:(0,1) \to \RR$ defined by $f(x)=x \sin(1/x)$ is uniformly continuous.
+\begin{solution}
+
+Let $\epsilon > 0$ be given. We want to find $\delta > 0$
+such that $\forall x, y \in (0, 1)$, if $|x-y| < \delta$,
+then $|x sin(1/x) - y sin(1/y)| < \epsilon$.
+
+First, Let's observe that for any $x, y \in (0, 1)$, we have the following:
+\[|f(x) - f(y)| = |x sin(1/x) - y sin(1/y)| \leq |x sin(1/x) - x sin(1/y)| + |x sin(1/y) - y sin(1/y)|\]
+
+For the first term, use the fact that the sin function is bounded.
+$|sin(x)| \leq 1$, so:
+\[|x sin(1/x) - x sin(1/y)| \leq |x| |sin(1/x) - sin(1/y)| \leq |x-y|\]
+
+For the second term, let's use the mean value theorem. Applying this
+theorem to $g(x) = x sin(1/x)$, we get:
+\[|x sin(1/y) - y sin(1/y)| = |g(x) - g(y)| \leq |g'(c)||x-y| = |(c cos(1/c) + sin(1/c))||x-y| \leq 2|x-y|\]
+
+Thus, we now have:
+\[|f(x) f(y)| \leq 3|x-y|\]
+
+To make $|f(x) - f(y)| < \epsilon$, we can just do $\delta = \epsilon/3$.
+Then, $\forall x, y \in (0, 1)$ such that $|x-y| < \delta$,
+we have:
+\[|f(x) - f(y)| \leq 3|x-y| < 3 \delta = \epsilon\]
+
+Therefore, $f(x) = x sin(1/x)$ is uniformly continuous on (0, 1).
+
+\end{solution}
+
+\question 
+Show that if $f:[0, \infty)$ is uniformly continuous on $[0,a]$ and on $[a,\infty)$ then it is uniformly continuous on all of $[0, \infty)$. Note that this implies that $f(x)= \sqrt{x}$ is uniformly continuous on all of $[0, \infty)$.
+\begin{solution}
+
+Let $\epsilon > 0$. Since f is uniformly continuous on [0, a], $\exists \delta_1 > 0$
+such that $\forall x, y \in [0, a]$, if $|x-y| < \delta_1$,
+then $|f(x) - f(y)| < \epsilon/2$.
+
+Similarly, Since f is uniformly continuous on $[0, \infty)$, $\exists \delta_2 > 0$
+such that $\forall x, y \in [0, \infty)$, if $|x-y| < \delta_2$,
+then $|f(x) - f(y)| < \epsilon/2$.
+
+Let $\delta = min\{\delta_1, \delta_2\}$. Now, consider any
+$x, y \in [0, \infty)$ such that $|x-y| < \delta$.
+
+1. If $x, y \in [0, a]$, then $|f(x) - f(y)| < \epsilon/2 < \epsilon$.
+2. If $x, y \in [a, \infty)$, then $|f(x) - f(y)| < \epsilon/2 < \epsilon$.
+3. If $x \in [0, a]$ and $y \in [\infty)$ (or vice versa),
+assume $x \leq a \leq y$. Since $|x-y| < \delta \leq \delta_1$, we
+get $|f(x)-f(a)| < \epsilon/2 < \epsilon$. Similarly, since
+$|a-y| \leq |x-y| < \delta \leq \delta_2$, we have
+$|f(a) - f(y)| < \epsilon/2 < \epsilon$. By the triangle inequality,
+\[|f(x)-f(y)| \leq |f(x)-f(a)| + |f(a)-f(y)| < \epsilon/2 + \epsilon/2 = \epsilon\]
+
+Thus, in all cases, $|f(x)-f(y)| < \epsilon$.
+Therefore, f is uniformly continuous on all of $[0, \infty)$.
+
+To follow up on the note mentioned above, since the function
+$f(x) = \sqrt{x}$ is uniformly continuous on any
+closed interval $[0, a]$ as well as on $[a, \infty)$
+$\forall a > 0$, then $\sqrt{x}$ is uniformly continuous on
+all of $[0, \infty)$.
+
+\end{solution}
+
+\end{questions}
+\end{document}

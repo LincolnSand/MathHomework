@@ -1,0 +1,240 @@
+\documentclass[answers]{exam}
+\title{Foundations of Analysis, HW 8}
+\author{James Cameron}
+\date{}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{graphicx}
+\usepackage{amsthm}
+
+\newtheorem{thm}{Theorem}
+\newtheorem{hthm}[thm]{*Theorem}
+\newtheorem{lemma}[thm]{Lemma}
+\newtheorem{cor}[thm]{Corollary}
+\newtheorem{obs}[thm]{Observation}
+\newtheorem{prop}[thm]{Proposition}
+\newtheorem{con}[thm]{Conjecture}
+\newtheorem{exer}[thm]{Exercise}
+
+\newtheorem{scho}[thm]{Scholium}
+\newtheorem*{Thm}{Theorem}
+\newtheorem*{Con}{Conjecture}
+\newtheorem*{Axiom}{Axiom}
+
+\theoremstyle{remark}
+\newtheorem{remark}[thm]{Remark}
+\newtheorem{notation}[thm]{Notation}
+
+
+\theoremstyle{definition}
+\newtheorem{Def}[thm]{Definition}
+\newtheorem{example}[thm]{Example}
+\newtheorem{ques}[thm]{Question}
+\everymath{\displaystyle}
+
+\pagestyle{head}
+\header{\bfseries\large Foundations of Analysis}{\bfseries\large Homework 8 \ifprintanswers (solutions) \fi}{\bfseries\large Fall, 2023}
+\headrule
+
+\DeclareMathOperator{\sech}{sech}
+\newcommand{\NN}{\mathbb{N}}
+\newcommand{\RR}{\mathbb{R}}
+\newcommand{\QQ}{\mathbb{Q}}
+\newcommand{\ZZ}{\mathbb{Z}}
+\newcommand{\dV}{\;\mathrm{d}V}
+\newcommand{\dA}{\;\mathrm{d}A}
+\newcommand{\dx}{\;\mathrm{d}x}
+\newcommand{\dy}{\;\mathrm{d}y}
+\newcommand{\dz}{\;\mathrm{d}z}
+\pointname{}
+\newcommand{\cA}{\mathcal{A}}
+\newcommand{\Bb}{\mathcal{B}}
+\newcommand{\Ww}{\mathcal{W}}
+\newcommand{\Dd}{\mathcal{D}}
+\newcommand{\Ss}{\mathcal{S}}
+\newcommand{\Ee}{\mathcal{E}}
+\DeclareMathOperator{\im}{im}
+\begin{document}
+% \maketitle
+
+% \noindent
+% This week on the homework you will get practice with induction. \\
+
+
+% \noindent
+ This is due Saturday 11/4 by 11:59 pm on Gradescope. Please either neatly write up your solutions or type them up. You can find a .tex template on Canvas. Your proofs should be written in complete sentences and paragraphs, using a combination of words and symbols. They should be \textbf{correct, clear, and concise}. You will be graded on all three, especially the first two!
+
+\noindent
+
+
+\begin{questions}
+
+\question[4] Suppose that $\{b_k\}$ is a sequence of bounded numbers. Show that the sequences of functions $f_n:(-1,1) \to \RR$ defined by $f_n(x)= \sum_{k=0}^n b_kx^k$ converge (not necessarily uniformly) to a continuous function $f$ on $(-1,1)$. \textbf{Hint:} Show that for any $r \in (0,1)$ that the sequence $\{f_n\}$ is uniformly Cauchy on $[-r,r]$. Be sure to explain why showing this suffices to solve the problem. Feel free to use the fact, which follows from the geometric series, that $\sum_{k=0}^n |x|^k \le \frac{1}{1-|x|}$ for $x \in (-1,1)$. \textbf{Further Hint:} In class we did this when all the $b_k$ where $1$, so you might look at your notes for this.
+\begin{solution}
+
+To show that $\{f_n\}$ converges, we have to prove that it is uniformly Cauchy
+on any closed subinterval [-r, r] for $0 < r < 1$. A sequence of functions
+is uniformly Cauchy if for every $\epsilon > 0$, $\exists N \in \NN$ such that
+$\forall m, n \geq N$ and all $x \in [-r, r]$, we have:
+\[|f_n(x) - f_m(x)| < \epsilon\]
+
+Let's take $m > n$, then:
+\[|f_m(x) - f_n(x)| = |\Sigma_{k = n+1}^m b_k x^k|\]
+
+From the triangle inequality, this is:
+\[\leq \Sigma_{k=n+1}^m |b_k||x|^k\]
+
+Since $\{b_k\}$ is bounded, $\exists$ a bound B such that
+$|b_k| \leq B$ $\forall k$. Then we have:
+\[\leq B \Sigma_{k=n+1}^m |x|^k\]
+
+For $x \in [-r, r]$, $|x|^k \leq r^k$, thus:
+\[\leq B \Sigma_{k=n+1}^m r^k\]
+
+We can bound the series further by using the geometric
+series sum formula for $r < 1$:
+\[\Sigma_{k=n+1}^m r^k \leq \Sigma_{k=n+1}^{\infty} r^k = \frac{r^{n+1}}{1-r}\]
+
+Hence:
+\[|f_n(x) - f_m(x)| \leq B \frac{r^{n+1}}{1-r}\]
+
+As $n \to \infty$, the term $r^{n_1} \to 0$ for $r < 1$. This means the right
+side is arbitrarily small. Thus, $\{f_n\}$ is uniformly Cauchy.
+
+Since every point in $(-1, 1)$ is contained in some interval $[-r, r]$,
+where $0 < r < -1$, we can extend the continuity of f to all of $(-1, 1)$
+from the continuity of f on every subinterval. This extension is well-defined
+and continuous because for any two such intervals that overlap, the limit function
+f will be continuous on their union, which is also a closed interval.
+
+Therefore, by showing that $\{f_n\}$ is uniformly Cauchy on every closed subinterval
+of $(-1, 1)$, we have established that the sequence of functions converges uniformly
+on these intervals to a continuous function f on $(-1, 1)$. This uniform convergence
+on every compact subinterval implies pointwise convergence on $(-1, 1)$ to
+the same continuous function f.
+
+\end{solution}
+\question[4] In the previous question, show that if the sequece $\{b_k\}$ is constantly one then the sequence $\{f_n\}$ (defined as in the previous problem) converges pointwise to $f(x)=\dfrac{1}{1-x}$, but the convergence is \emph{not} uniform.
+\begin{solution}
+
+If $\{b_k\}$ is constantly one, then each $f_n(x)$ is the partial sum
+of the geometric series. In this case, it's given by:
+\[f_n(x) = \Sigma_{k=0}^n x^k\]
+
+Because of the properties of geometric series, the sequence
+$\{f_n\}$ converges pointwise to the function:
+\[f(x) = \frac{1}{1-x}\]
+
+Now for uniform convergence. For the sequence $\{f_n\}$ to converge
+uniformly to $f(x)$, we must have that for every $\epsilon > 0$,
+$\exists$ an N such that $\forall n \geq N$ and $\forall x \in (-1, 1)$, we have:
+\[|f_n(x) - \frac{1}{1-x}| < \epsilon\]
+
+To see why the convergence is not uniform, consider what happens as x gets
+very close to 1. The difference between $f_n(x)$ and $f(x)$ is:
+\[|\Sigma_{k=0}^n x^k - \frac{1}{1-x}| = |\frac{1-x^{n+1}}{1-x} - \frac{1}{1-x}| = \frac{-x^{n+1}}{1-x}\]
+
+This simplifies to:
+\[|x^{n+1}|\]
+
+As x approaches 1, for any fixed n, $x^{n+1}$ approaches 1. Therefore, regardless
+of how big n is, if x is close enough to 1, the difference $|x^{n+1}|$ will
+be larger than any fixed $\epsilon > 0$. Hence, it cannot be uniformly
+convergent.
+
+\end{solution}
+
+\question[4] Show that if $\{f_n\}$ is a sequence of uniformly continuous functions $f_n: D \to \RR$ that converge uniformly to $f:D \to \RR$, then $f$ is also uniformly continuous. \textbf{Note:} We proved this in class for \emph{continous functions}, and said that the same proof worked for \emph{uniformly continuous} functions. So, you should appropriately adapt the proof for continuous functions that we gave in class.
+\begin{solution}
+
+Let $\epsilon > 0$ be given. Since $\{f_n\}$ converges uniformly to f,
+$\exists$ an $N \in \NN$ such that $\forall n \geq N$ and $\forall x \in D$,
+we have:
+\[|f_(x)-f(x)| < \frac{\epsilon}{3}\]
+
+Now, because $f_N$ is uniformly continuous, $\exists$ a $\delta > 0$
+such that $\forall x, y \in D$ with $|x-y| < \delta$, we get:
+\[f_N(x) - f_N(y)| < \frac{\epsilon}{3}\]
+
+Now let's consider any two points $x, y \in D$ such that $|x-y| < \delta$. From
+the triangle inequality and the above properties, we have:
+\[|f(x) - f(y)| \leq |f(x) - f_N(x)| + |f_N(x) - f_N(y)| + |f_N(y) - f(y)| < \frac{\epsilon}{3} + \frac{\epsilon}{3} + \frac{\epsilon}{3} = \epsilon\]
+
+Therefore f is uniformly continuous on D.
+
+\end{solution}
+
+\question[4] Suppose that $f: (a,b) \to \RR$ and that  either $u=a^+, u=b^-$, or $u \in (a,b) $. Show that if $\lim_{x \to u} f(x)>0$, then there is some $\delta >0$ such that for all $ x \in (a,b)$ with $|x-u|< \delta$ we have that $f(x)>0$.
+\begin{solution}
+
+Recall the definition of the limit:
+For $\lim_{x \to u} f(x) > 0$, it means that for any $\epsilon > 0$,
+$\exists$ a $\delta > 0$ such that $\forall x$ within the interval $(a,b)$
+and $0 < |x-u| < \delta$, it holds that $f(x)$ is within $\epsilon$ distance
+from some positive limit L, where $L > 0$.
+
+Let $\epsilon = \frac{L}{2} > 0$. From the definition of the limit, $\exists$
+a corresponding $\delta > 0$ such that if $0 < |x-u| < \delta$ and $x \in (a, b)$,
+then $|f(x) - L| < \epsilon$.
+
+Since $L > 0$, this means the values of $f(x)$ are contained in the interval
+$(L - \epsilon, L + \epsilon) = (\frac{L}{2}, \frac{3 L}{2})$. All the
+values of f(x) are positive because $\frac{L}{2}$ is positive (since $L > 0$).
+
+Hence, we have that $\forall x \in (a, b)$ such that $0 < |x-u| < \delta$,
+$f(x) > \frac{L}{2} > 0$. This means that $f(x)$ is positive in the neighborhood
+of $u$, excluding $u$ itself (if $u \notin (a, b)$).
+
+That means there are 3 cases for u:
+1. $u = a^+$, then the $\delta$-neighborhood is $(a, a + \delta)$.
+2. $u = b^-$, then the $\delta$-neighborhood is $(b - \delta, b)$.
+3. $u \in (a, b)$, then the $\delta$-neighborhood is $(u - \delta, u + \delta)$ intersected with $(a, b)$.
+
+In each case, within the appropriate $\delta$-neighborhood, $f(x) > 0$.
+
+\end{solution}
+
+\question[4] Proceeding directly from the definition of a limit, show that $\lim_{ x \to \infty} \frac{2x^2+1}{3x^2-1}= \frac{2}{3}$.
+\begin{solution}
+
+To show that $\lim_{x \to \infty} \frac{2x^2+1}{3x^2-1} = \frac{2}{3}$, we need
+to show that for every $\epsilon > 0$, $\exists$ a number $M > 0$
+such that $\forall x > M$, the absolute difference between $\frac{2x^2+1}{3x^2-1}$
+and $\frac{2}{3}$ is less than $\epsilon$.
+
+Let's compute the difference and try to bound it by $\epsilon$:
+\[|\frac{2x^2+1}{3x^2-1} - \frac{2}{3}| = \frac{5}{|9x^2 - 3|}\]
+
+As $x \to \infty$, the deonominator will approach $\infty$,
+so the whole expression approaches 0. But we still need to show this happens
+in a controlled way with respect to $\epsilon$.
+
+We want:
+\[\frac{5}{|9x^2 - 3|} < \epsilon\]
+
+To find the appropriate M, we solve for x in terms of $\epsilon$:
+\[5 < \epsilon|9x^2 - 3|\]
+\[\frac{5}{\epsilon} < |9x^2 - 3|\]
+
+For $x^2 > \frac{1}{3}$, the value will be positive,
+so we can ignore the absolute value sign.
+\[\frac{5}{9x^2 - 3} < \epsilon \implies 9x^2 - 3 > \frac{5}{\epsilon}\]
+\[9x^2 > \frac{5}{\epsilon} + 3\]
+\[x^2 > \frac{5}{9 \epsilon} + \frac{1}{3}\]
+
+Therefore,
+\[x > \sqrt{\frac{5}{9 \epsilon} + \frac{1}{3}}\]
+
+If we choose M to be:
+\[M > \max\{\frac{1}{\sqrt{3}}, \sqrt{\frac{5}{9 \epsilon} + \frac{1}{3}}\}\]
+
+we ensure that $9x^2 - 3$ is both positive and the fraction is less than $\epsilon$
+$\forall x > M$. Thus, with the above value of M, we get:
+\[|\frac{2x^2 + 1}{3x^2 - 1} - \frac{2}{3}| < \epsilon, \forall x > M.\]
+
+Which proves that $\lim_{x \to \infty} \frac{2x^2 + 1}{3x^2 - 1} = \frac{2}{3}$.
+
+\end{solution}
+
+\end{questions}
+\end{document}

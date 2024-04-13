@@ -1,0 +1,218 @@
+\documentclass{article}
+
+\usepackage{amsfonts}
+\usepackage{graphicx}
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage{listings}
+
+
+\DeclareMathOperator{\sech}{sech}
+\newcommand{\NN}{\mathbb{N}}
+\newcommand{\RR}{\mathbb{R}}
+\newcommand{\QQ}{\mathbb{Q}}
+\newcommand{\ZZ}{\mathbb{Z}}
+\newcommand{\dV}{\;\mathrm{d}V}
+\newcommand{\dA}{\;\mathrm{d}A}
+\newcommand{\dx}{\;\mathrm{d}x}
+\newcommand{\dy}{\;\mathrm{d}y}
+\newcommand{\dz}{\;\mathrm{d}z}
+\newcommand{\cA}{\mathcal{A}}
+\newcommand{\Bb}{\mathcal{B}}
+\newcommand{\Ww}{\mathcal{W}}
+\newcommand{\Dd}{\mathcal{D}}
+\newcommand{\Ss}{\mathcal{S}}
+\newcommand{\Ee}{\mathcal{E}}
+\DeclareMathOperator{\im}{im}
+
+
+\setlength\parindent{18pt}
+
+\begin{document}
+
+1) Beck Exercise 6.9. Let $a,b \in \RR^n, a \neq b.$ For what values of $\mu$ is the set:
+\[S_{\mu} = \{x \in \RR^n : ||x-a||_2 \leq \mu ||x-b||_2\}\]
+convex?
+
+The set $S_{\mu}$ is convex if for any two points x,y in the set
+and any $\lambda \in [0, 1]$, the point
+$z = \lambda x + (1 - \lambda) y$ is also in the set.
+In order words, our goal is to show:
+
+\[||\lambda x + (1 - \lambda) y - a||_2 \leq \mu ||\lambda x + (1 - \lambda) y - b||_2\]
+$\forall x, y \in S_{\mu}$ and $\lambda \in [0, 1]$.
+
+Given $x, y \in S_{\mu}$, we have:
+\[||x-a||_2 \leq \mu ||x-b||_2\]
+and
+\[||y-a||_2 \leq \mu ||y-b||_2\]
+
+We now need to show that for $z = \lambda x + (1 - \lambda) y$,
+\[||z-a||_2 \leq \mu ||z-b||_2\]
+
+By the triangular inequality, we get:
+\[||\lambda x + (1 - \lambda) y - a||_2 \leq \lambda ||x-a||_2 + (1 - \lambda)||y - a||_2\]
+and
+\[\mu ||\lambda x + (1 - \lambda) y - b||_2 \geq \mu (\lambda ||x-b||_2 + (1 - \lambda)||y - b||_2)\]
+
+Given that $||x-a||_2 \leq \mu ||x-b||_2$ and $||y-a||_2 \leq \mu ||y-b||_2$,
+we have $\lambda ||x-a||_2 + (1 - \lambda) ||y - a||_2 \leq \mu (\lambda ||x-b||_2 + (1 - \lambda)||y - b||_2)$.
+This implies:
+$||\lambda x + (1 - \lambda) y - a||_2 \leq \mu ||\lambda x + (1 - \lambda) y - b||_2$.
+
+This means that $S_{\mu}$ is convex for all values of $\mu$ in $\RR$.
+
+
+2) Beck Exercise 6.10. Let $C \subset \RR^n$ be a nonempty convex set. For each $x \in C$, define the normal cone of C at x by
+\[N_{C}(x) = \{w \in \RR^n : <w, y-x> \leq 0 \forall y \in C\}\]
+and define $N_{C}(x) = \emptyset$ when $x \not \in C$. Show that $N_{C}(x)$ is a closed convex cone.
+
+Let's split this into two parts:
+
+Showing that $N_{C}(x)$ is convex
+and showing that $N_{C}(x)$ is a cone.
+
+Let's first do convexity:
+
+We have to show that for any two points $w_1, w_2 \in N_{C}(x)$
+and any $\lambda \in [0, 1]$,
+the point $\lambda w_1 + (1 - \lambda) w_2$ is also in $N_{C}(x)$.
+
+\[<w_1, y-x> \leq 0 \forall y \in C\]
+and
+\[<w_2, y-x> \leq 0 \forall y \in C.\]
+
+Therefore, for any $\lambda \in [0, 1]$ and any $y \in C$,
+
+\[<\lambda w_1 + (1 - \lambda) w_2, y-x> = \lambda <w_1, y-x> + (1 - \lambda) <w_2, y-x> \leq 0\]
+
+which implies that $\lambda w_1 + (1 - \lambda) w_2 \in N_{C}(x)$.
+
+Now, for the cone:
+
+We have to show that for any two points $w_1, w_2 \in N_{C}(x)$
+and any $\mu \leq 0$,
+the point $\mu w$ is also in $N_{C}(x)$.
+
+\[<w, y-x> \leq 0 \forall y \in C\]
+
+Therefore,
+
+\[<\mu w, y-x> = \mu <w, y-x> \leq 0\]
+
+which implies that $\mu w \in N_{C}(x)$.
+
+Now, we have to show that $N_{C}(x)$ is closed.
+
+Let $\{w_k\}$ be a sequence in $N_{C}(x)$ that
+converges to some w. We have to show that $w \in N_{C}(x)$.
+
+We have:
+\[<w_k, y-x> \leq 0 \forall y \in C\]
+
+Taking the limit as $k \to \infty$, we have:
+\[<w, y-x> \leq 0 \forall y \in C\>\]
+
+which implies that $w \in N_{C}(x)$. Therefore, $N_{C}(x)$ is a closed convex cone.
+
+
+3) Let $a \in \RR^n - \{0\}$, what is the distance between the two parallel hyperplanes
+
+$\{x \in \RR^n: a^T x = b_1\}$ and $\{x \in \RR^n: a^T x = b_2\}$?
+
+The distance between any two hyperplanes can be found
+by taking any one point from one of the hyperplanes and
+taking the distance between that point and the other hyperplane.
+
+Let's take some point $x_1$ on the first hyperplane such that
+$a^T x_1 = b_1$. We have to find the distance between $x_1$
+and the second hyperplane. The distance from a point $x_0$
+to the hyperplane $\{x \in \RR^n : a^T x = b\}$ is given by:
+
+\[\frac{|a^T x_0 - b|}{||a||}.\]
+
+Plugging in $x_1$ as the point, we get:
+
+\[\frac{|a^T x_1 - b_2|}{||a||} = \frac{|b_1 - b_2|}{||a||}.\]
+
+This is the equation for the distance between the two hyperplanes.
+
+
+4) Beck Exercise 7.4. Let $f : \RR^n \to \RR$ be a continuously differentiable convex function. Show that for any $\epsilon > 0$, the function
+
+\[g_{\epsilon}(x) = f(x) + \epsilon ||x||^2\] 
+
+is coercive.
+
+A function $g : \RR^n \to \RR$ is called coercive if $\lim_{||x|| \to \infty} g(x) = \infty.$
+
+Since f is convex and continuously differentiable, it must grow
+at least as fast as any of its linear approximations.
+So, for any $x_0 \in \RR^n$, we get:
+
+\[f(x) \geq f(x_0) + \nabla f(x_0)^T (x - x_0).\]
+
+If we set $x_0 = 0$, we get:
+
+\[f(x) \geq f(0) + \nabla f(0)^T x.\]
+
+Now, consider $g_{\epsilon}(x)$:
+
+\[g_{\epsilon}(x) = f(x) + \epsilon ||x||^2 \geq f(0) + \nabla f(0)^T x + \epsilon ||x||^2.\]
+
+Let's plug in the limit $||x|| \to \infty$. $\epsilon ||x||^2$ dominates everything else,
+so we get:
+
+\[\lim_{||x|| \to \infty} g_{\epsilon}(x) \geq \lim_{||x|| \to \infty} (f(0) + \nabla f(0)^T x + \epsilon ||x||^2) = \infty.\]
+
+Therefore, the function $g_{\epsilon}$ is coercive.
+
+
+5) Beck Exercise 7.5. Let $f : \RR^n \to \RR$. Prove that f is convex if and only if
+for any $x \in \RR^n$ and $d \neq 0$, the one-dimmensional function
+$g_{x,d}(t) = f(x + td)$ is convex.
+
+We have to prove two separate implications:
+
+1. If f is convex, then for any $x \in \RR^n$ and $d \neq 0$,
+the function $g_{x,d}(t) = f(x + td)$ is convex.
+
+2. If for any $x \in \RR^n$ and $d \neq 0$, the function $g_{x,d}(t) = f(x + td)$ is convex,
+then f is convex.
+
+
+Ok, let's start with 1. Assume that f is convex. Then, for any $x, y \in \RR^n$
+and $\lambda \in [0, 1]$, we have:
+
+\[f(\lambda x + (1 - \lambda) y) \leq \lambda f(x) + (1 - \lambda) f(y).\]
+
+Let $g_{x,d}(t) = f(x + td)$. We want to show that for any $t_1, t_2 \in \RR$
+and $\lambda \in [0, 1]$, we have:
+
+\[g_{x,d}(\lambda t_1 + (1 - \lambda) t_2) \leq \lambda g_{x,d}(t_1) + (1 - \lambda)g_{x,d}(t_2).\]
+
+If we substitute in the definition of $g_{x,d}$, we have:
+
+\[f(x + (\lambda t_1 + (1 - \lambda) t_2) d) \leq \lambda f(x + t_1 d) + (1 - \lambda) f(x + t_2 d).\]
+
+Thus this inequality follows from the convexity of f.
+
+
+Now, let us handle the second implication:
+
+Assume that for any $x \in \RR^n$ and $d \neq 0$, the function
+$g{x,d}(t) = f(x + t d)$ is convex. Then, for any $t_1, t_2 \in \RR$
+and $\lambda \in [0, 1]$, we get:
+
+\[f(x + (\lambda t_1 + (1 - \lambda) t_2) d) \leq \lambda f(x + t_1 d) + (1 - \lambda) f(x + t_2 d).\]
+
+We want to show that f is convex. Let $x, y \in \RR^n$ and $\lambda \in [0, 1]$. Let $d = y-x$
+and $t_1 = 0, t_2 = 1$. Then:
+
+\[f(\lambda x + (1 - \lambda) y) = f(x + \lambda (y - x))\]
+\[= f(x + \lambda d) \leq \lambda f(x) + (1 - \lambda) f(x + d) = \lambda f(x) + (1 - \lambda) f(y).\]
+
+Therefore, f is convex.
+
+
+\end{document}

@@ -1,0 +1,251 @@
+%&latex
+%\documentclass[draft]{amsart}
+%\input seteps
+\documentclass[12]{amsart}
+\usepackage{amssymb}
+\usepackage{eucal}
+\usepackage{amscd}
+\usepackage{graphicx}
+\usepackage{mathtools}
+\usepackage{xcolor}
+\usepackage{bm}
+
+
+\newtheorem{thm}{Theorem}
+\newtheorem*{extracredit}{Extra Credit Problem}
+\newtheorem{lem}[thm]{Lemma}
+\newtheorem{cor}[thm]{Corollary}
+\newtheorem{pro}[thm]{Proposition}
+\theoremstyle{definition}
+\newtheorem{rem}[thm]{Remark}
+
+\newtheorem{exm}[thm]{Example}
+\newtheorem{xca}{Problem}
+\newcommand{\probl}{Problem}
+\newtheorem*{exer}{\probl}
+\newenvironment{exercise}[1]{\renewcommand{\probl}{#1}\begin{exer}}
+ {\end{exer}}
+ \newcommand{\be}{\begin{equation*}}
+ \newcommand{\ee}{\end{equation*}}
+ \newcommand{\R}{\mathbb{R}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Q}{\mathbb{Q}}
+%\newcommand{\e}{\text{e}}
+\newcommand{\C}{\mathbb{C}}
+%%%
+\newcommand{\cl}{\overline}
+\newcommand{\sskip}{\bigskip}
+\newcommand{\norm}[1]{\lVert#1\rVert}
+\newcommand{\m}[1]{$ #1 $}
+\newcommand{\lskip}{\newpage}
+
+
+\DeclareMathOperator{\im}{im} \DeclareMathOperator{\rank}{rank}
+\DeclareMathOperator{\Mor}{Mor} \DeclareMathOperator{\coker}{coker}
+\DeclareMathOperator{\supp}{supp} \DeclareMathOperator{\For}{For}
+\DeclareMathOperator{\Hom}{Hom} \DeclareMathOperator{\End}{End}
+\DeclareMathOperator{\Int}{Int} \DeclareMathOperator{\order}{order}
+\DeclareMathOperator{\ad}{ad} \DeclareMathOperator{\Ad}{Ad}
+\DeclareMathOperator{\GL}{GL} \DeclareMathOperator{\SL}{SL}
+\DeclareMathOperator{\SO}{SO} \DeclareMathOperator{\Sp}{Sp}
+\DeclareMathOperator{\SU}{SU} \DeclareMathOperator{\tr}{tr}
+\DeclareMathOperator{\Aut}{Aut} \DeclareMathOperator{\re}{Re}
+\DeclareMathOperator{\imag}{Im} \DeclareMathOperator{\Card}{Card}
+\newcommand{\Sd}{\ensuremath{\surd}}
+
+
+
+\begin{document}
+\centerline{ \bf Math 3220-1: Homework 2, due 01/24/2024 }
+\bigskip
+\centerline{ \bf Show all work}
+\bigskip
+\noindent Name (PRINT):\hskip 2.5in ID:
+\smallskip
+
+\hrule
+
+\bigskip
+Unless stated otherwise, $\R^d$ is the Euclidean space with the "usual" inner product, norm and metric.
+
+\bigskip
+
+\begin{xca}
+Let $\{\bm{x}_n\}$ be a bounded sequence in $\R^d$ and let $\{a_n\}$ be a  sequence of scalars converging to $0$.
+Prove that the sequence $\{a_n\bm{x}_n\}$ converges to $\bm{0}$ in $\R^d$.
+
+\end{xca}
+
+Using properties of norms, we have:
+
+\[||a_n x_n|| = |a_n| \cdot ||x_n|| \leq |a_n| \cdot M\]
+
+Since $\{a_n\}$ converges to 0, for any given $\epsilon > 0$, we can choose
+$\epsilon' = \frac{\epsilon}{m}$. Then $\exists$ $N \in \N$ such that
+$\forall n \geq N$, $|a_n| < \frac{\epsilon}{m}$.
+
+Thus, for any $n \geq N$:
+
+\[||a_n x_n|| \leq |a_n| \cdot M < \frac{\epsilon}{M} \cdot M = \epsilon\]
+
+Thus $\{a_n x_n\}$ converges to 0.
+
+\lskip
+\begin{xca}
+Let $\mathcal{C}([0,1])$ be the space of all real valued continuous functions regarded as a metric space with the distance
+
+$$d(f, g)=\norm{f-g}_\infty$$
+Find $d(f,g)$ where
+
+\begin{itemize}
+
+\item [(a)] $f(x)=x$ and $g(x)=x^2$
+\item [(b)] $f(x)=x$ and $g(x)=2x$
+\end{itemize}
+
+\end{xca}
+
+\[||h||_{\infty} = \sup_{x \in [0, 1]} |h(x)|\]
+
+a) $|x - x^2|$ attains its maximum at $x = \frac{1}{2}$ on the interval $[0, 1]$.
+Plugging it in gives a value of $|\frac{1}{2} - \frac{1}{4} = \frac{1}{4}$.
+Thus, $d(x, x^2) = \frac{1}{4}$.
+
+b) $|x - 2x| = |x|$, which obviously attains its maximum at $x = 1$ on the interval
+$[0, 1]$ with a value of $1$.
+Thus, $d(x, 2x) = 1$.
+
+\lskip
+
+\begin{xca}
+Let $D=\{(x_1,x_2)\in \R^2: 0<x_1 < 4, \hskip .05in 0 < x_2 < 4\}$.  Find the largest radius $r$ such that the open ball $B_r(\bm{c})$ is contained in $D$, where
+\begin{itemize}
+  \item [(1)] $\bm{c}=(1,2)$
+  \item [(2)] $\bm{c}=(2,2)$
+  \item [(3)] $\bm{c}=(2,7/2)$
+  \item [(4)] $\bm{c}=(c_1, c_2)$ be an arbitrary point in $D$.
+ \end{itemize}
+Use (4) to prove that $D$ is an open set in $\R^2$.
+
+\end{xca}
+
+1) For the $x_1$-axis, it's $\min(1, 3) = 1$.
+For the $x_2$-axis, its $\min(2, 2) = 2$.
+So the answer is $r = \min(x_1, x_2) = 1$.
+
+2) $r = \min(2, 2) = 2$.
+
+3) Similar to in part a, we get that
+
+$x_1 = \min(2, 2) = 2$
+
+$x_2 = \min(\frac{7}{2}, \frac{1}{2}) = \frac{1}{2}$
+
+$r = \min(x_1, x_2) = \frac{1}{2}$
+
+4) $x_1 = \min(c_1, 4 - c_1)$.
+
+$x_2 = \min(c_2, 4 - c_2)$
+
+$r = \min(x_1, x_2) = \min(\min(c_1, 4 - c_1), \min(c_2, 4 - c_2))$.
+
+
+To show that D is an open set, we need to show that for every point $c \in D$,
+$\exists$ a radius $r > 0$ such that $B_r(c) \subset D$. Since $c$ is an arbitrary
+point in D and the above calculation for part 4) shows we can always find a radius r,
+then D is indeed an open set in $\R^2$.
+
+\lskip
+
+\begin{xca}
+Let $X$ be a metric space.
+Prove that every finite subset of $X$ is closed (in $X$).
+\end{xca}
+
+Let F be a finite subset of X where $F = \{x_1, x_2, \dots, x_n\}$
+where $n$ is a finite number and $x_1 \in X$ for $i = 1, 2, \dots, n$.
+
+We need to show that $X \setminus F$ is open.
+
+For any point in $y \in X \setminus F$, since y is not in F, the distance $d(y, x_i)$
+is positive/non-zero for $i = 1, 2, \dots, n$.
+
+Now, let $r = \min(d(y, x_1), d(y, x_2), \dots, d(y, x_n))$.
+Since all these distances are positive, then r is also positive.
+
+Consider $B_r(y)$. From our choice of r, none of the points in F are in
+this open ball. Thus, $B_r(y) \subset X \setminus F$.
+
+Since y is an arbitrary point in $X \setminus F$, then $X \setminus F$ is open.
+
+Therefore, X is closed.
+
+
+\lskip
+
+\
+\begin{xca}
+Let $$D=\{(x_1,x_2)\in \R^2:  x_2\in \mathbb{Q}\}$$
+Find
+\begin{itemize}
+\item [(a)] The interior $D^\circ$ of $D$
+\smallskip
+\item [(b)] The closure $\cl{D}$ of $D$
+\smallskip
+\item [(c)] The boundary $\partial(D)$ od $D$
+\end{itemize}
+\smallskip
+Justify your answers.
+\end{xca}
+
+a) Because of the density of the rational numbers in the reals, any open set
+in $\R^2$ will contain irrational numbers for $x_2$.
+
+Thus, there are no open balls in D that are entirely contained in D.
+
+Therefore, $D^\circ = \emptyset$.
+
+b) In $\R^2$, for any point $(a, b)$ where b is irrational, we can find a sequence
+of points in D with $x_2$ as rational numbers that converges to $(a, b)$
+because the rationals are dense in the reals.
+
+Since for any point in $\R^2$ we can find a sequence in D that converges to it,
+the closure of D is $\R^2$.
+
+$\cl{D} = \R^2$.
+
+c) $\partial(D) = \cl(D) \setminus D^\circ = \R^2 \setminus \emptyset = \R^2$.
+
+
+\lskip
+
+
+\
+\begin{xca}
+
+Let $D$ be a subset of $X$ and $c$ an element of $\cl{D}-D$. Prove that every neighborhood of $c$ contains infinitely many points of $D$.
+\end{xca}
+
+Let's consider a neighborhood N of c in X. Since c is a limit point of D,
+N intersects D. Goal: Show that this intersection contains infinitely many points of D.
+
+Let's use proof by contradiction. Suppose that N only contains finitely many
+points of D. Let those points be $\{d_1, d_2, \dots, d_n\}$. Since c is not in D,
+c is different from each $d_i$. Therefore, $d(c, d_i) > 0$.
+
+Let $\epsilon = \min(d(c, d_1), d(c, d_2), \dots, d(c, d_n))$. Now, consider the
+neighborhood $B_{\frac{\epsilon}{2}}(c)$. This neighborhood is a subset of N.
+However, by our choice of $\epsilon$, $B_{\frac{\epsilon}{2}}$ doesn't contain any
+points of D. This contradicts the fact that c is a limit point of c
+(defined as every open ball of a limit point contains at least on point of D).
+
+Thus, our assumption that N contains only finitely many points of D cannot be true.
+Therefore, we have shown that every neighborhood of c contains infinitely
+many points of D.
+
+
+\lskip
+
+
+\end{document}

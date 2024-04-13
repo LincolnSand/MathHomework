@@ -1,0 +1,225 @@
+\documentclass[answers]{exam}
+\title{Foundations of Analysis, HW 2}
+\author{James Cameron}
+\date{}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{graphicx}
+\usepackage{amsthm}
+
+\newtheorem{thm}{Theorem}
+\newtheorem{hthm}[thm]{*Theorem}
+\newtheorem{lemma}[thm]{Lemma}
+\newtheorem{cor}[thm]{Corollary}
+\newtheorem{obs}[thm]{Observation}
+\newtheorem{prop}[thm]{Proposition}
+\newtheorem{con}[thm]{Conjecture}
+\newtheorem{exer}[thm]{Exercise}
+
+\newtheorem{scho}[thm]{Scholium}
+\newtheorem*{Thm}{Theorem}
+\newtheorem*{Con}{Conjecture}
+\newtheorem*{Axiom}{Axiom}
+
+\theoremstyle{remark}
+\newtheorem{remark}[thm]{Remark}
+\newtheorem{notation}[thm]{Notation}
+
+
+\theoremstyle{definition}
+\newtheorem{Def}[thm]{Definition}
+\newtheorem{example}[thm]{Example}
+\newtheorem{ques}[thm]{Question}
+\everymath{\displaystyle}
+
+\pagestyle{head}
+\header{\bfseries\large Foundations of Analysis}{\bfseries\large Homework 2 \ifprintanswers (solutions) \fi}{\bfseries\large Fall, 2023}
+\headrule
+
+\DeclareMathOperator{\sech}{sech}
+\newcommand{\NN}{\mathbb{N}}
+\newcommand{\RR}{\mathbb{R}}
+\newcommand{\QQ}{\mathbb{Q}}
+\newcommand{\ZZ}{\mathbb{Z}}
+\newcommand{\dV}{\;\mathrm{d}V}
+\newcommand{\dA}{\;\mathrm{d}A}
+\newcommand{\dx}{\;\mathrm{d}x}
+\newcommand{\dy}{\;\mathrm{d}y}
+\newcommand{\dz}{\;\mathrm{d}z}
+\pointname{}
+\newcommand{\cA}{\mathcal{A}}
+\newcommand{\Bb}{\mathcal{B}}
+\newcommand{\Ww}{\mathcal{W}}
+\newcommand{\Dd}{\mathcal{D}}
+\newcommand{\Ss}{\mathcal{S}}
+\newcommand{\Ee}{\mathcal{E}}
+\DeclareMathOperator{\im}{im}
+\begin{document}
+% \maketitle
+
+% \noindent
+% This week on the homework you will get practice with induction. \\
+
+
+% \noindent
+ This is due Saturday 9/2 by 11:59 pm on Gradescope. Please either neatly write up your solutions or type them up. You can find a .tex template on Canvas. Your proofs should be written in complete sentences and paragraphs, using a combination of words and symbols. They should be \textbf{correct, clear, and concise}. You will be graded on all three, especially the first two!
+
+\noindent
+
+
+\begin{questions}
+
+
+
+
+
+\question  Decide for which natural numbers $2^n > n^2$ is true, and prove your claim for those natural numbers.
+
+\begin{solution}
+
+$2^n > n^2$ on two intervals: $[0, 2)$, $(4, \infty)$.
+
+The first interval we can prove by cases since we are using natural numbers.
+
+$2^0 = 1; 0^2 = 0; 1 > 0$
+$2^1 = 2; 1^2 = 1; 2 > 1$
+They are equal at $n = 2$:
+$2^2 = 4; 2^2 = 4; 4 = 4$
+
+Now for the second interval:
+They are equal at $n = 4$:
+$2^4 = 16; 4^2 = 16; 16 = 16$,
+so we start at $5$ as the base case in our proof.
+We will prove this by induction:
+
+Base case:
+$2^5 = 32; 5^2 = 25; 32 > 25$.
+
+Inductive case:
+Assume $2^n > n^2$ is true.
+\[2^{n+1} > (n+1)^2
+\implies 2 \cdot 2^n > n^2 + 2n + 1\]
+\[\implies 2^n + 2^n > n^2 + 2n + 1
+\implies 2^n > n^2 - 2^n + 2n + 1\]
+Since we know by assumption that $2^n > n^2$,
+that means we can knock out the $n^2$ on the rhs and get:
+\[2^n > 2n + 1\]
+This is obviously true since an exponential function grows drastically faster than a linear function.
+\[\therefore 2^n > n^2 \implies 2^{n+1} > (n+1)^2\]
+
+So, $2^n > n^2$. $\qed$
+
+\end{solution}
+
+\question Show that for every $n \in \NN$ there exists $a_i \in \{0,1\}$ and $k \in \NN$ such that $n= \sum_{i=0}^k a_i 2^i$. For example, $3=1\cdot 2^1+ 1 \cdot 2^0$, so $k=1$ and $a_0=a_1=1$ for $n=3$. \textbf{Hint:} Use strong induction
+
+\begin{solution}
+
+So, we have to prove that a base 2 system can span all the natural numbers.
+Let's start with the base case:
+
+\[1 = 2^0\]
+
+Now, for the (strong) inductive case:
+
+Assume that $\forall n \in \NN, 1 \geq m \geq n,$ m can be written in terms of powers of 2.
+
+Now, let's start with a few cases.
+If $n + 1$ is a power of 2, then it can be written using a new
+power of 2 that hasn't appeared yet.
+
+If $n + 1$ is odd, then, we just add $2^0$ onto the end of the sum for $n$.
+
+If $n + 1$ is even, and not a power of 2, then things are more interesting.
+In this case, $n$ must be odd. So we can't simply add $2^0$ to the end since
+it is already present. Instead, we will remove the $2^0$ and replace it with $2^1$.
+If $2^1$ already exists, we remove it and replace it with $2^2$. We repeat this process
+until we find a power of 2 not in the list. It follows that
+$(2^1 + 2^2 + ... + 2^i) + 1$ equals $2^{i+1}$ from the above case where
+$n+1$ is a power of 2. But since $n+1$
+is not a power of 2 in this case,
+it is the same except that $i < n$ and that there are terms after it.
+In other words, we can write the current number as
+$2^i + ... + 2^j$ where $2^j$ was the last term for $n$ in base 2 form.
+
+$\therefore$ We can write any natural number in terms of base 2. $\qed$.
+
+\end{solution}
+
+\question The \emph{well ordering principle} states that every nonempty subset of natural numbers has a smallest element. The well ordering principle follows from and is in fact equivalent to induction and strong induction.
+
+Use the well ordering principle to show that every nonzero $x \in \QQ$ can be written in the form $x = \frac{p}{q}$, where $p,q \in \ZZ$ and $p,q$ have no prime factors in common.
+
+\begin{solution}
+
+First of all, for the rest of this proof, $x$ is not $0$.
+
+If $x$ were $0$, then you can write it in an infinite number of reduced forms
+(where the numerator is $0$ and the denominator is any number except for $0$).
+
+Let's handle this in two cases. Coprime means that the
+greatest common divider of $p$ and $q$ is 1.
+
+In the case where $p$ and $q$ are already coprime, then $x$ is in reduced form.
+
+Now, for the case where $p$ and $q$ are not coprime, we need to show that
+$x$ can be written in terms of $p'$ and $q'$ where
+$p'$ and $q'$ are coprime.
+
+Well, let's start by taking the $gcd$ of $p$ and $q$.
+Since that number is present in both $p$ and $q$,
+we can factor it out and write $x$ as:
+
+$x = \frac{pq_gcd}{pq_gcd} \cdot \frac{p_1}{q_1}$.
+Since any number divided by itself (excluding $0$) is $1$.
+Any number multiplied by $1$ is itself.
+
+That means that we can rewrite the above as;
+$x = 1 \cdot \frac{p_1}{q_1} = \frac{p_1}{q_1}$
+
+Then, we keep on repeating this process, but we put $p_1$ and $q_1$ in for $p$ and $q$
+respectively and keep going until they have a $gcd$ of 1.
+This is guarenteed to terminate because the list of factors for $p$ and $q$ shrinks at
+every step and the base case is $1$.
+
+Eventually we will end up with two coprime numbers by repeatedly eliminating
+their $gcd$ repeatedly until we reach $1$.
+
+$\therefore$ We can always rewrite $x$ to be a ratio of two coprime integers. $\qed$
+
+
+\end{solution}
+
+\question Show that an ordered field $F$ is Archimedean if and only if for all $x,y \in F$ with $x >0$ there is an $n \in \NN$ so that $nx>y$.
+\begin{solution}
+
+Let $n = \frac{y+1}{x}$.
+
+Then we get
+$nx > y \implies y+1 > y$.
+
+$\qed$.
+
+\end{solution}
+
+\question Show that the set of rational numbers $S=\{ x \in \QQ: x^2  \le 2 \}$ is a bounded above set that does not have a least upper bound (among the rational numbers). \textbf{Hint:} Proceed by contradiction. We showed in class that there is no $x \in \QQ$ with $x^2=2$. So, if a least upper bound $l$ did exist we know $l^2 \not=2$. If $l^2<2$, find an $s \in S$ with $l<s$, contradicting that $l$ is an upper bound. If $l^2>2$, find some $b \in \QQ$ that is an upper bound for $S$ and with $b<l$, contradicting that $l$ is the \emph{least} upper bound.
+
+\begin{solution}
+
+In the case of picking a rational number $L$ whose square is less than 2,
+the issue is that since it is an open interval (since $\sqrt{2}$ is not in the rationals),
+there are an infinite number of rational nunbers between any two rational numbers.
+So you could always just pick
+any of these rational numbers that fall between $L$ and $\sqrt{2}$.
+
+In the case of picking a rational number $T$ greater than 2,
+the same issue persists. You could always just pick any rational number that falls
+between $\sqrt{2}$ and $T$ since it forms an open interval and the rationals aren't discrete.
+
+$\therefore$ You can never pick any rational number that both bounds all
+of the members of the set and is less than or equal to all other possible bounds of the set.
+
+\end{solution}
+
+\end{questions}
+\end{document}

@@ -1,0 +1,321 @@
+\documentclass{article}
+
+\usepackage{amsfonts}
+\usepackage{graphicx}
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage{listings}
+
+
+\DeclareMathOperator{\sech}{sech}
+\newcommand{\NN}{\mathbb{N}}
+\newcommand{\RR}{\mathbb{R}}
+\newcommand{\QQ}{\mathbb{Q}}
+\newcommand{\ZZ}{\mathbb{Z}}
+\newcommand{\dV}{\;\mathrm{d}V}
+\newcommand{\dA}{\;\mathrm{d}A}
+\newcommand{\dx}{\;\mathrm{d}x}
+\newcommand{\dy}{\;\mathrm{d}y}
+\newcommand{\dz}{\;\mathrm{d}z}
+\newcommand{\cA}{\mathcal{A}}
+\newcommand{\Bb}{\mathcal{B}}
+\newcommand{\Ww}{\mathcal{W}}
+\newcommand{\Dd}{\mathcal{D}}
+\newcommand{\Ss}{\mathcal{S}}
+\newcommand{\Ee}{\mathcal{E}}
+\DeclareMathOperator{\im}{im}
+
+
+\setlength\parindent{18pt}
+
+\begin{document}
+
+Textbook Section 5.6:
+
+2) The eigenvalues are $\lambda_1 = 0, \lambda_2 = 4$.
+The corresponding eigenvectors are $v_1 = \begin{bmatrix}
+    \frac{1}{2} \\
+    1
+\end{bmatrix}, v_2 = \begin{bmatrix}
+    -\frac{1}{2} \\
+    1
+\end{bmatrix}$.
+
+That means the fundamental matrix is
+\[\phi(t) = \begin{bmatrix}
+    \frac{1}{2} & -\frac{1}{2} e^{4t} \\
+    1 & e^{4t}
+\end{bmatrix}\]
+
+\[\phi^{-1}(0) = \begin{bmatrix}
+    \frac{1}{2} & -\frac{1}{2} \\
+    1 & 1
+\end{bmatrix}^{-1} = \begin{bmatrix}
+    1 & \frac{1}{2} \\
+    -1 & \frac{1}{2}
+\end{bmatrix}\]
+
+Thus,
+\[x(t) = \begin{bmatrix}
+    \frac{1}{2} & -\frac{1}{2} e^{4t} \\
+    1 & e^{4t}
+\end{bmatrix} \begin{bmatrix}
+    1 & \frac{1}{2} \\
+    -1 & \frac{1}{2}
+\end{bmatrix} \begin{bmatrix}
+    2 \\
+    -1
+\end{bmatrix}\]
+
+6) The eigenvalues are $\lambda_1 = 5-4i, \lambda_2 = 5+4i$.
+The corresponding eigenvectors are $v_1 = \begin{bmatrix}
+    \frac{1}{2} - i \\
+    1
+\end{bmatrix}, v_2 = \begin{bmatrix}
+    \frac{1}{2} + i \\
+    1
+\end{bmatrix}$.
+
+That means the fundamental matrix is
+\[\phi(t) = \begin{bmatrix}
+    e^{5t} (\frac{1}{2} \cos(4t) + \sin(4t)) & e^{5t} (\frac{1}{2} \cos(4t) - \sin(4t)) \\
+    e^{5t} (\frac{1}{2} \sin(4t) - \cos(4t)) & e^{5t} (\frac{1}{2} \sin(4t) + \cos(4t)) 
+\end{bmatrix}\]
+
+\[\phi^{-1}(0) = \begin{bmatrix}
+    \frac{1}{2} & -1 \\
+    -1 & \frac{1}{2}
+\end{bmatrix}^{-1} = \begin{bmatrix}
+    -\frac{2}{3} & -\frac{4}{3} \\
+    -\frac{4}{3} & -\frac{2}{3}
+\end{bmatrix}\]
+
+Thus,
+\[x(t) = \begin{bmatrix}
+    e^{5t} (\frac{1}{2} \cos(4t) + \sin(4t)) & e^{5t} (\frac{1}{2} \cos(4t) - \sin(4t)) \\
+    e^{5t} (\frac{1}{2} \sin(4t) - \cos(4t)) & e^{5t} (\frac{1}{2} \sin(4t) + \cos(4t)) 
+\end{bmatrix} \begin{bmatrix}
+    -\frac{2}{3} & -\frac{4}{3} \\
+    -\frac{4}{3} & -\frac{2}{3}
+\end{bmatrix} \begin{bmatrix}
+    2 \\
+    0
+\end{bmatrix}\]
+
+8) The eigenvalues are $\lambda_1 = -2, \lambda_2 = 1, \lambda_3 = 3$.
+The corresponding eigenvectors are $v_1 = \begin{bmatrix}
+    0 \\
+    -1 \\
+    1
+\end{bmatrix}, v_2 = \begin{bmatrix}
+    -1 \\
+    1 \\
+    0
+\end{bmatrix}, v_3 = \begin{bmatrix}
+    1 \\
+    -1 \\
+    1
+\end{bmatrix}$.
+
+That means the fundamental matrix is
+\[\phi(t) = \begin{bmatrix}
+    0 & -e^{t} & e^{3t} \\
+    -e^{-2t} & e^t & -e^{3t} \\
+    e^{-2t} & 0 & e^{3t}
+\end{bmatrix}\]
+
+\[\phi^{-1}(0) = \begin{bmatrix}
+    -1 & -1 & 0 \\
+    0 & 1 & 1 \\
+    1 & 1 & 1
+\end{bmatrix}\]
+
+Thus,
+\[x(t) = \begin{bmatrix}
+    0 & -e^{t} & e^{3t} \\
+    -e^{-2t} & e^t & -e^{3t} \\
+    e^{-2t} & 0 & e^{3t}
+\end{bmatrix} \begin{bmatrix}
+    -1 & -1 & 0 \\
+    0 & 1 & 1 \\
+    1 & 1 & 1
+\end{bmatrix} \begin{bmatrix}
+    1 \\
+    0 \\
+    -1
+\end{bmatrix}\]
+
+10) The matrix A is $\begin{bmatrix}
+    6 & -6 \\
+    4 & -4
+\end{bmatrix}$.
+
+The eigenvalues are $\lambda_1 = 2, \lambda_2 = 0$.
+The corresponding eigenvectors are $v_1 = \begin{bmatrix}
+    1 \\
+    1
+\end{bmatrix}, v_2 = \begin{bmatrix}
+    \frac{3}{2} \\
+    1
+\end{bmatrix}$.
+
+$e^{At} = P e^{Dt} P{-1}$.
+
+$P = \begin{bmatrix}
+    1 & \frac{3}{2} \\
+    1 & 1
+\end{bmatrix}$
+
+$e^{Dt} = \begin{bmatrix}
+    e^{2t} & 0 \\
+    0 & 1
+\end{bmatrix}$
+
+$P^{-1} = \begin{bmatrix}
+    -2 & 3 \\
+    2 & -2
+\end{bmatrix}$
+
+\[e^{At} = \begin{bmatrix}
+    1 & \frac{3}{2} \\
+    1 & 1
+\end{bmatrix} \begin{bmatrix}
+    e^{2t} & 0 \\
+    0 & 1
+\end{bmatrix} \begin{bmatrix}
+    -2 & 3 \\
+    2 & -2
+\end{bmatrix}\]
+
+17) The matrix A is $\begin{bmatrix}
+    3 & 1 \\
+    1 & 3
+\end{bmatrix}$.
+
+The eigenvalues are $\lambda_1 = 4, \lambda_2 = 2$.
+The corresponding eigenvectors are $v_1 = \begin{bmatrix}
+    1 \\
+    1
+\end{bmatrix}, v_2 = \begin{bmatrix}
+    -1 \\
+    1
+\end{bmatrix}$.
+
+$e^{At} = P e^{Dt} P{-1}$.
+
+$P = \begin{bmatrix}
+    1 & -1 \\
+    1 & 1
+\end{bmatrix}$
+
+$e^{Dt} = \begin{bmatrix}
+    e^{4t} & 0 \\
+    0 & e^{2t}
+\end{bmatrix}$
+
+$P^{-1} = \begin{bmatrix}
+    \frac{1}{2} & \frac{1}{2} \\
+    -\frac{1}{2} & \frac{1}{2}
+\end{bmatrix}$
+
+\[e^{At} = \begin{bmatrix}
+    1 & -1 \\
+    1 & 1
+\end{bmatrix} \begin{bmatrix}
+    e^{4t} & 0 \\
+    0 & e^{2t}
+\end{bmatrix} \begin{bmatrix}
+    \frac{1}{2} & \frac{1}{2} \\
+    -\frac{1}{2} & \frac{1}{2}
+\end{bmatrix}\]
+
+24) $A = \begin{bmatrix}
+    3 & 0 & -3 \\
+    5 & 0 & 7 \\
+    3 & 0 & -3
+\end{bmatrix}, A^2 = \begin{bmatrix}
+    0 & 0 & 0 \\
+    36 & 0 & -36 \\
+    0 & 0 & 0
+\end{bmatrix}, A^3 = \begin{bmatrix}
+    0 & 0 & 0 \\
+    0 & 0 & 0 \\
+    0 & 0 & 0
+\end{bmatrix}$
+
+This means that $e^{At} = I_n + At + \frac{A^2 t^2}{2}$.
+
+
+Textbook Section 5.7:
+
+1) Substituting $x_p(t) = A, y_p(t) = B$ into the original equation
+gives:
+\[A + 2B + 3 = 0\]
+\[2A + B - 2 - 0\]
+
+Solving this gives $A = \frac{7}{3}$
+and $B = -\frac{8}{3}$.
+
+That means our particular solution is:
+\[x_p(t) = \frac{7}{3}\]
+\[y_p(t) = -\frac{8}{3}\]
+
+This solution is valid for any initial conditions since it represents
+a constant solution to the non-homogeneous system.
+
+5) We guess the particular solution
+is of the form $x_p(t) = A + C t e^{-t}$
+and $y_p(t) = B + D t e^{-t}$.
+
+Through arithmetic after Substituting into the original equation,
+we know that $A = -4$ and $B = -2$.
+
+We can then solve the system and get that:
+\[C = \frac{-10te^t - 14t - 10e^t}{6t - 1}\]
+and
+\[D = \frac{-10te^t - 14t + 2}{6t - 1}\]
+
+13) Assume the particular solution is of the form:
+\[x_p(t) = Ae^t\]
+\[y_p(t) = Be^t\]
+
+Substituting back into the original equation gives:
+\[Ae^t = 2Ae^t + Be^t + 2e^t\]
+\[Be^t = Ae^t + 2Be^t - 3e^t\]
+
+After some solving, we get:
+\[0 = Ae^t + Be^t + 2e^t\]
+\[0 = Ae^t - Be^t - 3e^t\]
+
+Solving this gives us that:
+\[A = \frac{1}{2}\]
+and
+\[B = -\frac{5}{2}\]
+
+Thus, the particular solution to the system is:
+\[x_p(t) = \frac{1}{2} e^t\]
+\[y_p(t) = -\frac{5}{2} e^t\]
+
+17) The homogeneous solution is given by
+\[x_h(t) = e^{At} x_0\].
+That means that the homogeneous solution
+is the zero vector $\begin{bmatrix}
+    0 \\
+    0
+\end{bmatrix}$.
+
+The particular solution is given by
+\[x_p(t) = \int_{0}^{t} e^{A(t-s)} f(s) ds\].
+\[x_p(t) = \begin{bmatrix}
+    -7 e^{5t} + 102 - 95 e^{-t} \\
+    -e^{5t} + 96 - 95 e^{-t}
+\end{bmatrix}\]
+
+Thus,
+\[x(t) = x_p(t) = \begin{bmatrix}
+    -7 e^{5t} + 102 - 95 e^{-t} \\
+    -e^{5t} + 96 - 95 e^{-t}
+\end{bmatrix}\]
+
+
+\end{document}

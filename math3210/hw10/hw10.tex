@@ -1,0 +1,229 @@
+\documentclass[answers]{exam}
+\title{Foundations of Analysis, HW 10}
+\author{James Cameron}
+\date{}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{graphicx}
+\usepackage{amsthm}
+
+\newtheorem{thm}{Theorem}
+\newtheorem{hthm}[thm]{*Theorem}
+\newtheorem{lemma}[thm]{Lemma}
+\newtheorem{cor}[thm]{Corollary}
+\newtheorem{obs}[thm]{Observation}
+\newtheorem{prop}[thm]{Proposition}
+\newtheorem{con}[thm]{Conjecture}
+\newtheorem{exer}[thm]{Exercise}
+
+\newtheorem{scho}[thm]{Scholium}
+\newtheorem*{Thm}{Theorem}
+\newtheorem*{Con}{Conjecture}
+\newtheorem*{Axiom}{Axiom}
+
+\theoremstyle{remark}
+\newtheorem{remark}[thm]{Remark}
+\newtheorem{notation}[thm]{Notation}
+
+
+\theoremstyle{definition}
+\newtheorem{Def}[thm]{Definition}
+\newtheorem{example}[thm]{Example}
+\newtheorem{ques}[thm]{Question}
+\everymath{\displaystyle}
+
+\pagestyle{head}
+\header{\bfseries\large Foundations of Analysis}{\bfseries\large Homework 10 \ifprintanswers (solutions) \fi}{\bfseries\large Fall, 2023}
+\headrule
+
+\DeclareMathOperator{\sech}{sech}
+\newcommand{\NN}{\mathbb{N}}
+\newcommand{\RR}{\mathbb{R}}
+\newcommand{\QQ}{\mathbb{Q}}
+\newcommand{\ZZ}{\mathbb{Z}}
+\newcommand{\dV}{\;\mathrm{d}V}
+\newcommand{\dA}{\;\mathrm{d}A}
+\newcommand{\dx}{\;\mathrm{d}x}
+\newcommand{\dy}{\;\mathrm{d}y}
+\newcommand{\dz}{\;\mathrm{d}z}
+\pointname{}
+\newcommand{\cA}{\mathcal{A}}
+\newcommand{\Bb}{\mathcal{B}}
+\newcommand{\Ww}{\mathcal{W}}
+\newcommand{\Dd}{\mathcal{D}}
+\newcommand{\Ss}{\mathcal{S}}
+\newcommand{\Ee}{\mathcal{E}}
+\DeclareMathOperator{\im}{im}
+\begin{document}
+% \maketitle
+
+% \noindent
+% This week on the homework you will get practice with induction. \\
+
+
+% \noindent
+ This is due Saturday 11/25 by 11:59 pm on Gradescope. Please either neatly write up your solutions or type them up. You can find a .tex template on Canvas. Your proofs should be written in complete sentences and paragraphs, using a combination of words and symbols. They should be \textbf{correct, clear, and concise}. You will be graded on all three, especially the first two!
+
+\noindent
+
+
+\begin{questions}
+
+\question[4] Suppose that $f: \RR \to \RR$ is differentiable, and that $\lim_{x \to \infty} f'(x)= \infty$. Show that for all $M \in \RR$ there is some $N \in \RR$ so that for all $x$ and $y$ greater than $N$ we have that $|f(x)-f(y)|> M|x-y|$.
+
+\begin{solution}
+
+Let's first apply the MVT. For any two numbers x and y
+with $x < y$, $\exists$ a c between x and y such that
+\[f'(c) = \frac{f(y) - f(x)}{y - x}\]
+i.e.
+\[f(y) - f(x) = f'(c)(y - x)\]
+
+We know that $\lim_{x \to \infty} f(x) = \infty$. This means that
+for any given M, $\exists$ some N such that $\forall$ $x > N$,
+f'(x) > M.
+
+Choose any $x, y > N$ with $x < y$. From MVT, there is some c
+between x and y such that $f(y) - f(x) = f'(c)(y - x)$.
+Since $c > x > N$, $f'(c) > M$. Therefore,
+$f(y) - f(x) = f'(c)(y - x) > M(y - x)$.
+
+Notice that
+\[|f(y) - f(x)| = |f'(c)||y-x| > M|y-x|\]
+
+$f'(c) > M \implies |f'(c)| > M$.
+
+Thus, we have shown that $\forall M \in \RR$, $\exists$ an $N \in \RR$
+such that $\forall x, y > N$, $|f(x) - f(y)| > M|x-y|$.
+
+\end{solution}
+
+\question[4] Show that if $f: \RR \to \RR$ is differentiable and $\lim_{x \to \infty} f'(x)= \infty$ then $f$ is \emph{not} uniformly continuous on $\RR$.
+\begin{solution}
+
+We will show this by using a proof by contradiction.
+
+Assume f is uniformly continuous on $\RR$. Then, for $\epsilon = 1$,
+$\exists \delta > 0$ such that $\forall x, y \in \RR$, if $|x-y| < \delta$,
+then $|f(x) - f(y)| < 1$.
+
+Since $\lim_{x \to \infty} f'(x) = \infty$, $\exists$ some X
+such that $\forall x > X$, $f'(x) > \frac{1}{\delta}$.
+
+Choose $x, y > X$ such that $y-x < \delta$. This is always possible because
+$\delta > 0$. According to our assumption of uniform continuity, $|f(x) - f(y)| < 1$.
+
+This creates a contradiction because by MVT, $\exists$ a c between x and y
+such that $f(y) - f(x) = f'(c)(y - x)$.
+Since $c > X$, $f'(c) > \frac{1}{\delta}$, so
+\[|f(y)-f(x)| = |f'(c)||y-x| > \frac{1}{\delta}|y-x|\].
+But $|y-x| < \delta$, so $|f(y) - f(x)| > 1$, which contradicts the assumption
+of uniform continuity that $|f(y) - f(x)| < 1$.
+
+\end{solution}
+
+\question[4]
+Find $\lim_{x \to 0} \frac{\cos(x)-1}{x^2}$.
+\begin{solution}
+
+Since $\frac{\cos(x)-1}{x^2}$ at $x = 0$
+is $\frac{0}{0}$, we can use L'Hopital's rule.
+So we get $\lim_{x \to 0} \frac{-\sin(x)}{2x}$.
+This new limit at $x = 0$ is $\frac{0}{0}$.
+Thus, we can apply L'Hopital's rule again.
+So we get $\lim_{x \to 0} \frac{-\cos(x)}{2}$.
+Evaluating this limit at $x = 0$ gives us
+$-\frac{1}{2}$.
+
+Therefore, $\lim_{x \to 0} \frac{\cos(x)-1}{x^2} = -\frac{1}{2}$
+
+\end{solution}
+
+\question \begin{parts}
+
+\part[2] Show that $\sum_{i=1}^n i^2= \frac{n(n+1)(2n+1)}{6}$.
+\begin{solution}
+
+We will use proof by induction.
+
+Base case:
+
+For $n = 1$, the left side is $\sum_{i = 1}^{1} i^2 = 1^2 = 1$.
+The rhs is $\frac{1(1+1)(2 \cdot 1 + 1)}{6} = \frac{1 \cdot 2 \cdot 3}{6} = 1$.
+
+Induction case:
+
+Assume that $\sum_{i=1}^{k} i^2 = \frac{k(k+1)(2k+1)}{6}$ is true.
+
+Goal:
+Show that $\sum_{i=1}^{k+1} i^2 = \frac{(k+1)(k+2)(2k+3)}{6}$ is true.
+
+\[\sum_{i=1}^{k+1} i^2 = (k+1)^2 + \sum_{i=1}^{k} i^2\]
+From the inductive hypothesis, we get:
+\[\sum_{i=1}^{k+1} i^2 = (k+1)^2 + \frac{k(k+1)(2k+1)}{6}\]
+
+Expanding and simplifying this gives us
+$\frac{(k+1)(k+2)(2k+3)}{6}$.
+
+Since both the base case and inductive cases hold, the proof is complete.
+
+\end{solution}
+
+\part[2] Show that $\sum_{i=1}^n i^3= \left(\frac{n(n+1)}{2} \right)^2$.
+\begin{solution}
+
+We will use proof by induction.
+
+Base case:
+
+For $n = 1$, the left side is $\sum_{i = 1}^{1} i^3 = 1^3 = 1$.
+The rhs is equal to $\left(\frac{1(1+1)}{2}\right)^2 = \left(\frac{2}{2}\right)^2 = 1^2 = 1$.
+
+Induction case:
+
+Assume that $\sum_{i=1}^k i^3 = \left(\frac{k(k+1)}{2} \right)^2$.
+
+Goal:
+Show that $\sum_{i=1}^{k+1} i^3 = \left(\frac{(k+1)(k+2)}{2}\right)$ is true.
+
+\[\sum_{i=1}^{k+1} i^3 = (k+1)^3 + \sum_{i=1}^{k} i^3\]
+From the inductive hypothesis, we get:
+\[\sum_{i=1}^{k+1} i^2 = (k+1)^2 + \left(\frac{k(k+1)}{2} \right)^2\]
+
+Expanding and simplifying this gives us
+$\left(\frac{(k+1)(k+2)}{2}\right)$.
+
+Since both the base case and inductive cases hold, the proof is complete.
+
+\end{solution}
+
+
+\end{parts}
+You can show both of these by induction, and that is how I suggest you proceed. You might also try to come up with a counting proof or a proof by picture.
+
+\question[4] Compute, using only things from section 5.1 of your text, $\int_{0}^2 x^2-1 \dx$.
+
+\begin{solution}
+
+First partition the interval. Divide $[0, 2]$ into n subintervals,
+each of length $\Delta x = \frac{2}{n}$.
+The points of division will be $x_i = 0, \frac{2}{n}, \frac{4}{n}, \dots, 2$.
+
+The infimum is $f(x_{i-1}) = (x_{i-1})^2 - 1$.
+The supremum is $f(x_i) = (x_i)^2 - 1$.
+
+\[L = \sum_{i = 1}^{n} ((x_{i-1})^2 - 1) \Delta x\]
+\[U = \sum_{i = 1}^{n} ((x_i)^2 - 1) \Delta x\]
+
+Substituting $x_i = \frac{2i}{n}$ and $\Delta x = \frac{2}{n}$, we get:
+\[L = \sum_{i = 1}^{n} \left(\left(\frac{2(i-1)}{n}\right)-1\right)\frac{2}{n}\]
+\[U = \sum_{i = 1}^{n} \left(\left(\frac{2i}{n}\right)-1\right)\frac{2}{n}\]
+
+Evaluating either U or L as $n \to \infty$ gives us $\frac{2}{3}$.
+
+Thus, $\int_{0}^2 x^2-1 \dx = \frac{2}{3}$.
+
+\end{solution}
+
+\end{questions}
+\end{document}

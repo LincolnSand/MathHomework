@@ -1,0 +1,237 @@
+\documentclass[answers]{exam}
+\title{Foundations of Analysis, HW 3}
+\author{James Cameron}
+\date{}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{graphicx}
+\usepackage{amsthm}
+
+\newtheorem{thm}{Theorem}
+\newtheorem{hthm}[thm]{*Theorem}
+\newtheorem{lemma}[thm]{Lemma}
+\newtheorem{cor}[thm]{Corollary}
+\newtheorem{obs}[thm]{Observation}
+\newtheorem{prop}[thm]{Proposition}
+\newtheorem{con}[thm]{Conjecture}
+\newtheorem{exer}[thm]{Exercise}
+
+\newtheorem{scho}[thm]{Scholium}
+\newtheorem*{Thm}{Theorem}
+\newtheorem*{Con}{Conjecture}
+\newtheorem*{Axiom}{Axiom}
+
+\theoremstyle{remark}
+\newtheorem{remark}[thm]{Remark}
+\newtheorem{notation}[thm]{Notation}
+
+
+\theoremstyle{definition}
+\newtheorem{Def}[thm]{Definition}
+\newtheorem{example}[thm]{Example}
+\newtheorem{ques}[thm]{Question}
+\everymath{\displaystyle}
+
+\pagestyle{head}
+\header{\bfseries\large Foundations of Analysis}{\bfseries\large Homework 3 \ifprintanswers (solutions) \fi}{\bfseries\large Fall, 2023}
+\headrule
+
+\DeclareMathOperator{\sech}{sech}
+\newcommand{\NN}{\mathbb{N}}
+\newcommand{\RR}{\mathbb{R}}
+\newcommand{\QQ}{\mathbb{Q}}
+\newcommand{\ZZ}{\mathbb{Z}}
+\newcommand{\dV}{\;\mathrm{d}V}
+\newcommand{\dA}{\;\mathrm{d}A}
+\newcommand{\dx}{\;\mathrm{d}x}
+\newcommand{\dy}{\;\mathrm{d}y}
+\newcommand{\dz}{\;\mathrm{d}z}
+\pointname{}
+\newcommand{\cA}{\mathcal{A}}
+\newcommand{\Bb}{\mathcal{B}}
+\newcommand{\Ww}{\mathcal{W}}
+\newcommand{\Dd}{\mathcal{D}}
+\newcommand{\Ss}{\mathcal{S}}
+\newcommand{\Ee}{\mathcal{E}}
+\DeclareMathOperator{\im}{im}
+\begin{document}
+% \maketitle
+
+% \noindent
+% This week on the homework you will get practice with induction. \\
+
+
+% \noindent
+ This is due Saturday 9/23 by 11:59 pm on Gradescope. Please either neatly write up your solutions or type them up. You can find a .tex template on Canvas. Your proofs should be written in complete sentences and paragraphs, using a combination of words and symbols. They should be \textbf{correct, clear, and concise}. You will be graded on all three, especially the first two!
+
+\noindent
+
+
+\begin{questions}
+
+\question Show that if $D$ and $D'$ are dedekind cuts, then $D+D'$ is also a Dedekind cut. Recall that $D+D'=\{ x\in \QQ: x= d+d', ~\textrm{for some}~ d \in D, d' \in D' \}$. Do these directly from the definition of dedekind cuts. \textbf{Remark:} This is one of the  things that needs to be checked in the course of showing that the set of Dedekind cuts forms an ordered field.
+
+\begin{solution}
+
+A dedekind cut is a set with a least upper bound.
+So $D$ has least upper bound $d$ and $D'$ has least upper bound $d'$.
+Since we sum up all of the entries of $D$ and $D'$ to get the entries of
+$D + D'$, then we get a least upper bound of $d + d'$.
+And since we have a least upper bound for $D + D'$,
+then $D + D'$ is a dedekind cut.
+
+\end{solution}
+
+
+\question Show that for $S$ a subset of $\RR$ the following are equivalent:
+\begin{enumerate}
+\item For all $x,y \in \RR$ with $x<y$, there is an $s \in S$ so that $x<s<y$.
+\item For all $x \in \RR$ and for all $\epsilon \in \RR_{>0}$ (this means the nonnegative reals), there is an $s \in S$ so that $|x-s|< \epsilon$.
+\end{enumerate}
+(Subsets of the reals that satisfies these equivalent properties are called \emph{dense})
+
+\begin{solution}
+
+Claim $1) \iff 2)$.
+
+I should note that for the rest of this proof,
+I am assuming $S$ is a set such that either 1) or 2) holds.
+In the case that this isn't true, neither would hold
+because of the fact that the Archimedes' principle would fail.
+I am concerning myself with the non-trivial case:
+showing that they must both be true if one of them is.
+
+
+\[x < y
+\implies 0 < y-x\]
+By Archimedes' principle
+\[\implies \frac{1}{n} < y-x\]
+for some $n \in \NN$, where $n > 0$.
+
+\[\implies x + \frac{1}{n} < y\]
+and
+\[x < x + \frac{1}{n}\]
+So,
+\[x < x + \frac{1}{n} < y\]
+
+Let $s = x + \frac{1}{n}$ and we get $1)$.
+
+Also,
+\[x < x + \frac{1}{n} < y < y + \frac{1}{n}\]
+\[\implies x < y + \frac{1}{n}\]
+\[x-y < y + \frac{1}{n}\]
+and
+\[y-x < y + \frac{1}{n}\]
+That means:
+\[|y-x| < |y| + \frac{1}{n}\]
+
+Note that $|y| + \frac{1}{n}$ is the definition of
+all positive real numbers.
+
+If we let $|y| + \frac{1}{n}$ be $\epsilon$ and have $s = x$,
+we get $2)$ with minimal rewriting.
+
+ \end{solution}
+
+
+\question Compute the supremum and infimum of the following sets. Prove that your answers are correct (remember for us that $\NN$ doesn't contain $0$).
+
+    \begin{parts}\vspace{5pt}
+        \part $\{m/n : m,n \in \NN \text{ with } m<n\}$\vspace{5pt}
+        \part \(\{n/(5n+1) : n \in \NN\}\)\vspace{5pt}
+    \end{parts}
+\begin{solution}
+\begin{parts}
+\part The infimum is 0 and the supremum is 1.
+
+\[0 < \frac{m}{n} < 1\]
+
+Let us set $m$ to the $inf(\NN) = 1$.
+Then we increase $n$ to be arbitrarily high.
+As $n$ approaches $\inf$ ($sup(\NN)$), then $\frac{1}{n} approaches 0$.
+This must be the infimum since we are maximizing the
+difference between $n$ and $m$ where $n > m$.
+It can't be larger or else it would fall within the set.
+
+For the opposite case, we want to decrease the difference between $n$
+and $m$ where $n > m$.
+Since we are dealing with $\NN$, the smallest difference between two
+natural numbers where they aren't equal is $1$.
+If we set $m$ to be arbitrarily large and then set $n = m+1$,
+then as $m$ gets larger, the closer that $\frac{m}{m+1}$ gets to $1$.
+So the supremum must be $1$.
+It can't be smaller than $1$ or else it would fall within the set.
+
+\part The infimum is $\frac{1}{6}$ and the supremum is $\frac{1}{5}$.
+
+Similar reasoning to above holds.
+
+If we minimize the difference between
+$n$ and $5n + 1$, then $n = 1$.
+That leaves us with $\frac{1}{6}$. Since $\frac{1}{6}$
+is a lower bound and in the set, it must be the infimum.
+
+If we maximize the difference, then we have $n$ be arbitrarily big,
+which means $\frac{n}{5n+1}$ will approach $\frac{1}{5}$.
+The supremum of the set can't be lower or else it would be in the set.
+Therefore the supremum of the set must be $\frac{1}{5}$.
+
+
+\end{parts}
+\end{solution}
+
+\question Let $A,B$ be non-empty subsets of $\RR$. Prove that if $A \subseteq B$, then \[\inf B \leq \inf A \leq \sup A \leq \sup B.\]
+
+\begin{solution}
+
+Let's consider $A$. Since $A$ is a subset of $B$,
+then the infimum of $A$ must be a lower bound of $B$.
+But let us consider the case of $B = \{1, 2\}; A = \{2\}$.
+In this case, the infimum of $A$ is greater than the infimum of $B$.
+Therefore, since the infimum of $B$ is a lower bound of $A$, but the
+infimum of $B$ can be greater than the infimum of $A$, then the infimum
+of $A$ must be greater than or equal to the infimum of $B$.
+
+Now, for the case of the supremum. Since $B$ is a superset of $A$,
+that means that the supremum of $B$ must be an upper bound of $A$.
+But let us consider the case of $B = \{1, 2\}; A = \{1\}$.
+In this case, the supremum of $A$ is less than the supremum of $B$.
+Therefore, since the supremum of $B$ is an upper bound of $A$, but the
+supremum of $A$ can be less than the supremum of $B$, then the supremum
+of $A$ must be less than or equal to the supremum of $B$.
+
+\end{solution}
+
+
+\question Let $A$ and $B$ be non-empty subsets of $\RR$. Prove that $\sup (A\cup B) = \max\{\sup A, \sup B\}.$
+
+\begin{solution}
+
+Let $C = A \cup B$
+
+Since $A \subseteq C$, $sup(A) \leq sup(C)$.
+Since $B \subseteq C$, $sup(B) \leq sup(C)$.
+
+But the only way that this can be true is if
+$sup(C) = \max\{\sup A, \sup B\}$ because otherwise
+$sup(C) < sup(A)$ or $sup(C) < sup(B)$.
+
+For instance, if $sup(A) < sup(B)$,
+then $sup(C) = sup(B)$.
+This satisfies that $sup(B) \leq sup(C)$ since $sup(C) = sup(B)$
+and $sup(A) \leq sup(C)$ since $sup(A) < sup(B)$.
+
+Now, if $sup(B) < sup(A)$,
+then $sup(C) = sup(A)$.
+This satisfies that $sup(A) \leq sup(C)$ since $sup(C) = sup(A)$
+and $sup(B) \leq sup(C)$ since $sup(B) < sup(A)$.
+
+And in the csae that $sup(A) = sup(B)$,
+trivially both $sup(A) \leq sup(C)$ and $sup(B) \leq sup(C)$
+are satisfied because
+$sup(A) = sup(B) = sup(C)$.
+
+\end{solution}
+
+\end{questions}
+\end{document}

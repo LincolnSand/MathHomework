@@ -1,0 +1,283 @@
+\documentclass{article}
+
+\usepackage{amsfonts}
+\usepackage{graphicx}
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage{listings}
+\usepackage{hyperref}
+
+
+\DeclareMathOperator{\sech}{sech}
+\newcommand{\NN}{\mathbb{N}}
+\newcommand{\RR}{\mathbb{R}}
+\newcommand{\QQ}{\mathbb{Q}}
+\newcommand{\ZZ}{\mathbb{Z}}
+\newcommand{\dV}{\;\mathrm{d}V}
+\newcommand{\dA}{\;\mathrm{d}A}
+\newcommand{\dx}{\;\mathrm{d}x}
+\newcommand{\dy}{\;\mathrm{d}y}
+\newcommand{\dz}{\;\mathrm{d}z}
+\newcommand{\cA}{\mathcal{A}}
+\newcommand{\Bb}{\mathcal{B}}
+\newcommand{\Ww}{\mathcal{W}}
+\newcommand{\Dd}{\mathcal{D}}
+\newcommand{\Ss}{\mathcal{S}}
+\newcommand{\Ee}{\mathcal{E}}
+\DeclareMathOperator{\im}{im}
+
+\tolerance=1
+\emergencystretch=\maxdimen
+\hyphenpenalty=10000
+\hbadness=10000
+
+\setlength\parindent{18pt}
+
+\begin{document}
+
+\Large{Lincoln Sand}
+
+
+\textbf{M1.}
+
+\textbf{579.9}: Find the relationship of the fluxions using Newton's
+rules for the equation $y^2 - a^2 - x \sqrt{a^2 - x^2} = 0$.
+Put $z = x \sqrt{a^2 - x^2}$.
+
+First, let's differentiate the equation implicitly with respect to time:
+
+Given the equation $y^2 - a^2 - x \sqrt{a^2 - x^2} = 0$,
+we differentiate implicitly $2 y \dot{y} - \frac{d}{dt}(x \sqrt{a^2 - x^2}) = 0$.
+
+Now we need to differentiate $z = x \sqrt{a^2 - x^2}$:
+
+we apply the product rule $\dot{z} = \dot{x} \sqrt{a^2 - x^2} + x \frac{d}{dt}(\sqrt{a^2 - x^2})$.
+
+Using the chain rule on $\sqrt{a^2 - x^2}$, we get $- \frac{x \dot{x}}{\sqrt{a^2 - x^2}}$.
+
+Substituting back in, we get $\dot{z} = \dot{x} \sqrt{a^2 - x^2} \left(1 - \frac{x^2}{a^2 - x^2}\right)$.
+
+Simplifying this gives $\dot{z} = \dot{x} \sqrt{a^2 - x^2} \frac{a^2 - 2x^2}{a^2 - x^2}$.
+
+Substituting back again gives us $2 y \dot{y} - \dot{x} \sqrt{a^2 - x^2} \frac{a^2 - 2x^2}{a^2 - x^2} = 0$.
+
+Solving for $\dot{y}$ finally yields $\dot{y} = \frac{\dot{x} \sqrt{a^2 - x^2} (a^2 - 2x^2)}{2y(a^2 - x^2)}$.
+
+
+\textbf{579.24}: Given the curve $y^q = x^p$ ($q > p > 0$),
+show using the transmutation theorem that
+\[\int_{0}^{x_0} y dx = \frac{q x_0 y_0}{p+q}\]
+Note that from $y^q = x^p$, it follows that $q dy/y = p dx/x$ and
+therefore that $z = y - x dy/dx = [(q-p)/q]y$.
+
+We know from above that $y = x^{p/q}$ and $q \frac{dy}{y} = p \frac{dx}{x}$.
+This implies that $\frac{dy}{dx} = \frac{p}{q} \frac{y}{x}$.
+
+$z$ is defined as $z = y - x \frac{dy}{dx}$. Substituting from above, we get that
+$z = \frac{q-p}{q} y$.
+
+We can rewrite this as $z = \frac{q-p}{q} x^{p/q}$.
+
+For the integral, using the transmutation theorem, we get that
+$\int_{0}^{x_0} y dx = \frac{q}{q-p} \int_{0}^{x_0} z dx = \frac{q}{q-p} \int_{0}^{x_0} x^{p/q} dx$.
+
+This becomes $\frac{q-p}{p} \left(\frac{x^{p/q + 1}}{(p/q + 1)}\right)_{0}^{x_0} = \frac{q-p}{q} \frac{x_0^{p/q + 1}}{p/q + 1}$.
+
+Substituting back gives us $\int_{0}^{x_0} y dx = \frac{q}{q-p} \left(\frac{q-p}{q} \frac{x_0^{p/q + 1}}{p/q + 1}\right)$.
+Simplifying gives us $\frac{q x_0 y_0}{p + q}$ as expected.
+
+
+\textbf{579.25}: Prove the quotient rule $d(\frac{x}{y}) = \frac{y dx - x dy}{y^2}$
+by an argument using differentials.
+
+Given $z = \frac{x}{y}$, we can write this as $z = x \cdot y^{-1}$.
+
+Now, we apply the product rule to get $dz = d(x \cdot y^{-1}) = dx \cdot y^{-1} + x \cdot d(y^{-1})$.
+
+We can calculate $d(y^{-1})$ using the chain rule to get $- y^{-2} \cdot dy$.
+
+Substituting back gives us $dz = dx \cdot y^{-1} + x \cdot - y^{-2} \cdot dy = \frac{dx}{dy} - \frac{x \cdot dy}{y^2}$.
+
+Using basic algebra to turn this into a common denominator, we get
+$dz = \frac{y \cdot dx - x \cdot dy}{y^2}$. Which is the quotient rule we
+wanted to prove.
+
+
+\textbf{M2.} Recall Napier's logarithm $Nlog(x) = m$ if
+$10^7 (1 - 10^{-7})^m = x$. Show that
+\[Nlog(x) + Nlog(y) = Nlog(xy) + Nlog(1)\]
+
+\[10^7(1 - 10^{-7})^m = x\]
+\[10^7(1 - 10^{-7})^n = y\]
+
+Multiplying these together:
+\[10^7(1 - 10^{-7})^m \cdot 10^7(1 - 10^{-7})^n = 10^7 \cdot 10^7(1 - 10^{-7})^{m+n}\]
+
+We can write $10^7 \cdot 10^7$ as $10^14$, but this means we have to divide by $10^7$
+to match Napier's logarithm. So, we have $10^7(1 - 10^{-7})^{m+n}$.
+
+Now, if we take Napier's logarithm of both sides, we get $Nlog(xy) = m + n$.
+
+Now, we have to handle $Nlog(1)$.
+
+For $x=1$, we have $10^7(1-10^{-7})^m = 1$.
+The only power of any number that will equal $1$ is $0$.
+So, $m = 0$.
+Thus, $Nlog(1) = 0$.
+
+Substituting back in gives us:
+\[Nlog(x) + Nlog(y) = m + n\]
+\[Nlog(xy) + Nlog(1) = m + n + 0\]
+Thus, the relation:
+\[Nlog(x) + Nlog(y) = Nlog(xy) + Nlog(1)\]
+holds for Napier's logarithm.
+
+
+\textbf{M3.} Show that the binomial series gives
+\[\frac{1}{\sqrt{1-t^2}} = 1 + \frac{1}{2} t^2 + \frac{1 \cdot 3}{2 \cdot 4} t^4 + \frac{1 \cdot 3 \cdot 5}{2 \cdot 4 \cdot 6} t^6 + \dots\]
+Then use
+\[\sin^{-1}(x) = \int_{0}^{x} \frac{dt}{\sqrt{1 - t^2}}\]
+to derive Newton's series for $\sin^{-1}(x)$.
+
+Part 1: Binomal series for $\frac{1}{\sqrt{1-t^2}}$
+
+First, let's expand it using the binomal series expansion for a power
+of $(1-x)$. The binomal series expansion for $(1-x)^n$ is given by:
+\[(1-x)^n = \sum_{i=0}^{\infty} \binom{n}{i} (-x)^i\]
+where $\binom{n}{i} = \frac{n(n-1)\dots(n-i+1)}{i!}$.
+
+For $n = -\frac{1}{2}$ and $x = t^2$, we get:
+\[\sum_{i=0}^{\infty} \binom{-\frac{1}{2}}{i} (-1)^i t^{2i}\]
+
+The binomial coefficient $\binom{-\frac{1}{2}}{i}$ simplifies to:
+\[\frac{(-1)^i (1 \cdot 3 \cdot 5 \dots (2i-1))}{2^i \cdot i!}\]
+
+Notice that $\frac{(-1)^i (1 \cdot 3 \cdot 5 \dots (2i-1))}{2^i \cdot i!}$ simplifies to:
+\[\frac{(-1)^i (1 \cdot 3 \cdot 5 \dots (2i-1))}{2 \cdot 4 \cdot 6 \dots (2n)}\]
+
+This means we have:
+\[(1-t^2)^{-1/2} = \sum_{i=0}^{\infty} \frac{(-1)^i (1 \cdot 3 \cdot 5 \dots (2i-1))}{2 \cdot 4 \cdot 6 \dots (2n)} t^{2n}\]
+
+We can write this as:
+\[\frac{1}{\sqrt{1-t^2}} = \sum_{i=0}^{\infty} \frac{(-1)^i (1 \cdot 3 \cdot 5 \dots (2i-1))}{2 \cdot 4 \cdot 6 \dots (2n)} t^{2n}\]
+
+Part 2: Newton's Series for $\sin^{-1}(x)$
+
+Given $\sin^{-1}(x) = \int_{0}^x \frac{dt}{\sqrt{1 - t^2}}$,
+substituting the expansion from part 1 gives:
+\[\sin^{-1}(x) = \int_{0}^x (1 + \frac{1}{2}t^2 + \frac{1 \cdot 3}{2 \cdot 4} t^4 + \frac{1 \cdot 3 \cdot 5}{2 \cdot 4 \cdot 6} t^6 + \dots) dt\]
+
+Integrating by terms yields:
+\[\sin^{-1}(x) = \left(t + \frac{1}{2} \frac{t^3}{3} + \frac{1 \cdot 3}{2 \cdot 4} \frac{t^5}{5} + \frac{1 \cdot 3 \cdot 5}{2 \cdot 4 \cdot 6} \frac{t^7}{7} + \dots\right)_{0}^x\]
+
+This yields:
+\[x + \frac{1}{2} \frac{x^3}{3} + \frac{1 \cdot 3}{2 \cdot 4} \frac{x^5}{5} + \frac{1 \cdot 3 \cdot 5}{2 \cdot 4 \cdot 6} \frac{x^7}{7} + \dots\]
+
+This is Newton's series for the arcsine function.
+
+
+\textbf{M4.} Use Fermat's method of ad-equation to find the slope
+of the curve $f(x) = x^2 - \sqrt{x}$ at $x > 0$.
+
+Let's increment $x$ by a very small value $e$:
+\[f(x+e) = (x+e)^2 - \sqrt{x+e}\]
+
+\[(x+e)^2 = x^2 + 2xe + e^2\]
+For $\sqrt{x+e}$, using the first terms of the Taylor series, we get:
+\[\sqrt{x+e} \approx \sqrt{x} + \frac{1}{2 \sqrt{x}} e\]
+
+Substituting back gives:
+\[f(x+e) \approx x^2 + 2xe + e^2 - \sqrt{x} - \frac{1}{2 \sqrt{x}} e\]
+
+Now we subtract $f(x)$ and factor out $e$:
+\[f(x+e) - f(x) = 2xe + e^2 - \frac{1}{2 \sqrt{x}} e = e\left(2x + e - \frac{1}{\sqrt{x}}\right)\]
+
+Now we apply adequality. Using adequality, we simplify it to:
+\[e(2x - \frac{1}{\sqrt{x}})\]
+
+Then we divide out the $e$ to finally get:
+\[f'(x) = 2x - \frac{1}{2 \sqrt{x}}\]
+
+
+\textbf{M5.} Use Newton's version of Newton's method to approximate the
+root of $x^2 - 2 = 0$ to an accuracy of eight decimal places.
+
+Let's first list the steps involved in Newton's version of Newton's method
+(according to the class notes):
+
+1. Take the current approximation $x_i$.
+
+2. Consider a small change $p$ such that $x_{i+1} = x_i + p$.
+
+3. Substitute $x_{i+i}$ into the equation $x^2 - 2 = 0$ and ignore the
+higher-order terms of $p$.
+
+4. Solve for $p$ and update the approximation for $x_{i+1}$.
+
+5. Repeat until $|p| < 10^{-8}$.
+
+For $f(x) = x^2 - 2$, the linearized equation around $x_i$ is:
+\[(x_i - p)^2 - 2 = x_i^2 - 2x_i p + p^2 - 2\]
+Since $p$ is small, we ignore $p^2$ and simplify it to:
+\[x_i^2 - 2x_i p - 2 = 0\]
+
+Now, let's solve for $p$.
+
+\[2x_i p = 2 x_i^2 \implies p = \frac{2 - x_i^2}{2x_i}\]
+
+Now, we are trying to approximate $\sqrt{2}$. So let's pick $x_0 = 1.4$
+and start iterating.
+
+Iteration 1:
+\[x_0 = 1.4\]
+\[p_1 = \frac{2 - 1.4^2}{2 \cdot 1.4} \approx 0.014285714285714379\]
+\[x_1 = x_0 + p_1 \approx 1.414285714285714379\]
+
+Iteration 2:
+\[p_2 = \frac{2 - 1.414285714285714379^2}{2 \cdot 1.414285714285714379} \approx -0.00007215007215011227\]
+\[x_2 = x_1 + p_2 \approx 1.4142135642135643\]
+
+Iteration 3:
+\[p_3 = \frac{2 - 1.4142135642135643^2}{2 \cdot 1.4142135642135643} \approx -1.8404691290714918 \cdot 10^{-9}\]
+\[x_3 = x_2 + p_3 \approx 1.4142135623730951\]
+
+Since $p_3 < 10^{-8}$, $x_3$ is out final approximation of the root ($\sqrt{2}$).
+
+Note: I used a calculator and had to manually type the numbers above, so if there
+are any typos/mistakes, I apologize.
+
+\newpage
+
+\textbf{M6.} Essay on Modern Mathematics Proposal
+
+Lincoln Sand
+
+Working title: Infinity and Sets: George Cantor's Controversial Set theory
+
+Essay topic description: I want to write about the birth of set theory by George Cantor
+and its controversy.
+
+Interesting fact: Cantor came up with the idea of different "sizes"
+of infinity with his famous diagonal argument
+(to prove there were more reals than rationals).
+
+Style manual I will use:
+
+MLA
+
+Two internet references:
+
+1. Ferreirós, J. (2020, June 18). The early development of set theory. Stanford Encyclopedia of Philosophy. https://plato.stanford.edu/entries/settheory-early/ 
+
+2. Set theory from Cantor to Cohen. (n.d.). https://booksite.elsevier.com/samplechapters/9780444516213/sample.pdf
+
+Two journal/book references:
+
+1. Zenkin, Alexander (2004), "Logic Of Actual Infinity And G. Cantor's Diagonal Proof Of The Uncountability Of The Continuum", The Review of Modern Logic, vol. 9, no. 30, pp. 27-80
+
+2. https://www.math.uwaterloo.ca/~xzliu/cantor-set.pdf
+
+(will figure out how to MLA citate this second source properly later)
+
+
+\end{document}

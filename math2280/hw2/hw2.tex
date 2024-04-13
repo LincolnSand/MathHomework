@@ -1,0 +1,308 @@
+\documentclass{article}
+
+\usepackage{amsfonts}
+\usepackage{graphicx}
+\usepackage{amssymb}
+\usepackage{amsmath}
+
+\setlength\parindent{18pt}
+
+\begin{document}
+
+
+Textbook Section 1.3:
+
+12) $\frac{dy}{dx} = x \cdot ln(y)$; $y(1) = 1$
+
+$x \cdot ln(y)$ is continuous on the open $x$ interval $(0, \infty)$,
+which contains $x = 1$.
+$\therefore$ a solution does exist.
+Now for uniqueness:
+\[\frac{\partial f}{\partial y} = x/y\]
+
+$\frac{\partial f}{\partial y}$ is continuous on the open $x$ interval
+$(0, \infty)$, which also contains $x = 1$ and $y = 1$.
+$\therefore$ the solution is unique.
+
+$\exists$ a unique solution for the differential equation with
+the initial starting value of $y(1) = 1$.
+
+
+13) $\frac{dy}{dx} = \sqrt[3]{y}$; $y(0) = 1$
+
+$\sqrt[3]{y}$ is continuous on the open $x$ interval $(-\infty, \infty)$,
+which contains $x = 0$.
+$\therefore$ a solution does exist.
+Now for uniqueness:
+\[\frac{\partial f}{\partial y} = \frac{1}{3}y^{-\frac{2}{3}}\]
+\[= \frac{1}{3 \cdot y^{\frac{2}{3}}}\].
+$\frac{1}{3 \cdot y^{\frac{2}{3}}}$ is not continuous at $x = 0$,
+$\therefore$ the solution is not guaranteed to be unique.
+
+
+17) $y \frac{dy}{dx} = x-1$; $y(0) = 1$
+
+\[y \frac{dy}{dx} = x-1
+\implies \frac{dy}{dx} = \frac{x-1}{y}\]
+
+$\frac{x-1}{y}$ in continuous on the open $x$ interval $(-\infty, \infty)$,
+which contains $x = 0$.
+$\therefore$ a solution does exist.
+Now for uniqueness:
+\[\frac{\partial f}{\partial y} = \frac{1-x}{y^2}\]
+This is continuous on the open $x$ interval $(-\infty, \infty)$,
+which contains $x = 0$.
+$\therefore$ the solution is unique.
+
+$\exists$ a unique solution for the differential equation with
+the initial starting value of $y(0) = 1$.
+
+
+Textbook Section 1.4:
+
+34) (Population growth) In a certain culture of bacteria, the number
+of bacteria increased sixfold in 10h. How long did it take the
+population to double?
+
+Let $r$ be the growth constant in hours.
+
+\[r^{10} = 6
+\implies ln(r^{10}) = ln(6)
+\implies 10 \cdot ln(r) = ln(6)
+\implies ln(r) = \frac{ln(6)}{10}\]
+\[\implies r = e^{\frac{ln(6)}{10}}
+\implies r \approx 1.196\]
+
+Now, let's find the time when it doubles.
+
+\[r^t = 2
+\implies ln(r^t) = ln(2)
+\implies t \cdot ln(r) = ln(2)
+\implies t = \frac{ln(2)}{ln(r)}\]
+\[\implies t \approx 3.869\]
+
+The bacteria colony population doubles after approximately $3.869$ hours.
+
+
+Textbook Section 1.5:
+
+8) $3xy' + y = 12x$
+
+We have to use the integrating factor method.
+\[3xy' + y = 12x
+\implies y' + \frac{1}{3x}y = 4
+\implies P(x) = \frac{1}{3x}; Q(x) = 4\]
+
+\[M(x) = \int P(x) dx
+\implies M(x) = \int \frac{1}{3x} dx
+\implies M(x) = \frac{1}{3} \cdot ln(|3x|)\]
+\[\implies M(x) = ln(|\sqrt[3]{3x}|)\]
+
+\[y(x) = \frac{4}{|\sqrt[3]{3x}|} \cdot \int |\sqrt[3]{3x}| dx\]
+
+For $x \geq 0$:
+
+\[y(x) = \frac{4}{\sqrt[3]{3x}} \cdot \int \sqrt[3]{3x} dx\]
+
+
+For $x < 0$:
+
+\[y(x) = \frac{4}{-\sqrt[3]{3x}} \cdot \int -\sqrt[3]{3x} dx
+\implies y(x) = \frac{4}{\sqrt[3]{3x}} \cdot \int \sqrt[3]{3x} dx\]
+
+
+
+So, $y(x) = \frac{4}{\sqrt[3]{3x}} \cdot \int \sqrt[3]{3x} dx$
+
+
+
+\[\int \sqrt[3]{3x} dx = \frac{3}{12} \cdot (3x)^{\frac{4}{3}} + C\]
+
+\[y(x) = \frac{4}{\sqrt[3]{3x}} \cdot (\frac{3}{12} \cdot (3x)^{\frac{4}{3}} + C)
+\implies y(x) = 3x + \frac{4 \cdot C}{\sqrt[3]{3x}}\]
+
+\[\therefore y(x) = 3x + \frac{4 \cdot C}{\sqrt[3]{3x}}.\]
+
+
+14) $xy' - 3y = x^3; y(1) = 10$
+
+\[xy' - 3y = x^3
+\implies y' - \frac{3}{x}y = x^2
+\implies P(x) = -\frac{3}{x}; Q(x) = x^2\]
+
+\[M(x) = \int P(x) dx
+\implies M(x) = -3 \cdot \int \frac{1}{x} dx
+\implies M(x) = ln(|x^{-3}|)\]
+
+\[y(x) = |x^3| \cdot \int |\frac{1}{x^3}| \cdot x^2 dx\]
+
+The sign will cancel from the absolute value like in $x$, so we get:
+
+\[y(x) = x^3 \cdot \int \frac{1}{x^3} \cdot x^2 dx
+\implies y(x) = x^3 \cdot \int \frac{1}{x} dx
+\implies y(x) = x^3 \cdot (ln|x| + C)\]
+
+\[y(1) = 1^3 \cdot (ln|x| + C)
+\implies y(1) = C = 10
+\implies C = 10\]
+
+\[\therefore y(x) = x^3 \cdot (ln|x| + 10)\]
+
+
+29) Express the general solution of $\frac{dy}{dx} = 1 + 2xy$ in
+terms of the error function
+
+\[erf(x) = \frac{2}{\sqrt{\pi}} \cdot \int_{0}^{x} e^{-t^2} dt.\]
+
+\[\frac{dy}{dx} = 1 + 2xy
+\implies y' - 2xy = 1
+\implies P(x) = -2x; Q(x) = 1\]
+
+\[M(x) = \int -2x dx
+\implies M(x) = -x^2\]
+
+\[y(x) = e^{x^2} \cdot \int \frac{1}{e^{x^2}} dx\]
+
+\[\int \frac{1}{e^{x^2}} dx
+= \int e^{-x^2} dx
+= \frac{\sqrt{\pi}}{2} erf(x) + C\]
+
+\[e^{x^2} = \frac{\sqrt{\pi}}{2} \cdot \frac{1}{\frac{d}{dx} erf(x)}\]
+
+\[y(x) = e^{x^2} \cdot (\frac{\sqrt{\pi}}{2} erf(x) + C)
+\implies y(x) = \frac{\sqrt{\pi}}{2} \cdot \frac{1}{\frac{d}{dx} erf(x)} \cdot (\frac{\sqrt{\pi}}{2} erf(x) + C).\]
+
+
+34) Consider a resevoir with a volume of 8 billion cubic feet ($ft^3$)
+and an initial pollutant concentration of 0.25\%. There is a daily
+inflow of 500 million $ft^3$ of water with a pollutant
+concentration of 0.05\% and an equal daily output of the well-mixed
+water in the resevoir. How long will it take to reduce the pollutant
+concentration in the resevoir to 0.10\%?
+
+Let $V_0 = 8$
+
+Let $Poll_0 = 0.25\% \cdot V_0 = 0.02$
+
+Let $\frac{dPoll}{dt} = 0.5 \cdot 0.05\% - 0.5 \cdot \frac{Poll}{8}
+= 0.00025 - \frac{1}{16} \cdot Poll$
+
+\[\frac{dPoll}{dt} = 0.00025 - \frac{1}{16} \cdot Poll
+\implies \frac{dPoll}{dt} + \frac{1}{16} \cdot Poll = 0.00025\]
+\[\implies P(x) = \frac{1}{16} = 0.0625; Q(x) = 0.00025\]
+
+\[M(x) = \int P(x) dx
+\implies M(x) = \int 0.0625 dx
+\implies M(x) = 0.0625x\]
+
+\[Poll(x) = \frac{1}{e^{0.0625x}} \cdot \int e^{0.0625x} \cdot 0.00025 dx\]
+\[\implies Poll(x) = \frac{0.00025}{0.0625 \cdot e^{0.0625x}} \cdot (e^{0.0625x} + C)\]
+\[\implies Poll(x) = \frac{0.00025}{0.0625} + \frac{0.00025 \cdot C}{0.0625 \cdot e^{0.0625x}}\]
+
+\[Poll(0) = 0.004 + 0.004 \cdot \frac{C}{e^{0.0625 \cdot 0}}
+= 0.004 + 0.004 \cdot C
+= 0.004 \cdot (C + 1)\]
+
+\[0.004 \cdot (C + 1) = 0.02
+\implies C + 1 = 5
+\implies C = 4\]
+
+\[Poll(x) = 0.004 + \frac{0.016}{e^{0.0625 \cdot x}}\]
+
+\[Poll(x) = 0.10\% \cdot 8 = 0.008\]
+
+\[0.004 + \frac{0.016}{e^{0.0625 \cdot x}} = 0.008
+\implies \frac{0.016}{e^{0.0625 \cdot x}} = 0.004
+\implies \frac{1}{e^{0.0625 \cdot x}} = 0.25\]
+
+\[\implies e^{-0.0625 \cdot x} = 0.25
+\implies -0.0625 \cdot x = ln(0.25)
+\implies x = \frac{ln(0.25)}{-0.0625} \approx 22.181\]
+
+It will take approximately $22.181$ days for the pollutant concentration
+in the resevoir to reach $0.10\%$.
+
+
+36) A tank initially contains 60 gal of pure water. Brine
+containing 1lb of salt per gallon enters the tank at 2 gal/min, and
+the (perfectly mixed) solution leaves the tank at 3 gal/min; thus the tank
+is empty after exactly 1h.
+
+a) Find the amount of salt in the tank after t minutes.
+
+$\frac{dS}{dt} = 2 - 3 \cdot \frac{S}{60-t}$
+
+\[\frac{dS}{dt} = 2 - 3 \cdot frac{S}{60-t}
+\implies \frac{dS}{dt} + \frac{3}{60-t} S = 2\]
+\[\implies P(t) = \frac{3}{60-t}; Q(t) = 2\]
+
+\[M(t) = 3 \cdot \int \frac{1}{60-t} dt
+\implies M(t) = ln((60-x)^3)\]
+
+\[S(x) = 2 \cdot (60-x)^{-3} \cdot \int (60-x)^3 dx
+\implies S(x) = 2 \cdot (60-x)^{-3} \cdot (-\frac{60-x}{4} + C)\]
+\[\implies S(x) = -\frac{1}{2}(60-x)^{-2} + 2 \cdot C \cdot (60-x)^{-3}\]
+
+\[S(0) = -\frac{1}{2}(60-x)^{-2} + 2 \cdot C \cdot (60-x)^{-3} = 0
+\implies 2 \cdot C \cdot (60)^{-3} = \frac{1}{2}(60)^{-2}\]
+\[\implies C = \frac{60}{4} = 15\]
+
+\[S(x) = -\frac{1}{2}(60-x)^{-2} + 2 \cdot 15 \cdot (60-x)^{-3}
+\implies S(x) = -\frac{1}{2}(60-x)^{-2} + 30 \cdot (60-x)^{-3}\]
+
+\[\therefore S(x) = -\frac{1}{2}(60-x)^{-2} + 30 \cdot (60-x)^{-3}\]
+
+
+b) What is the maximum amount of salt ever in the tank?
+
+\[\frac{dS}{dt} = 0
+\implies 2 - 3 \cdot (-\frac{1}{2}(60-x)^{-2} + 30 \cdot (60-x)^{-3}) = 0\]
+\[\implies -\frac{1}{2}(60-x)^{-2} + 30 \cdot (60-x)^{-3} = \frac{2}{3}
+\implies x \approx 56.513\]
+
+\[S(56.513)\] is the maximum value of salt in the container.
+
+
+I think my answer for a is wrong, but I've redone this problem like 4 times
+and kept finding arithmetic and other nonsense errors,
+but I can't find anymore, so I'm leaving it as is.
+
+
+Textbook section 2.1:
+
+1) $\frac{dy}{dt} = x - x^2; x(0) = 2$
+
+12) The time rate of change of an alligator population $P$
+in a swamp is proportional to the square of P. The swamp
+contained a dozen alligators in 1988, two dozen in 1998.
+When will there be four dozen alligators in the swamp?
+What happens thereafter?
+
+24) Suppose that a community contains 15,000 people who are
+susceptible to Michaud's syndrome, a contagious disease. At
+time $t = 0$ the number $N(t)$ of people who have developed
+Michaud's syndrome is 5000 and is increasing at the rate of 500
+per day. Assume that $N'(t)$ is proportional to the product
+of the numbers of those who have caught the disease and those
+who have not. How long will it take for another 5000
+people to develop Michaud's syndrome?
+
+
+Custom problem:
+
+\[\frac{dy}{dx} = y^2; y(1) = 2\]
+
+a)
+\[\frac{dy}{dx} = y^2
+\implies y^{-2}dy = dx
+\implies \int y^{-2} dy = \int dx
+\implies -\frac{1}{y} = x + C\]
+\[\implies \frac{1}{y} = C - x
+\implies y = \frac{1}{C-x}\]
+
+b) It fails because there is no open
+continuous interval for $y(x)$ where $x = \frac{3}{2}$ is continuous
+(it is not included in the maximal interval of existence).
+
+
+\end{document}

@@ -1,0 +1,180 @@
+\documentclass{article}
+
+\usepackage{amsfonts}
+\usepackage{graphicx}
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage{listings}
+\usepackage{hyperref}
+
+
+\DeclareMathOperator{\sech}{sech}
+\newcommand{\NN}{\mathbb{N}}
+\newcommand{\RR}{\mathbb{R}}
+\newcommand{\QQ}{\mathbb{Q}}
+\newcommand{\ZZ}{\mathbb{Z}}
+\newcommand{\dV}{\;\mathrm{d}V}
+\newcommand{\dA}{\;\mathrm{d}A}
+\newcommand{\dx}{\;\mathrm{d}x}
+\newcommand{\dy}{\;\mathrm{d}y}
+\newcommand{\dz}{\;\mathrm{d}z}
+\newcommand{\cA}{\mathcal{A}}
+\newcommand{\Bb}{\mathcal{B}}
+\newcommand{\Ww}{\mathcal{W}}
+\newcommand{\Dd}{\mathcal{D}}
+\newcommand{\Ss}{\mathcal{S}}
+\newcommand{\Ee}{\mathcal{E}}
+\DeclareMathOperator{\im}{im}
+
+\tolerance=1
+\emergencystretch=\maxdimen
+\hyphenpenalty=10000
+\hbadness=10000
+
+\setlength\parindent{18pt}
+
+\begin{document}
+
+\Large{Lincoln Sand}
+
+\normalsize{}
+
+\textbf{F1.}
+
+\textbf{90.7}:
+
+Let us denote the following:
+
+EFGH as the rectangle on the left side.
+
+ABEF as the rectangle on the right side.
+
+ABML as the figure on the bottom right side.
+
+
+Let us note the following relations of areas:
+
+Area of GDFH = Area of EFGH + Area of ABEF + Area of BEFG
+
+Area of BEFG = Area of GDFH - (Area of EFGH + Area of ABEF)
+
+Area of ABML = Area of GDFH - Area of BEFG
+
+
+Given the fact that the area of BEFG is calculated by subtracting the areas of
+EFGH and ABEF from the areas of GDFH, and the area of ABML is the remaining part
+of GDFH after subtracting BEFG, we get that:
+
+Area of BEFG = Area of ABML
+
+
+\textbf{90.10}:
+
+Let us denote the following:
+
+The whole line as c.
+
+One segment as a.
+
+The other segment as b.
+
+i.e. c = a + b
+
+The proposition gives us that:
+
+$4 \cdot (a + b) \cdot a + b^2 = (a + c)^2$
+
+Using the above substitution of $c = a + b$ yields:
+
+$4 \cdot (a + b) \cdot a + b^2 = (2a + b)^2$
+
+Expanding the square gives:
+
+$4 \cdot (a + b) \cdot a + b^2 = 4a^2 + 4ab + b^2$
+
+Distributing the $4a$ gives:
+
+$4a^2 + 4ab + b^2 = 4a^2 + 4ab + b^2$
+
+I know I should also generate a diagram, but I didn't like how it turned out.
+
+\textbf{90.19}:
+
+963 and 657:
+
+\[963 = 657 \cdot 1 + 306\]
+\[657 = 306 \cdot 2 + 45\]
+\[306 = 45 \cdot 6 + 36\]
+\[45 = 36 \cdot 1 + 9\]
+\[36 = 9 \cdot 4 + 0\]
+
+So, the answer is 9.
+
+2689 and 4001:
+
+\[4001 = 2689 \cdot 1 + 1312\]
+\[2689 = 1312 \cdot 2 + 65\]
+\[1312 = 65 \cdot 20 + 12\]
+\[65 = 12 \cdot 5 + 5\]
+\[12 = 5 \cdot 2 + 2\]
+\[5 = 2 \cdot 2 + 1\]
+\[2 = 1 \cdot 2 + 0\]
+
+So, the answer is 1.
+
+\textbf{F2.}
+
+For the Euclidean algorithm for gcd(a, b).
+
+We get:
+
+\[a = b q_1 + r_1\]
+\[b = r_1 q_2 + r_2\]
+\[r_1 = r_2 q_3 + r_3\]
+\[\vdots\]
+\[r_{n-2} = r_{n-1} q_n + r_n\]
+\[r_{n-1} = r_n q_{n+1} + 0\]
+
+We can work backwards and rewrite it into the form:
+
+\[r_{n-1} = r_n q_{n+1}\]
+\[r_n = r_{n-2} - r_{n-1} q_n\]
+\[\vdots\]
+\[r_2 = b - r_1 q_2\]
+\[r_1 = a - b q_1\]
+
+Through substitution, we arrive at being able to express $r_n$ in terms of $m a + n b$
+where $m$ and $n$ are some integers.
+
+\textbf{F3.}
+
+We know from above that $gcd(a, b) = m a + n b$.
+
+For $a x + b y = c$ with integer coefficients:
+
+If $gcd(a, b)$ divides c, then $\exists k \in \ZZ$ such that:
+
+$c = k \cdot gcd(a, b)$
+
+Substituting in what we know from above into this equation gives:
+
+$c = k(m a + n b)$
+
+$c = (k m) a + (k n) b$
+
+This shows that $x = k m$ and $y = k n$ are integer solutions to the equation
+$a x + b y = c$.
+
+Therefore, $a x + b y = c$ has an integer solution if and only if gcd(a, b) divides c.
+
+\textbf{F4.}
+
+$gcd(12, 15) = 3$
+
+From above, we know that gcd(a, b) must divide c.
+
+But 3 does not divide 1.
+
+Therefore, the equation has no integer solution.
+
+\end{document}

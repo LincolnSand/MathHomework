@@ -1,0 +1,231 @@
+\documentclass[12]{amsart}
+\usepackage{amssymb}
+\usepackage{eucal}
+\usepackage{amscd}
+\usepackage{graphicx}
+\usepackage{mathtools}
+\usepackage{xcolor}
+\usepackage{bm}
+
+
+
+\newtheorem{thm}{Theorem}
+\newtheorem*{extracredit}{Extra Credit Problem}
+\newtheorem{lem}[thm]{Lemma}
+\newtheorem{cor}[thm]{Corollary}
+\newtheorem{pro}[thm]{Proposition}
+\theoremstyle{definition}
+\newtheorem{rem}[thm]{Remark}
+
+\newtheorem{exm}[thm]{Example}
+\newtheorem{xca}{Problem}
+\newcommand{\probl}{Problem}
+\newtheorem*{exer}{\probl}
+\newenvironment{exercise}[1]{\renewcommand{\probl}{#1}\begin{exer}}
+{\end{exer}}
+\newcommand{\be}{\begin{equation*}}
+\newcommand{\ee}{\end{equation*}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\cl}{\overline}
+\newcommand{\sskip}{\newpage}
+\newcommand{\norm}[1]{\lVert#1\rVert}
+\newcommand{\m}[1]{$ #1 $}
+\newcommand{\lskip}{\bigskip}
+
+
+\DeclareMathOperator{\im}{im} \DeclareMathOperator{\rank}{rank}
+\DeclareMathOperator{\Mor}{Mor} \DeclareMathOperator{\coker}{coker}
+\DeclareMathOperator{\supp}{supp} \DeclareMathOperator{\For}{For}
+\DeclareMathOperator{\Hom}{Hom} \DeclareMathOperator{\End}{End}
+\DeclareMathOperator{\Int}{Int} \DeclareMathOperator{\order}{order}
+\DeclareMathOperator{\ad}{ad} \DeclareMathOperator{\Ad}{Ad}
+\DeclareMathOperator{\GL}{GL} \DeclareMathOperator{\SL}{SL}
+\DeclareMathOperator{\SO}{SO} \DeclareMathOperator{\Sp}{Sp}
+\DeclareMathOperator{\SU}{SU} \DeclareMathOperator{\tr}{tr}
+\DeclareMathOperator{\Aut}{Aut} \DeclareMathOperator{\re}{Re}
+\DeclareMathOperator{\imag}{Im} \DeclareMathOperator{\Card}{Card}
+\newcommand{\Sd}{\ensuremath{\surd}}
+
+
+\begin{document}
+
+\centerline{ \bf Math 3220-1: Homework 6, due 02/28/2024}
+\bigskip
+\centerline{ \bf Show all work. Homework has to be uploaded to GradeScope.}
+\bigskip
+\noindent Name (PRINT): Lincoln Sand\hskip 2.5in ID: u1358804
+\smallskip
+
+\hrule
+
+\bigskip
+\begin{xca}
+Let $B_1(\textbf{0})$ be the open unit ball in $\R^2$. Is it true that every continuous function $f:B_1(\textbf{0})\to\R$ maps Cauchy sequence into Cauchy sequences? Justify your answer.
+\end{xca}
+
+Yes, it is true that every continuous function $f : B_1(0) \to \R$ maps
+Cauchy sequences into Cauchy sequences.
+
+Let $\{x_n\}$ be a Cauchy sequence in $B_1(0)$. Since $f$ is continuous,
+for any $\epsilon > 0$, $\exists$ $\delta > 0$ such that if $||x - x_0|| < \delta$,
+then $|f(x) - f(x_0)| < \epsilon$.
+
+Given that $\{x_n\}$ is a Cauchy sequence, for any $\epsilon > 0$,
+$\exists$ an $N$ such that if $\forall m, n \geq N$, $||x_m - x_n|| < \delta$.
+Because $f$ is continuous, this implies that $\forall m, n \geq N$,
+$|f(x_m) - f(x_n)| < \epsilon$. Therefore, the sequence $\{f(x_n)\}$
+is also a Cauchy sequence.
+
+\sskip
+
+
+\begin{xca} %4
+Let $X$ and $Y$ be metric spaces and $f:X\to Y$. Assume that $X$ is a union of two closed sets $C$ and $D$. Assume also that
+$$
+f|_{C}:C\to Y \text{ and } f|_{D}:D\to Y
+$$
+are continuous functions. Prove that $f:X\to Y$ is continuous. Here $f|_{C}$ and $f|_{D}$ denote the restrictions of $f$ to $C$ and $D$, respectively.
+
+\noindent (Hint: Prove that for every closed set $E\subset Y$ the set $f^{-1}(E)$ is closed in $X$.)
+\end{xca}
+
+For the restrictions $f|_{C}$ and $f|_{D}$, continuity means that for every closed set
+$E \subset Y$, $(f|_{C})^{-1}(E) = f^{-1}(E) \cap C$ and
+$(f|_{D})^{-1}(E) = f^{-1}(E) \cap D$ are closed in $C$ and $D$, respectively.
+Since $C$ and $D$ are closed in $X$, their intersection with any closed set in $X$
+is also closed in $X$.
+
+Consider any closed set $E \subset Y$. We need to show that $f^{-1}(E)$
+is closed in $X$. By the continuity of $f|_{C}$ and $f|_{D}$,
+we know that $(f|_{C})^{-1}(E)$ and $(f|_{D})^{-1}(E)$ are closed in $X$.
+Since $f^{-1}(E) = (f^{-1}(E) \cap C) \cup (f^{-1}(E) \cap D)$,
+and both $(f^{-1}(E) \cap C)$ and $(f^{-1}(E) \cap D)$ are closed in $X$,
+their union, $f^{-1}(E)$, is also closed in $X$.
+
+Therefore, since the pre-image of every closed set $E$ in $Y$ under $f$ is closed in $X$,
+$f$ is continuous.
+
+\sskip
+
+
+\begin{xca}
+Consider the function $f:\R^2\to\R$ define by
+$$
+f(x,y)=
+\begin{cases}
+xy &\text{if $xy>0$}\\
+0 &\text{if $xy\leq 0$}.
+\end{cases}
+$$
+At which points of $\R^2$ is this function continuous?
+\end{xca}
+
+$xy > 0$ in two regions: the first quadrant $(x > 0, y > 0)$
+and the third quadrant $(x < 0, y < 0)$.
+In these regions, $f(x, y) = xy$, which is a polynomial in $x$ and $y$.
+Polynomials are continuous everywhere, so $f$ is continuous in these regions.
+
+$xy \leq 0$ in the second quadrant $(x < 0, y > 0)$,
+the fourth quadrant $(x > 0, y < 0)$, and along the axes $(x = 0 \text{ or } y = 0)$.
+In these regions, $f(x, y) = 0$, which is continuous. So, the function is continuous
+within these regions.
+
+Now we need to exame the boundaries of where the function switches definitions.
+
+First, let's examine the axes excluding the origin
+($x = 0$ or $y = 0$, but not $x, y = 0$).
+
+The limit as either $x$ approaches $0$ or $y$ approaches $0$ of $xy$
+is $0$, which matches the constant function definition, so the function is continuous
+at these boundaries.
+
+Now let's handle the origin. For the points approaching from the first and
+third quadrants, the value $f(x, y)$ depends on the product $xy$, which approaches
+$0$ as $(x, y)$ approaches $(0, 0)$. And for the other two quadrants, the value
+is the constant function $0$. Therefore, since the limit $f(x, y)$
+as $(x, y)$ approaches $(0, 0)$ is $0$ from every direction, the function
+is continuous at the origin.
+
+Thus, the function $f$ is continuous at all points in $\R^2$.
+
+\sskip
+
+
+\begin{xca}
+Is the function $f:\R^2-\{(2,0)\}\to \R$ defined by
+
+$$
+f(x,y)=\frac{1}{(x-2)^2+y^2}
+$$
+uniformly continuous on $B_1(0,0)$? Is it uniformly continuous on $B_2(0,0)$? Justify your answers.
+\end{xca}
+
+Uniform continuity on $B_1(0, 0)$:
+
+$B_1(0. 0)$ is the open ball of radius 1 centered at $(0, 0)$.
+Within this ball, $f(x, y)$ is defined and continuous since the point
+$(2, 0)$, where $f$ is not defined, is outside of $B_1(0, 0)$.
+
+Given the form of $f(x, y)$, it's clear that as $(x, y)$ moves within $B_1(0, 0)$,
+the denominator $(x-2)^2 + y^2$ stays away from $0$, ensuring that $f$
+does not approach infinity and remains bounded.
+
+Since $f$ is continuous on a compact set, and because the function does not approach
+its undefined point within $B_1(0, 0)$, it is uniformly continuous
+on $B_1(0, 0)$ by the Heine-Cantor theorem, which states that a continuous
+function on a compact set is uniformly continuous.
+
+Uniform continuity on $B_2(0, 0)$:
+
+$B_2(0, 0)$ is the open ball of radius 2 centered at $(0, 0)$. The point $(2, 0)$
+is on the boundary of this ball, and as $(x, y)$ approaches $(2, 0)$
+from within $B_2(0, 0)$, the denominator $(x-2)^2 + y^2$ approaches $0$,
+causing $f(x, y)$ to approach infinity.
+
+The closer $(x, y)$ gets to $(2, 0)$ within $B_2(0, 0)$,
+the larger $f(x, y)$ becomes, which suggests that the changes in $f(x, y)$
+can be arbitrarily large for small changes in $(x, y)$ near $(2, 0)$.
+This behavior violates the criteria for uniform continuity since no single
+$\delta$ can work $\forall$ $\epsilon > 0$ near the point $(2, 0)$.
+
+Conclusion:
+
+$f(x, y)$ is uniformly continuous on $B_1(0, 0)$, but not on $B_2(0, 0)$.
+
+\sskip
+
+
+\begin{xca}
+Show that the function $f:\R\to\R$ defined by $f(x)=x^3$ is not uniformly continuous.
+\end{xca}
+
+To prove that $f(x) = x^3$ is not uniformly continuous, we can choose
+specific values of $x$ and $y$ that depend on $\delta$ to show that the condition for
+uniform continuity is violated.
+
+Let's choose $x = a$ and $y = a + \delta/2$ for some $a \in \R$ and $\delta > 0$.
+Clearly, $|x - y| = |a - (a + \delta/2)| = \delta/2 < \delta$, so the condition
+$|x - y| < \delta$ is satisfied.
+
+Now, we compute $|f(x) - f(y)|$:
+\[|f(x) - f(y)| = |x^3 - y^3| = |a^3 - (a + \delta/2)^3|\]
+Expanding $(a + \delta/2)^3$, we get:
+\[\left|a^3 - \left(a^3 + \frac{3}{2} a^2 \delta + \frac{3}{4} a \delta^2 + \frac{1}{8} \delta^3\right)\right|\]
+\[= \left|\frac{3}{2} a^2 \delta + \frac{3}{4} a \delta^2 + \frac{1}{8} \delta^3\right|\]
+
+For any given $\epsilon > 0$, we can choose $a$ large enough such that the absolute
+difference $\left|\frac{3}{2} a^2 \delta + \frac{3}{4} a \delta^2 + \frac{1}{8} \delta^3\right|$
+exceeds $\epsilon$, regardless of how small $\delta$ is chosen. This is because
+as $a$ becomes very large, the term $\frac{3}{2} a^2 \delta$ dominates
+and its magnitude can be made to exceed any fixed $\epsilon$.
+
+Therefore, no matter how small $\delta$ is chosen, we can always find
+points $x$ and $y$ such that $|x - y| < \delta$, but $|f(x) - f(y)|$
+can be made larger than any given $\epsilon$ by choosing $a$ sufficiently large.
+This shows that $f(x) = x^3$ is not uniformly continuous on $\R$.
+
+\end{document}

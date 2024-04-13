@@ -1,0 +1,212 @@
+\documentclass{article}
+
+\usepackage{amsfonts}
+\usepackage{graphicx}
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage{listings}
+\usepackage{hyperref}
+
+
+\DeclareMathOperator{\sech}{sech}
+\newcommand{\NN}{\mathbb{N}}
+\newcommand{\RR}{\mathbb{R}}
+\newcommand{\QQ}{\mathbb{Q}}
+\newcommand{\ZZ}{\mathbb{Z}}
+\newcommand{\dV}{\;\mathrm{d}V}
+\newcommand{\dA}{\;\mathrm{d}A}
+\newcommand{\dx}{\;\mathrm{d}x}
+\newcommand{\dy}{\;\mathrm{d}y}
+\newcommand{\dz}{\;\mathrm{d}z}
+\newcommand{\cA}{\mathcal{A}}
+\newcommand{\Bb}{\mathcal{B}}
+\newcommand{\Ww}{\mathcal{W}}
+\newcommand{\Dd}{\mathcal{D}}
+\newcommand{\Ss}{\mathcal{S}}
+\newcommand{\Ee}{\mathcal{E}}
+\DeclareMathOperator{\im}{im}
+
+\tolerance=1
+\emergencystretch=\maxdimen
+\hyphenpenalty=10000
+\hbadness=10000
+
+\setlength\parindent{18pt}
+
+\begin{document}
+
+\Large{Lincoln Sand}
+
+
+\textbf{I1.}
+
+\textbf{226.2}:
+
+We look for a number $x$ such that $x^2$ is less than or equal to $1428$. Here, $x = 37$,
+$37^2 = 1369$.
+We have a remainder of $59$.
+
+Bring down the next pair to get $5984$.
+
+Double $37$ to get $p = 74$.
+We will find an $x$ such that $(740 + x) \cdot x$ is less than or equal to $5984$.
+$x = 8$ with $748 \cdot 8 = 5984$.
+Subtract the result to get a remainder of $0$.
+
+Append $8$ to $37$ to get $378$.
+
+The square root of $142884$ is $378$.
+
+
+\textbf{226.3}:
+
+Find $x$ such that $x^2 \leq 12$, so $x = 3$.
+Subtract $9$ from $12$ to get a remainder of $3$.
+
+Bring down the next pair to get $381$.
+
+Double $3$ to get $6$. Find $x$ such that $(60 + x) \cdot x \leq 381$.
+So, $x = 5$, giving $65 \cdot 5 = 325$.
+Subtract $325$ from $381$ to get a remainder of $56$.
+Append $5$ to $3$ to get $35$.
+
+Bring down the next pair to get $5629$.
+
+Double $35$ to get $70$.
+Find $x$ such that $(700 + x) \cdot x \leq 5629$.
+So, $x = 7$ giving $707 \cdot 7 = 4949$.
+Subtract $4949$ from $5629$ to get a remainder of $680$.
+Append $7$ to $35$ to get $357$.
+
+Bring down the last pair to get $68004$.
+
+Double $357$ to get $714$. Find $x$ such that $(7140 + x) \cdot x \leq 68004$.
+So, $x = 9$ because $7149 \cdot 9 = 64341$.
+Subtract $64341$ from $68004$ to get a remainder of $3663$.
+Append $9$ to $357$ to get $3579$.
+
+Thus, the square root of $12812904$ is $3579$ with remainder $3663$.
+
+
+\textbf{226.6}:
+
+We will convert these into number of reservoirs filled per day.
+
+$R_1 = 3$, $R_2 = 1$, $R_3 = \frac{2}{5}$, $R_4 = \frac{1}{3}$, $R_5 = \frac{1}{5}$.
+
+Combined rate = $\frac{74}{15}$ reservoirs per day.
+
+Thus, the time to fill one reservoir is $\frac{15}{74}$ days.
+
+
+\textbf{226.8}:
+
+\[s_6 = \sqrt{\frac{3}{4}}\]
+
+\[s_{2n} = \sqrt{\frac{1}{2} - \sqrt{\frac{1}{4} - \left(\frac{s_n}{2}\right)^2}}\]
+\[S_{2n} = 2n \cdot s_{2n}\]
+
+So,
+\[S_{6} = 5.196152422706632\]
+\[S_{12} = 6.0\]
+\[S_{24} = 6.2116570824605\]
+\[S_{48} = 6.265257226562474\]
+\[S_{96} = 6.278700406093744\]
+
+
+\textbf{226.16}:
+
+Let's denote the side of the square city as $s$. The diagonal $d$ of the square city can be calculated
+using $d = s \sqrt{2}$.
+
+So, the total path the person views the tree from can be expressed as $d + 20$ and using the Pythagorean theorem:
+\[(s+14)^2 + 1775^2 = (d+20)^2\]
+\[(s+14)^2 + 1775^2 = (s \sqrt{2} + 20)^2\]
+
+Solving for $s$ gives $-20 \sqrt{2} + 14 + \sqrt{3151417 - 560 \sqrt{2}} \approx 1760.72$ pu.
+
+
+\textbf{226.18}:
+
+Consider the triangles $KEF$ and $KCD$, so $\frac{\text{KE}}{\text{KC}} = \frac{\text{FE}}{\text{DC}}$.
+
+Plugging in the values gives:
+\[\text{DC} = 10 + \frac{3}{4} \text{EC}\]
+
+Consider the triangles $GEH$ and $GCD$, so $\frac{\text{GE}}{\text{GC}} = \frac{\text{FE}}{\text{DC}}$.
+
+Plugging in the values gives:
+\[600 \text{DC} = 453 \text{EC} + 2265\]
+
+Plugging the first equation into the second gives:
+\[\text{EC} = 1245\]
+
+Plugging this back in gives:
+\[\text{DC} = 943 \frac{3}{4}\]
+
+
+\textbf{226.19}:
+
+We can turn this into a system of equations.
+
+Let $x$ be a unit of good grain, let $y$ be a unit of ordinary grain, and let $z$ be a unit of worst grain.
+
+\[2x + 1y = 1\]
+\[3y + 1z = 1\]
+\[4z + 1x = 1\]
+
+Solving this gives:
+$x = \frac{9}{25}$, $y = \frac{7}{25}$, $z = \frac{4}{25}$.
+
+
+\newpage
+
+
+\textbf{I2.} Essay on Renaissance Mathematics
+
+Lincoln Sand
+
+Working title: Bhaskara II and the Foundations of Calculus
+
+Essay topic description:
+
+I want to write an essay about Bhaskaracharya's concepts of instantaneous
+motion, especially since it predated Newton and Leibniz.
+I want to explore his work with infinitesimals.
+
+
+Interesting fact:
+
+His work contained much of the elements and intuitions of modern
+integral calculus, yet it predated its traditional discovery by Newton and Leibniz
+by several centuries.
+He invented an early form of Rolle's theorem.
+
+Style manual I will use:
+
+MLA
+
+Two internet references:
+
+1.
+
+Bhāskara II: The great indian mathematician. Cuemath. (n.d.). https://www.cuemath.com/learn/bhaskara-ii/ 
+
+2.
+
+Encyclopædia Britannica, inc. (n.d.). Bhāskara II. Encyclopædia Britannica. https://www.britannica.com/biography/Bhaskara-II 
+
+1.
+
+Datta, B. and A. N. Singh. Use of Calculus in Hindu Mathematics. Indian Journal of History of Sciences 19.2 (1984): 95–104.
+
+2.
+
+Srinivasiengar, C. N. The History of Ancient Indian Mathematics. Calcutta: World Press, 1967.
+
+
+NOTE: I may end up changing my book references later.
+
+
+
+\end{document}

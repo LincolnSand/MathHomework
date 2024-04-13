@@ -1,0 +1,182 @@
+\documentclass{article}
+
+\usepackage{amsfonts}
+\usepackage{graphicx}
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage{listings}
+\usepackage{hyperref}
+
+
+\DeclareMathOperator{\sech}{sech}
+\newcommand{\NN}{\mathbb{N}}
+\newcommand{\RR}{\mathbb{R}}
+\newcommand{\QQ}{\mathbb{Q}}
+\newcommand{\ZZ}{\mathbb{Z}}
+\newcommand{\dV}{\;\mathrm{d}V}
+\newcommand{\dA}{\;\mathrm{d}A}
+\newcommand{\dx}{\;\mathrm{d}x}
+\newcommand{\dy}{\;\mathrm{d}y}
+\newcommand{\dz}{\;\mathrm{d}z}
+\newcommand{\cA}{\mathcal{A}}
+\newcommand{\Bb}{\mathcal{B}}
+\newcommand{\Ww}{\mathcal{W}}
+\newcommand{\Dd}{\mathcal{D}}
+\newcommand{\Ss}{\mathcal{S}}
+\newcommand{\Ee}{\mathcal{E}}
+\DeclareMathOperator{\im}{im}
+
+\tolerance=1
+\emergencystretch=\maxdimen
+\hyphenpenalty=10000
+\hbadness=10000
+
+\setlength\parindent{18pt}
+
+\begin{document}
+
+\Large{Lincoln Sand}
+
+
+\textbf{K1.}
+
+\textbf{263.23}:
+
+The following are the Brahmagupta to find the next solution:
+\[x_2 = \frac{x_1 \cdot 9 + 1 \cdot y_1}{2}\]
+\[y_2 = \frac{y_1 \cdot 9 + 83 \cdot x_1 \cdot 1}{2}\]
+
+Plugging in $(x_1, y_1) = (1, 9)$ gives $(9, 82)$.
+
+Check answer:
+\[83 \cdot 9^2 + 1 = 6724\]
+\[82^2 = 6724\]
+
+
+\textbf{263.24}:
+
+Let's plug:
+\[u_1 = \frac{1}{2} uv(v^2 + 1)(v^2 + 3)\]
+\[v_1 = (v^2 + 2)\left(\frac{1}{2}(v^2 + 1)(v^2 + 3) - 1\right)\]
+
+into $Dx^2 + 1 = y^2$.
+
+Now, let's expand $D u_1^2 + 1 = v_1^2$.
+
+This gives us:
+\[D\left(\frac{1}{2} uv(v^2+1)(v^2+3)\right)^2 = \left(\left(v^2+2\right)\left(\frac{1}{2}(v^2+1)(v^2+3)-1\right)\right)^2\]
+
+With algebraic manipulation, these probably cancel out, but I don't want to
+fill this with pages of nasty algebra.
+
+For the integer part, note that $u_1$ and $v_1$ are constructed using addition
+and multiplication on $u$ and $v$. And the $\frac{1}{2}$ cancels because of the
+even terms in the products. Thus, $u_1$ and $v_1$ are integers if $u$ and $v$
+are, regardless of parity.
+
+
+\textbf{263.25}:
+
+We get the following formulas:
+\[u_1 = \frac{1}{2} uv(v^2 + 1)(v^2 + 3)\]
+\[v_1 = (v^2 + 2)\left(\frac{1}{2}(v^2 + 1)(v^2 + 3) - 1\right)\]
+
+Substituting in $(u, v) = (1, 3)$ gives us $(180, 649)$.
+
+Check answer:
+\[13 \cdot 180^2 + 1 = 421201\]
+\[649^2 = 421201\]
+
+
+\textbf{318.1}:
+
+$8023 \cdot 8 = 64184$
+
+$8023 \cdot 3 = 24069$, shifted one place to the left: $240690$
+
+$8023 \cdot 6 = 48138$, shifted two places to the left: $4813800$
+
+$8023 \cdot 4 = 32092$, shifted three places to the left: $32092000$
+
+$64184 + 240690 + 4813800 + 32092000 = 37210674$
+
+Checking answer: $8023 \cdot 4638 = 37210674$.
+
+
+\textbf{318.11}:
+
+Base case:
+
+\[1^3 = 1^2 = 1\]
+
+Inductive case:
+
+Assume:
+
+\[\sum_{i=1}^k i^3 = \left(\sum_{i=1}^k i\right)^2\]
+
+Want to show:
+
+\[\sum_{i=1}^{k+1} i^3 = \left(\sum_{i=1}^{k+1} i\right)^2\]
+
+The left hand side gives:
+\[\left(\sum_{i=1}^k i\right)^2 + (k+1)^3\]
+
+The right hand side gives:
+\[\left(\frac{(k+1)(k+2)}{2}\right)\]
+
+So, we have:
+\[\left(\sum_{i=1}^k i\right)^2 + (k+1)^3 = \left(\frac{(k+1)(k+2)}{2}\right)\]
+
+This reduces to:
+\[\left(\sum_{i=1}^k i\right)^2 = \left(\frac{k(k+1)}{2}\right)\]
+
+which is true by the assumption.
+
+Comparison with Al-Karaji's Proof:
+
+Al-Karaji didn't use induction. Instead he relied on geometric properties and
+represented numbers using dots to represent cubes and squares.
+
+
+\textbf{K2.}
+
+Bhaskara II's method is analogue to the quadratic formula.
+By plugging in given constants, we get that:
+\[x = \pm \frac{\sqrt{83y^2 - 83}}{83}\]
+
+This gives some specific integer solutions of $(-9, 82)$, $(0, 1)$, and $(9, 82)$.
+
+
+\textbf{K3.}
+
+The formula is:
+\[f(x) = f(a) + (x-a)\frac{\nabla f(a)}{\nabla x} + \frac{(x-a)(x-a-\nabla x)}{2!} \frac{\nabla^2 f(a)}{(\nabla x)^2}\]
+
+where $f(x)$ is the function we want to interpolate, $f(a)$ is the function
+value at the nearest known point below $x$, $\nabla f(a)$ is the first difference
+at $a$, and $\nabla^2 f(a)$ is the second difference at $a$.
+
+Looking at the table, the closest known angles to $100^\circ$ are $90^\circ$,
+(which corresponds to $900$ minutes) and $112.5^\circ$
+(which corresponds to $1125$ minutes).
+
+Since $100^\circ$ is $1000$ minutes, we will interpolate between
+$900$ minutes and $1125$ minutes. The known sine values are $890$ for $900$
+minutes and $1105$ for $1125$ minutes. The first difference is the difference
+between $1125$ and $900$ minutes. The second difference is the difference
+of the first differences.
+
+We calculate the second difference by looking at the pattern in the
+"Sine Difference" column.
+
+Since the radius RR is given as $3438$,
+the values in the "Sine" column are actual sine values
+multiplied by the radius.
+
+The estimated value for $\sin(100^\circ)$ works out to
+approximately $986.05$. Dividing by $R$ ($3438$) gives us
+$0.2868$.
+
+
+\end{document}

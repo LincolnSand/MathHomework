@@ -1,0 +1,222 @@
+\documentclass[answers]{exam}
+\title{Foundations of Analysis, HW 9}
+\author{James Cameron}
+\date{}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{graphicx}
+\usepackage{amsthm}
+
+\newtheorem{thm}{Theorem}
+\newtheorem{hthm}[thm]{*Theorem}
+\newtheorem{lemma}[thm]{Lemma}
+\newtheorem{cor}[thm]{Corollary}
+\newtheorem{obs}[thm]{Observation}
+\newtheorem{prop}[thm]{Proposition}
+\newtheorem{con}[thm]{Conjecture}
+\newtheorem{exer}[thm]{Exercise}
+
+\newtheorem{scho}[thm]{Scholium}
+\newtheorem*{Thm}{Theorem}
+\newtheorem*{Con}{Conjecture}
+\newtheorem*{Axiom}{Axiom}
+
+\theoremstyle{remark}
+\newtheorem{remark}[thm]{Remark}
+\newtheorem{notation}[thm]{Notation}
+
+
+\theoremstyle{definition}
+\newtheorem{Def}[thm]{Definition}
+\newtheorem{example}[thm]{Example}
+\newtheorem{ques}[thm]{Question}
+\everymath{\displaystyle}
+
+\pagestyle{head}
+\header{\bfseries\large Foundations of Analysis}{\bfseries\large Homework 9 \ifprintanswers (solutions) \fi}{\bfseries\large Fall, 2023}
+\headrule
+
+\DeclareMathOperator{\sech}{sech}
+\newcommand{\NN}{\mathbb{N}}
+\newcommand{\RR}{\mathbb{R}}
+\newcommand{\QQ}{\mathbb{Q}}
+\newcommand{\ZZ}{\mathbb{Z}}
+\newcommand{\dV}{\;\mathrm{d}V}
+\newcommand{\dA}{\;\mathrm{d}A}
+\newcommand{\dx}{\;\mathrm{d}x}
+\newcommand{\dy}{\;\mathrm{d}y}
+\newcommand{\dz}{\;\mathrm{d}z}
+\pointname{}
+\newcommand{\cA}{\mathcal{A}}
+\newcommand{\Bb}{\mathcal{B}}
+\newcommand{\Ww}{\mathcal{W}}
+\newcommand{\Dd}{\mathcal{D}}
+\newcommand{\Ss}{\mathcal{S}}
+\newcommand{\Ee}{\mathcal{E}}
+\DeclareMathOperator{\im}{im}
+\begin{document}
+% \maketitle
+
+
+% \noindent
+ This is due Saturday 11/11 by 11:59 pm on Gradescope. Please either neatly write up your solutions or type them up. You can find a .tex template on Canvas. Your proofs should be written in complete sentences and paragraphs, using a combination of words and symbols. They should be \textbf{correct, clear, and concise}. You will be graded on all three, especially the first two!
+
+\noindent
+
+
+\begin{questions}
+
+ \question
+\begin{parts}
+\part[2] Consider $f(x)= \begin{cases}
+x \sin (1/x) &x \not=0 \\
+0 &x=0
+\end{cases}$.
+
+Is $f$ differentiable at $0$?
+\begin{solution}
+
+The limit definition of the derivative at $x = 0$ gives:
+\[\lim_{h \to 0} \sin(\frac{1}{h})\]
+
+This does not give us a finite number as we take the limit, it just oscilates
+faster as we approach 0, therefore the limit does not exist.
+
+Therefore, no, f is not differentiable at 0.
+
+\end{solution}
+
+\part[2] Consider $f(x)= \begin{cases}
+x^2 \sin (1/x) &x \not=0 \\
+0 &x=0
+\end{cases}$.
+
+Is $f$ differentiable at $0$?
+\begin{solution}
+
+The limit definition of the derivative at $x = 0$ gives:
+\[\lim_{h \to 0} h \sin(\frac{1}{h})\]
+
+Evaluating this limit gives us a finite value of 0 because we are multiplying
+0 times some arbitrary number.
+
+Since the limit converges to a finite fixed number, it exists.
+
+Therefore, yes, f is differentiable at 0.
+
+\end{solution}
+\end{parts}
+\question[4] Suppose that $f: (a,b) \to \RR$ is differentiable at $c \in (a,b)$ and that $f'(c)>0$. Show that there is some $\delta >0$ such that for all $x,y \in (a,b)$ with $x<c<y$ and $|x-c|< \delta$ and $|y-c|< \delta$ we have $f(x)<f(c)< f(y)$. \textbf{Note}: We are not assuming that $f$ is differentiable on all of $(a,b)$, we are only assuming differentiability at $c$.
+\begin{solution}
+
+Because f is differentiable at c, that means that for any $\epsilon > 0$,
+$\exists \delta > 0$ such that $\forall x$ with $|x-c| < \delta$,
+$\left| \frac{f(x)-f(c)}{x-c} - f'(c) \right| < \epsilon$.
+
+Since $f'(c) > 0$, we can choose a small $\epsilon$ so that
+$\frac{f(x)-f(c)}{x-c}$ is positive. This implies that f(x)
+and f(c) are either both increasing or both decreasing as $x \to c$.
+
+Now, for any two points x, y such that $x < c < y$
+and $|x-c| < \delta$, $|y-c| < \delta$, $\exists$ a point
+z and x and y such that $f'(z) = \frac{f(y)-f(x)}{y-x}$.
+We want to show that $f(x) < f(c) < f(y)$ for these x and y.
+
+Combining the above, we get that $f(y) > f(x)$.
+
+Differentiability at c implies continuity at c.
+Therefore, there is an interval around c where f(x) is increasing.
+
+Thus, for $x < c < y$, if $x, y$ are within $\delta$ of c, then
+$f(x) < f(c) < f(y)$.
+
+$\qed$
+
+\end{solution}
+
+\question[4] Suppose that $f:(a,b) \to \RR$ differentiable on $(a,b)$, and that for $x,y \in (a,b)$ with $x<y$ we have that $f'(x)$ and $f'(y)$ have different signs (i.e. one is positive and one is negative). Show that there  is some $c$ with $x<c<y$ and $f'(c)=0$. \textbf{Hint:} This would follow from the IVT if we knew that $f'$ was continuous, but we don't know that $f'$ is continuous! Instead use the extreme value theorem and the previous problem.
+\begin{solution}
+
+Note: EVT = Extreme Value Theorem
+
+Since f is differentiable on (a, b), it is also continuous on (a, b).
+By the EVT, f attains its maximum and minimum on the closed interval [x, y].
+Furthermore, f must attain its minimum and maximum either at a critical point
+or at the endpoints: x and/or y.
+
+Recall from the previous problem that if f is differentiable at some point
+c in an interval and $f'(c) > 0$, then $\exists$ a $\delta > 0$
+such that $f(x) < f(c) < f(y)$ $\forall x, y$ in the interval
+where $x < c < y$ and $|x-c| < \delta$, $|y-c| < \delta$.
+Also, if $f'(c) < 0$, then $f(y) < f(c) < f(x)$.
+
+First, let's note that f'(c) and f'(y) have different signs.
+Let's assume $f'(x) < 0$ and $f'(y) > 0$.
+
+That means that it is increasing near x and decreasing near y.
+That means that it cannot attain its maximum and minimum points at both
+x and y.
+
+That means there must be at least one critical point $c \in (x, y)$
+(i.e. $f'(c) = 0$).
+
+$\qed$
+
+\end{solution}
+
+\question[4] Suppose that $f:(a,b) \to \RR$ is continuous and differentiable on $(a,b)$, and that for $x,y \in (a,b)$ with $x<y$  there is some $z$ between $f'(x)$ and $f'(y)$. Show that there is a $c$ with $x\le c \le y$ with $f'(c)=z$. \textbf{Remark and Hint:} This says that $f'$ satisfies the conclusion of the intermediate value theorem, even though $f'$ is not necessarily continuous. To show this, use the previous problem and a technique similar to how we used Rolle's theorem to prove the mean value theorem.
+\begin{solution}
+
+Let us construct a new function g on the interval [x, y]
+such that g is continuous on [x, y] and differentiable
+on (x, y). For the sake of this proof, we can choose g
+to be $g(t) = f(t) - zt$
+
+Now, let's compute the derivative of g.
+We have $g'(t) = f'(t) - z$
+
+Goal: Show $\exists c \in (x, y)$ such that $g'(c) = 0$,
+i.e. $f'(c) = z$.
+
+Since f'(x) and f'(y) are such that z lies between them,
+either $f'(x) < z < f'(y)$ or $f'(y) < z < f'(x)$.
+This means that g'(x) and g'(y) have different signs.
+
+Recall from the previous problem that if a function is differentiable
+on an interval and the endpoints of a subinterval have different signs,
+then $\exists$ at least one point within that subinterval where the
+derivative equals 0.
+
+For g, this means that $\exists c \in (x, y)$
+where $g'(c) = 0$, i.e. $f'(c) = z$.
+
+$\qed$
+
+\end{solution}
+
+\question[4] Give an example of a function $f:(a,b) \to \RR$ that is not the derivative of any function. \textbf{Hint:} By the previous problem, if you have a function that doesn't satisfy the conclusion of the intermediate value theorem it is not the derivative of any function.
+\begin{solution}
+
+To provide an example of a function $f:(a, b) \to \RR$ that is not
+the derivative of any function, we need to construct a function
+that does not satisfy the conclusion of the IVT. This means that
+f must not take on all intermediate values between any two of its values.
+
+A function that fulfills these requirements is a function
+with a jump discontinuity.
+
+For instance,
+\[f(x) = \begin{cases}
+    1 & x < c \\
+    -1 & x > c
+\end{cases}\]
+where $c \in (a, b)$.
+
+This function doesn't satisfy IVT because there isn't a point in (a, b)
+where f(x) has a value between (not inclusive) -1 and 1.
+Since it doesn't satisfy IVT, it isn't the derivative of any function
+on (a, b).
+
+\end{solution}
+\end{questions}
+\end{document}

@@ -1,0 +1,175 @@
+\documentclass{article}
+
+\usepackage{amsfonts}
+\usepackage{graphicx}
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage{listings}
+
+
+\DeclareMathOperator{\sech}{sech}
+\newcommand{\NN}{\mathbb{N}}
+\newcommand{\RR}{\mathbb{R}}
+\newcommand{\QQ}{\mathbb{Q}}
+\newcommand{\ZZ}{\mathbb{Z}}
+\newcommand{\dV}{\;\mathrm{d}V}
+\newcommand{\dA}{\;\mathrm{d}A}
+\newcommand{\dx}{\;\mathrm{d}x}
+\newcommand{\dy}{\;\mathrm{d}y}
+\newcommand{\dz}{\;\mathrm{d}z}
+\newcommand{\cA}{\mathcal{A}}
+\newcommand{\Bb}{\mathcal{B}}
+\newcommand{\Ww}{\mathcal{W}}
+\newcommand{\Dd}{\mathcal{D}}
+\newcommand{\Ss}{\mathcal{S}}
+\newcommand{\Ee}{\mathcal{E}}
+\DeclareMathOperator{\im}{im}
+
+
+\setlength\parindent{18pt}
+
+\begin{document}
+
+1) Beck Exercise 12.1. Find a dual problem to the convex problem
+\[min x_1^2 + 0.5x_2^2 + x_1 x_2 - 2x_1 - 3x_2\]
+\[s.t. x_1 + x_2 \leq 1\]
+Find the optimal solutions of both the dual and primal problems.
+
+The Lagrangian of this problem is given by:
+\[L(x, \lambda) = f(x) + \lambda g(x) = x_1^2 + 0.5x_2^2 + x_1 x_2 - 2x_1 - 3x_2 + \lambda (x_1 + x_2 - 1)\]
+
+The dual function is obtained by miniziming the Lagrangian with respect to $x$.
+We need to find $\theta(\lambda) = \min_x L(x, \lambda)$. This involves differentiating
+$L$ with respect to $x_1$ and $x_2$, setting the derivatives to zero, and solving
+for $x_1$ and $x_2$.
+
+The dual problem is given by:
+\[maximize \theta(\lambda)\]
+subject to
+\[\lambda \geq 0.\]
+
+The dual function is:
+\[\theta(\lambda) = \lambda(2 - \lambda) + 4 \lambda + 8(1-0.25 \lambda)^2 - 13\]
+The solutions for $x_1$ and $x_2$ in terms of $\lambda$ are:
+\[x_1 = -1, x_2 = 4 - \lambda\]
+
+The optimal solution for the dual problem is found when $\lambda = 2$, and
+the optimal value of the dual problem is $-3$.
+
+For the primal problem, the optimal solutions are $x_1 = -1$ and $x_2 = 2$.
+The optimal value of the problem is also $-3$.
+
+Since they're the same value, this demonstrates strong duality.
+
+
+2) Beck Exercise 12.3. Consider the problem
+\[min x_1^2 + 2x_2^2 + 2x_1 x_2 + x_1 - x_2 - x_3\]
+\[s.t. x_1 + x_2 + x_3 \leq 1\]
+\[x_3 \leq 1\]
+
+a) Is the problem convex?
+
+The matrix representing the quadratic terms of the objective function
+is positive semidefinite, which confirms that the objective function is convex.
+And since the constraints are linear, they define a convex set. Therefore,
+the given problem is a convex optimzation problem.
+
+b) Find an optimal solution of the problem.
+
+We solve this by formulating the Lagrangian and then solving for the critical points.
+
+The optimal solution for the problem is:
+\[x_1 = -1, x_2 = 1, x_3 = 1\]
+with the Lagrange multipliers:
+\[\lambda_1 = -1, \lambda_2 = 2\]
+
+But note that the negative value for $\lambda$ is not valid in this context
+since Lagrange multipliers associated with inequality constraints must be non-negative.
+This means the solution might not satisfy the KKT conditions, indicating a potential issue
+with the solution or the constraints.
+
+c) Find a dual problem and solve it.
+
+The dual function $\theta(\lambda_1, \lambda_2)$ is obtained by miniziming
+the Lagrangian with respect to $x_1$, $x_2$, and $x_3$.
+The dual problem then involves maximizing this dual function subject to
+$\lambda_1 \geq 0$ and $\lambda_2 \geq 0$.
+
+
+3) Beck Exercise 12.15. Let $a_1, a_2, \dots, a_m \in \RR^n$ and $b_1, b_2, \dots, b_m \in \RR$ and consider the problem of finding the so called analytic center of the polytope $S = \{x \ in \RR^n : a_i^T x < b_i, b = 1, \dots, m\}$ given by
+(A) \[min \left\{ - \sum_{i=1}^m log(b_i - a_i^T x) : x \in S \right\}.\]
+Find a dual problem to (A). Hint: introduce an auxiliary variable $y = b - Ax$ and add this as a constraint.
+
+We can rewrite the primal problem using the auxiliary variable $y$ as:
+\[min \left\{-\sum_{i=1}^{m} \log(y_i) : Ax + y = b, y > 0\right\}.\]
+
+The Lagrangian $L(x, y, \lambda)$ can be written as:
+\[L(x, y, \lambda) = -\sum_{i=1}^{m} \log(y_i) + \sum_{i=1}^{m} \lambda_i(a_i^T x + y_i - b_i)\]
+
+The dual function is obtained by miniziming this Lagrangian with respect to the primal
+variables $x$ and $y$. This involves solving:
+\[\theta(\lambda) = \min_{x, y} L(x, y, \lambda)\]
+subject to $y_i > 0$.
+
+The dual problem then is to maximize this dual function:
+\[\max_{\lambda} \theta(\lambda)\]
+subject to $\lambda_i \geq 0$ for all $i$.
+
+
+4) The goal in this problem is to prove convergence of the interior point method for a convex optimization problem with inequality constraints,
+(1a) \[\min_{x \in \RR^n} f(x)\]
+(1b) \[s.t. g_i(x) \leq 0, i = 1, \dots, m.\]
+We assume $f, g_i$ for $i = 1, \dots, m$ are convex and twice continuously differentiable on $\RR^n$ and that an optimal solution, $x^{*}$, exists with $f(x^{*}) = f^{*}$. We also assume the constraint set satisfies Slater's condition. In this case, there exists a dual optimal $\lambda_{*} \in \RR_{+}^m$ which together with $x^{*}$ satisfy the KKT conditions
+(2a) \[\nabla f(x^{*}) + \sum_{i=1}^m \lambda_i^{*} \nabla g_i(x^{*}) = 0\]
+(2b) \[\lambda_i^{*} g_i(x^{*}) = 0, i = i, \dots, m\]
+(2c) \[g_i(x^{*}) \leq 0, i = 1, \dots, m\]
+(2d) \[\lambda^{*} \geq 0.\]
+In the interior point method, we replace the primal problem by
+(3) \[\min_{x \in \RR^n} t f(x) + \phi(x)\]
+where $\phi(x) = - \sum_{i=1}^m log(-g_i(x))$ and $t > 0$ is a large parameter. We denote the optimal solution of (3) by $x_t^{*}$.
+
+a) Show that $\phi : \RR^n \to \RR$ is a convex function on
+\[dom(\phi) = \{x \in \RR^n : g_i(x) < 0, i = 1, \dots, m\}.\]
+
+The function $\phi(x) = -\sum_{i=1}^{m} \log(-g_i(x))$ is defined on the domain
+$dom(\phi) = \{x \in \RR^n : g_i(x) < 0, i = 1, \dots, m\}$. To show that $\phi$ is convex
+on this domain, we need to demonstrate that the Hessian of $\phi(x)$ is positive semidefinite
+on $dom(\phi)$.
+
+Given that $g_i(x)$ are convex functions, $-g_i(x)$ are concave. The logarithm function
+is concave and increasing, and the composition of a concave increasing function with
+a concave function is concave. Hence, $\log(-g_i(x))$ is concave, and
+$-\log(-g_i(x))$ is convex. The sum of convex functions is convex, so $\phi(x)$
+is convex on its domain.
+
+b) Using the introduced notation, write the Lagrangian and give the definition of the dual function for (1).
+
+For the problem (1), the Lagrangian $L(x, \lambda)$ is given by:
+\[L(x, \lambda) = f(x) + \sum_{i=1}^{m} \lambda_i g_i(x)\]
+The dual function is the infimum of the Lagrangian over x:
+\[d(\lambda) = \inf_{x \in \RR^n} L(x, \lambda)\]
+
+c) Write the first order optimality condition for (3).
+
+For the modified problem (3), the first order optimality condition (the gradient
+of the objective function equals zero) at the optimal point $x_t^{*}$ is:
+\[t \nabla f(x_t^{*}) + \nabla \phi(x_t^{*}) = 0\]
+where $\nabla \phi(x_t^{*}) = - \sum_{i=1}^{m} \frac{1}{g_i(x_t^{*})} \nabla g_i(x_t^{*})$.
+
+d) Define $\tilde(\lambda) \in \RR_{+}^m$ by
+\[\tilde(\lambda_i) = -\frac{1}{t g_i(x_t^{*})}, i = 1, \dots, m\]
+By evaluating the dual function at $\tilde{\lambda}$, conclude that $f(x_t^{*}) - f^{*} \leq m/t$, i.e., $x_t^{*}$ is no more than $m/t$-suboptimal.
+
+Define $\tilde{\lambda_i} = -\frac{1}{t g_i(x_t^{*})}$. Substituting this into the
+dual function and considering the first order optimality condition, we get:
+\[t \nabla f(x_t^{*}) = \sum_{i=1}^{m} \frac{1}{g_i(x_t^{*})} \nabla g_i(x_t^{*}) = 0\]
+Multiplying both sides by $x_t^{*} - x^{*}$ and rearranging, we obtain:
+\[t(f(x_t^{*}) - f^{*}) = \sum_{i=1}^{m} \frac{1}{-g_i(x_t^{*})} \nabla g_i(x_t^{*})^T (x_t^{*} - x^{*})\]
+
+Since $x^{*}$ and $x_t^{*}$ satisfy the KKT conditions and the functions $f$ and $g_i$
+are convex, the right-hand side is non-positive. This implies:
+\[f(x_t^{*}) - f^{*} \leq \frac{m}{t}\]
+
+Therefore, the solution $x_t^{*}$ is no more than $m/t$-suboptimal.
+
+\end{document}

@@ -1,0 +1,193 @@
+\documentclass{article}
+
+\usepackage{amsfonts}
+\usepackage{graphicx}
+\usepackage{amssymb}
+\usepackage{amsmath}
+
+
+\setlength\parindent{18pt}
+
+\begin{document}
+
+Homework Excercises:
+
+1) Beck Excercise 2.2.
+Let $a \in \mathbb{R}^n$ be a non-zero vector. Show that the maximum of $a^{T}x$
+over $B[0, 1] = \{x \in \mathbb{R}^n : \lVert x \rVert \leq 1\}$ is attained at
+$x = \frac{1}{\lVert a \rVert}a$ and that the maximal value is $\lVert a \rVert$.
+
+Let us first consider the case where $x = \frac{1}{\lVert a \rVert}a$,
+if the norm here is taken to be the euclidean norm (p = 2 norm), then
+$a^{T} x = a^{T} \frac{1}{\lVert a \rVert}a = \frac{1}{\lVert a \rVert} a^{T}a$
+
+$a^{T} a = a \cdot a = {\lVert a \rVert}^2$
+
+$\implies \frac{1}{\lVert a \rVert} a^{T}a =
+\frac{1}{\lVert a \rVert} {\lVert a \rVert}^2$
+$ = \lVert a \rVert$.
+
+So, we've shown that if $x = \frac{1}{\lVert a \rVert} a$, then the maximum value
+is indeed $\lVert a \rVert$. Now we need to show that the maximum truly is obtained
+at $x = \frac{1}{\lVert a \rVert} a$.
+
+
+First of all, $|x|$ must be a vector with a norm of exactly 1.
+This is the case because if it had a norm below 1, it would be an internal point.
+And if we take a vector of norm < 1 and take its dot product with a non-zero real vector,
+then its value will necessarily be less than the same vector if its norm was 1.
+For instance, let's consider a vector of norm $b$ where $b < 1$. Let $a = \frac{1}{b}$
+so that $a \cdot b = 1$. Since $b$ is strictly less than 1,
+$a$ will always be strictly greater than 1. And when we do a dot product,
+we would end up with:
+$v_1 \cdot v_2$
+vs $a \cdot v_1 \cdot v_2$
+where $v_1$ is the vector with norm of $b$ and $v_2$ is any non-zero real vector.
+Since we showed that $a$ is greater than 1 and $v_1 \cdot v_2$ is a real number,
+then $a \cdot v_1 \cdot v_2$ will always be a larger number if $v_1 \cdot v_2$
+is positive.
+
+And for obvious reasons we can discard all of the points that result in a negative value
+when the dot product is taken with $a$ (since $\exists$ a
+point in the unit ball where it will be positive).
+
+Since the norm of the boundary points of the unit ball is exactly 1,
+the best we can hope for is a maximum value of ${\lVert a \rVert}$
+since if all the values are added together to make a positive number,
+it won't affect the norm of $a$, only the sign.
+
+And since $a \cdot a$ will always result in a positive value,
+then we can conclude that $a = \frac{1}{\lVert a \rVert}a$
+is in fact the value that yields the maximum value in the closed unit ball
+when taking the dot product with some non-zero real vector $a$.
+
+
+2) Beck Excercise 2.6. Let $B \in \mathbb{R}^{n \times k}$
+and let $A = BB^{T}$.
+
+i) Prove that $A$ is positive semidefinite.
+
+$BB^{T}$ will necessarily be positive semidefinite because of the fact
+that the entries of the resulting matrix is made up of the squares of the
+input matrices. This is the case since matrix multiplication is
+made by multiplying the entries of the columns in the rhs matrix by the
+entries of the rows of the lhs matrix and a transpose of a matrix
+turns all the columns into rows (and vice versa). And since a
+square of a real number is always postitive,
+then all of the entries of the resulting matrix are positive.
+This is similar to how $x^2 \geq 0$.
+
+
+ii) Prove that $A$ is positive defininite if and only if
+B has a full row rank.
+
+Since we are required to have all positive eigenvalues,
+the only way we wouldn't in this case is if we have eigenvalues of $0$.
+This is only possible if the matrix is not linearly independent.
+
+$\therefore$ $A$ is positive defininite if and only if
+B has a full row rank.
+
+
+3) Beck Excercise 2.10. Let $A^{\alpha}$ be the $n \times n$
+matrix ($n > 1$) defined by
+
+\[A_{ij}^{\alpha} = \begin{cases}
+    \alpha & i = j \\
+    1 & i \neq j
+\end{cases}.\]
+
+Show that $A^{\alpha}$ is positive semidefinite if
+and only if $\alpha \geq 1$.
+
+This forms a matrix that has entries of $1$ everywhere except for the main diagonal,
+which has entries of $\alpha$. If the main diagonal entries are $1$ (equal to all
+other entries in the matrix), we will get eigenvalues of $0$. But if we have entries
+greater than $1$, they will be positive, and if they are less than $1$, then they must
+be negative.
+
+And since positive semidefinite requires us to have all non-negative eigenvalues,
+this can only occur if the main diagonal is greater than or equal to all the
+other entries of the matrix. Thus, the main diagonal entries must
+be greater than or equal to $1$. Which means that $\alpha \geq 1$.
+
+
+4) Beck Excercise 2.14 (Schur complement lemma). Let
+
+\[D = \begin{pmatrix}
+    A & b \\
+    b^{T} & c
+\end{pmatrix},\]
+
+where $A \in \mathbb{R}^{n \times n}, b \in \mathbb{R}^{n}, c \in \mathbb{R}.$
+Suppose that $A \succ 0$. Prove that $D \succeq 0$ if and only if
+$c - b^{T}A^{-1}b \geq 0$.
+
+$A \succ 0 \implies b^{T}A^{-1}b > 0$
+
+$c - b^{T}A^{-1}b \geq 0 \implies c \geq b^{T}A^{-1}b$
+
+$\implies c > 0$
+
+That means the main diagonal of $D$ must be positive or
+part of an already positive definite matrix's main diagonal.
+This means that $D$ must be positive semidefinite since the newly
+introduced eigenvalue not present in $A$ has to be greater than or equal to $0$.
+
+
+5) Beck Excercise 2.17 (iv and v). For each of the following functions,
+find all the stationary points and classify them according to whether
+they are saddle points, strict/non-strict local/global minimum/maximum points:
+
+iv) $f(x_1, x_2) = x_1^4 + 2x_1^2 x_2 + x_2^2 - 4x_1^2 - 8x_1 - 8x_2$.
+
+$\nabla f(x_1, x_2) = (4x_1^3 + 4x_1 x_2 + 8x_1 - 8, 2x_1^2 + 2x_2^2 - 8)$
+
+$ = (4(x_1^3 + x_1 x_2) + 8(x_1 - 1), 2(x_1^2 + x_2^2) - 8)$
+
+
+$4(x_1^3 + x_1 x_2) + 8(x_1 - 1) = 0
+\implies (x_1^3 + x_1 x_2) + 2(x_1 - 1) = 0
+\implies x_1^3 + x_1 x_2 + 2x_1 = 1
+\implies x_1(x_1^2 + x_2 + 2) = 1
+\implies x_1(\frac{4}{x_2^2} + x_2 + 2) = 1$
+
+$2(x_1^2 + x_2^2) - 8 = 0
+\implies 2(x_1^2 + x_2^2) = 8
+\implies x_1^2 + x_2^2 = 4
+\implies x_1^2 = \frac{4}{x_2^2}$
+
+Don't know what to do next for $iv)$.
+
+
+
+v) $f(x_1, x_2) = (x_1 - 2x_2)^4 + 64x_1 x_2$.
+
+$\nabla f(x_1, x_2) = (4(x_1 - 2x_2)^3 + 64x_2, -8(x_1 - 2x_2)^3 + 64x_1)$
+
+Let $u = (x_1 - 2x_2)^3$.
+
+$(4(x_1 - 2x_2)^3 + 64x_2, -8(x_1 - 2x_2)^3 + 64x_1)
+= (4u + 64x_2, -8u + 64x_1)$
+
+$4u + 64x_2 = 0
+\implies 4u = -64x_2
+\implies -8u = 128x_2$
+
+$-8u + 64x_1 = 0
+\implies 8u = 64x_1
+\implies 4u = 32x_1$
+
+$\implies (4u + 64x_2, -8u + 64x_1) = (32x_1 + 64x_2, 128x_2 + 64x_1)$
+
+$32x_1 + 64x_2 = 0
+\implies x_1 + 2x_2 = 0$
+
+$128x_2 + 64x_1 = 0
+\implies 2x_2 + x_1 = 0$
+
+
+If $x_1 = -2x_2$, then it is a stationary point.
+
+
+\end{document}

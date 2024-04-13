@@ -1,0 +1,221 @@
+\documentclass[answers]{exam}
+\title{Foundations of Analysis, HW 3}
+\author{James Cameron}
+\date{}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{graphicx}
+\usepackage{amsthm}
+
+\newtheorem{thm}{Theorem}
+\newtheorem{hthm}[thm]{*Theorem}
+\newtheorem{lemma}[thm]{Lemma}
+\newtheorem{cor}[thm]{Corollary}
+\newtheorem{obs}[thm]{Observation}
+\newtheorem{prop}[thm]{Proposition}
+\newtheorem{con}[thm]{Conjecture}
+\newtheorem{exer}[thm]{Exercise}
+
+\newtheorem{scho}[thm]{Scholium}
+\newtheorem*{Thm}{Theorem}
+\newtheorem*{Con}{Conjecture}
+\newtheorem*{Axiom}{Axiom}
+
+\theoremstyle{remark}
+\newtheorem{remark}[thm]{Remark}
+\newtheorem{notation}[thm]{Notation}
+
+
+\theoremstyle{definition}
+\newtheorem{Def}[thm]{Definition}
+\newtheorem{example}[thm]{Example}
+\newtheorem{ques}[thm]{Question}
+\everymath{\displaystyle}
+
+\pagestyle{head}
+\header{\bfseries\large Foundations of Analysis}{\bfseries\large Homework 5 \ifprintanswers (solutions) \fi}{\bfseries\large Fall, 2023}
+\headrule
+
+\DeclareMathOperator{\sech}{sech}
+\newcommand{\NN}{\mathbb{N}}
+\newcommand{\RR}{\mathbb{R}}
+\newcommand{\QQ}{\mathbb{Q}}
+\newcommand{\ZZ}{\mathbb{Z}}
+\newcommand{\dV}{\;\mathrm{d}V}
+\newcommand{\dA}{\;\mathrm{d}A}
+\newcommand{\dx}{\;\mathrm{d}x}
+\newcommand{\dy}{\;\mathrm{d}y}
+\newcommand{\dz}{\;\mathrm{d}z}
+\pointname{}
+\newcommand{\cA}{\mathcal{A}}
+\newcommand{\Bb}{\mathcal{B}}
+\newcommand{\Ww}{\mathcal{W}}
+\newcommand{\Dd}{\mathcal{D}}
+\newcommand{\Ss}{\mathcal{S}}
+\newcommand{\Ee}{\mathcal{E}}
+\DeclareMathOperator{\im}{im}
+\begin{document}
+
+
+This is due Saturday 10/7 by 11:59 pm on Gradescope. Please either neatly write up your solutions or type them up. You can find a .tex template on Canvas. Your proofs should be written in complete sentences and paragraphs, using a combination of words and symbols. They should be \textbf{correct, clear, and concise}. You will be graded on all three, especially the first two!
+
+\noindent
+
+
+\begin{questions}
+
+\question There is a one-to-one and onto function $\NN \to \QQ$ (you can use this fact without proof, but I encourage you to think about what this function is). So, there is a sequence $\{q_n\}_{n=1}^{\infty}$ of rational numbers where every rational number appears in the sequence exactly once. 
+
+Show that for every $x \in \RR$ there is a subsequence $\{q_{n_k}\}_{k=1}^{\infty}$ of $\{q_n\}_{n=1}^{\infty}$ converging to $x$. \textbf{Hint:} Use the fact that that rationals are dense in the reals, and the fact that $\lim_{ n \to \infty} a_n=a$ if and only if for all $\epsilon>0$ there are only finitely many $n$ with $|a_n-a|\ge \epsilon$. These facts will help you  to inductively construct a subsequence converging to a desired real number. Also make sure that your sequence is actually a sequence, i.e. make sure that $n_1<n_2< \dots$.
+
+\begin{solution}
+
+Because of the density of the rational numbers,
+$\forall$ positive integers k, $\exists$ a rational number
+q such that q is in the interval $(x - \frac{1}{k}, x + \frac{1}{k})$.
+Since every rational number appears in $\{q_n\}$ exactly once,
+there is a least positive number for k (with value 1) called $n_1$ such that
+$q_{n_1}$ is in the interval $(x-1, x+1)$.
+
+There is also a least positive integer for k (with value 2)
+called $n_2$ such that $q_{n_2}$ is in the interval $(x-\frac{1}{2}, x+\frac{1}{2})$.
+It is obvious that $n_2 > n_1$.
+
+We can continue this inductively where each positive integer k
+has a least integer $n_k > n_{k-1}$
+such that $q_{n_k}$ is in the interval $(x - \frac{1}{k}, x + \frac{1}{k})$.
+
+We now have a subsequence $\{q_{n_k}\}$ of $\{q_n\}$.
+
+Let $\epsilon > 0$. Based on this choose a value G such that $\frac{1}{G} < \epsilon$.
+This means that $\forall k \geq G$:
+
+$|q_{n_k} - x| < \frac{1}{k} < \frac{1}{G} < \epsilon$.
+
+So, after some point, all terms of the sequence $\{q_{n_k}\}$
+are within $\epsilon$ of x.
+
+Since there are only finitely many elements of the subsequence $\{q_{n_k}\}$
+that are $\geq \epsilon$, the subsequence converges to x.
+
+So, for every real number x, there is a subsequence of $\{q_n\}$ that converges to x.
+
+
+\end{solution}
+
+\question Suppose that $\{a_n\}$ is a sequence and set $s_n= \sum_{i=1}^n a_i$ and $t_n= \sum_{i=1}^n |a_i|$. Show that if $\{t_n\}$ is bounded then $\{s_n\}$ converges. 
+
+\begin{solution}
+
+Goal: Show that $\{s_n\}$ is a Cauchy sequence.
+
+$\{t_n\}$ is bounded $\implies \exists M > 0$ such that $t_n \leq M$ $\forall n \in \NN$.
+
+$\forall \epsilon > 0$, choose some value N such that $\forall m, n \geq N$ with $n > m$,
+\[|s_n - s_m| = |\sum_{i = m+1}^{n} a_i| \leq \sum_{i = m+1}^{n} |a_i|\]
+\[\implies |s_n - s_m| \leq t_n - t_m \leq M - t_m\]
+Because of $t_m \leq M$ $\forall m$,
+\[\implies M - t_m \leq M\]
+
+\[|s_n - s_m| \leq t_n - t_m \leq M - t_m\]
+with
+\[M - t_m \leq M\]
+implies
+\[|s_n - s_m| \leq M\]
+
+Since M is fixed and doesn't depend on m or n and because we know that $\{t_n\}$
+is bounded, $|s_n - s_m|$ will eventually be smaller than some $\epsilon$.
+Therefore, $\{s_n\}$ is Cauchy. And since all cauchy sequences converge
+on the real numbers, $\{s_n\}$ converges.
+
+
+\end{solution}
+
+\question Suppose that $\{a_n\}$ is a sequence and for all $n$ we have that $|a_{n+1}-a_n|< \frac{1}{2^n}$. Show that $\{a_n\}$ converges.
+\begin{solution}
+
+Goal: Show that $\{a_n\}$ is a Cauchy sequence.
+
+$\forall n \in \NN$, let $m > n$. $a_m - a_n$ can be written as:
+\[a_m - a_n = (a_m - a_{m-1}) + (a_{m-1} - a_{m-2}) + \dots + (a_{n+1} - a_n)\]
+
+Using the triangle inequality,
+\[|a_m - a_n| \leq |a_m - a_{m-1}| + |a_{m-1} - a_{m-2}| + \dots + |a_{n+1} - a_n|\]
+
+Since we know that $|a_{k+1} - a_k| < \frac{1}{2^k}$ $\forall k$,
+we can rewrite the above as:
+\[|a_m - a_n| < \frac{1}{2^{m-1}} + \frac{1}{2^{m-2}} + \dots + \frac{1}{2^n}\]
+
+This is part of the geometric series with ratio $\frac{1}{2}$.
+
+So, $|a_m - a_n| < \frac{1}{2^{n-1}}$.
+
+Given some $\epsilon > 0$, we can choose an N such that $\frac{1}{2^{N-1}} < \epsilon$.
+
+Obviously that means that $|a_m - a_n| < \epsilon$,
+so the sequence is Cauchy, which means it converges.
+
+
+\end{solution}
+
+
+\question For $\{a_n\}$ a sequence show  that  $s=\limsup a_n$ is a subsequential limit of $\{a_n\}$, that is show that there is a subsequence of $\{a_n\}$ converging to $s$. The same is true for $\liminf$ with a very similar proof, but I am just asking you to prove this about $\limsup$. \textbf{Note:} This is Theorem 2.6.5 of your text, but the proof in your textbook isn't written very well (and doesn't deal at all with the case where $s=\infty$). The key is to show that for every $\epsilon>0$ there are infinitely many $n$ with $|a_n -s | < \epsilon$, then you can construct a subsequence converging to $s$.
+\begin{solution}
+
+First, recall the definition of $\limsup$:
+\[s = \limsup a_n = \lim_{n \to \infty} \sup_{m \geq n} a_m\]
+
+Goal: Show that $\forall \epsilon > 0$, there are infinitely many terms
+$a_n$ such that $|a_n - s| < \epsilon$.
+
+We know that $s - \epsilon$ is not an upper bound of $\{a_n\}$ since
+s is the least upper bound. In other words, there are infinitely many terms
+of $a_n$ greater than $s - \epsilon$.
+
+Since s is the least upper bound, $\forall n$, $\exists m \geq n$,
+such that $a_m > s - \epsilon$ and $a_m \leq s$.
+So, $|a_m - s| < \epsilon$.
+
+To construct a subsequence $\{a_{n_k}\}$ of $\{a_n\}$ that converges to s,
+we choose some number $n_1$ such that $|a_{n_1} - s| < \epsilon$.
+Then, given some number $n_k$, we choose some $n_{k+1} > n_k$
+such that $|a_{n_{k+1}} - s| < \epsilon$. We can continue this process
+to generate a subsequence.
+
+Since $\forall k, |a_{n_k} - s| < \epsilon$, this subsequence converges to s.
+This means that $s = \limsup a_n$ is a subsequential limit of $\{a_n\}$.
+
+
+\end{solution}
+
+\question Compute $\liminf (-1)^n+\frac{(-1)^n}{2^n}$ and $\limsup(-1)^n+\frac{(-1)^n}{2^n}$. \textbf{Hint:} Look at example 2.6.3 in your text.
+\begin{solution}
+
+We first need to consider the sequence both for odd and even values of n.
+
+If n is even, where $n = 2m$,
+\[a_{2m} = (-1)^{2m} + \frac{(-1)^{2m}}{2^{2m}}\]
+\[\implies a_{2m} = 1 + \frac{1}{2^{2m}}\]
+\[\implies a_{2m} = 1 + \frac{1}{4^m}\]
+
+If n is odd where $n = 2m + 1$,
+\[a_{2m+1} = (-1)^{2m+1} + \frac{(-1)^{2m+1}}{2^{2m+1}}\]
+\[a_{2m+1} = -1 - \frac{1}{2(2^m)}\]
+
+This means that if n is even, the sequence approaches 1 and
+if n is odd, the sequence approaches -1.
+
+This means that:
+\[\liminf a_n = \lim_{m \to \infty} a_{2m+1} = -1\]
+\[\limsup a_n = \lim_{m \to \infty} a_{2m} = 1\]
+
+Aka:
+\[\liminf (-1)^n+\frac{(-1)^n}{2^n} = -1\]
+\[\limsup(-1)^n+\frac{(-1)^n}{2^n} = 1\]
+
+
+\end{solution}
+
+
+\end{questions}
+\end{document}

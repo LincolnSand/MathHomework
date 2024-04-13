@@ -1,0 +1,209 @@
+\documentclass{article}
+
+\usepackage{amsfonts}
+\usepackage{graphicx}
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage{listings}
+
+
+\DeclareMathOperator{\sech}{sech}
+\newcommand{\NN}{\mathbb{N}}
+\newcommand{\RR}{\mathbb{R}}
+\newcommand{\QQ}{\mathbb{Q}}
+\newcommand{\ZZ}{\mathbb{Z}}
+\newcommand{\dV}{\;\mathrm{d}V}
+\newcommand{\dA}{\;\mathrm{d}A}
+\newcommand{\dx}{\;\mathrm{d}x}
+\newcommand{\dy}{\;\mathrm{d}y}
+\newcommand{\dz}{\;\mathrm{d}z}
+\newcommand{\cA}{\mathcal{A}}
+\newcommand{\Bb}{\mathcal{B}}
+\newcommand{\Ww}{\mathcal{W}}
+\newcommand{\Dd}{\mathcal{D}}
+\newcommand{\Ss}{\mathcal{S}}
+\newcommand{\Ee}{\mathcal{E}}
+\DeclareMathOperator{\im}{im}
+
+
+\setlength\parindent{18pt}
+
+\begin{document}
+
+Problem 1. (3210 Review Problem) Make an educated guess what is the limit of the sequence
+$a_n = \frac{5n^2}{n^3 + 5}$. Then use the definition of the limit to prove
+that your guess is correct.
+
+My guess is that the limit of the sequence is 0. This is because the denominator
+has a higher power than the numerator.
+
+To prove this, we have to show that for $\epsilon > 0$, $\exists N$ such that
+$\forall n \geq N$, $|a_n - 0| < \epsilon$.
+
+First note that $\frac{5n^2}{n^3 + 5} < \frac{5n^2}{n^3} = \frac{5}{n}$.
+
+$\frac{5}{n} < \epsilon$, so we choose $N > \frac{5}{\epsilon}$. And since
+$\frac{5n^2}{n^3 + 5} < \frac{5}{n}$,
+this means that the sequence converges to 0.
+
+
+Problem 2. (3210 Review Problem) Define the sequence $\{a_n\}$ inductively by
+\[a_n = 1; a_{n+1} = \frac{n^2 + n + 1}{n^2 + n + 2} a_n\]
+for $n \geq 1$. Prove that the sequence converges. State all theorems, if any,
+which you used in the proof.
+
+We need to show that the sequence is both bounded and monotonically
+increasing. Then we will know it converges by the monotonic convergence theorem.
+
+First, let's show that it is bounded. Note that $\frac{n^2 + n + 1}{n^2 + n + 2} < 1$.
+$\forall n \geq 1$. That means that $a_{n+1}$ is multiplying $a_n$ by a fraction that is
+less than 1. This implies that the sequence is decreasing. And since all terms
+are strictly positive, this means that the sequence is bounded below by 0.
+
+For monotonicity, we just take what we showed before: that the sequence is decreasing.
+This means each $a_{n+1}$ is smaller than the preceding $a_n$ but still positive.
+So the sequence is monotonically decreasing.
+
+Applying the monotonic convergence theorem tells that the sequence converges
+since it is monotonically decreasing and bounded below by 0.
+
+
+Problem 3. For the vectors $x = (1, 0, 2)$ and $y = (-1, 3, 1)$ find
+
+a) $2x + y$;
+
+$2x+y = (2, 0, 4) + (-1, 3, 1) = (1, 3, 5)$.
+
+b) $x \cdot y$;
+
+$x \cdot y = (1*-1 + 0*3 + 2*1) = 1$.
+
+c) $||x||$ and $||y||$;
+
+$||x|| = \sqrt{1^2 + 0^2 + 2^2} = \sqrt{1 + 4} = \sqrt{5}$.
+
+$||y|| = \sqrt{(-1)^2 + 3^2 + 1^2} = \sqrt{1 + 9 + 1} = \sqrt{11}$.
+
+d) The cosine of the angle between x and y;
+
+$x \cdot y = ||x|| ||y|| \cos(\theta)$
+
+$\implies \cos(\theta) = \frac{x \cdot y}{||x|| ||y||}$
+
+$= \cos(\theta) = \frac{1}{\sqrt{5} \cdot \sqrt{11}} = \frac{\sqrt{55}}{55}$.
+
+e) the distance from x to y.
+
+$d(x, y) = ||y - x|| = ||(-2, 3, -1)|| = \sqrt{(-2)^2 + 3^2 + (-1)^2} = \sqrt{4 + 9 + 1} = \sqrt{14}$.
+
+
+Problem 4. Prove that the equality holds in Cauchy-Schwartz Inequality if and only if
+one of the vectors u and v is a multiple of the other.
+
+The Cauchy Schwartz Inequality is:
+$(u \cdot v)^2 \leq (u \cdot u) \cdot (v \cdot v)$.
+
+First direction: If u is a scalar multiple of v, the equality holds.
+
+Suppose that $u = \lambda v$ for some scalar $\lambda$.
+Then, $u \cdot v = (\lambda v) \cdot v = \lambda (v \cdot v)$.
+
+So, $(u \cdot v)^2 = \lambda^2 (v \cdot v)^2$. Also, $u \cdot u = \lambda^2 (v \cdot v)$.
+
+So, $(u \cdot v)^2 = \lambda^2 (v \cdot v)^2 = (u \cdot u) \cdot (v \cdot v)$.
+
+Thus, the equality holds.
+
+Now for the other direction: If the equality holds, u is a scalar multiple of v.
+
+Assume the inequality holds.
+
+Now let $w = u - \frac{u \cdot v}{||v||^2} v$.
+
+Using the dot product, we compute that $w \cdot v = (u \cdot v) - \frac{u \cdot v}{||v||^2} (v \cdot v)
+= (u \cdot v) - (u \cdot v) = 0$.
+
+That means they are orthogonal.
+
+Now, we use the Pythagorean theorem.
+
+$||w||^2 = ||u||^2 - \frac{(u \cdot v)^2}{||v||^2}$.
+
+But since we have the equality already assumed, this means that $||w||^2 = 0$
+(meaning $w$ is the zero-vector), which means that u and v are scalar multiples of each other
+($u = \frac{u \cdot v}{||v||^2} v$).
+
+
+Problem 5. For $x, y \in \RR$, define
+
+$d_1(x, y) = \sqrt{|x - y|}$
+
+$d_2(x, y) = |x^2 - y^2|$
+
+$d_3(x, y) = |x - 2y|$
+
+Determine, for each of these, whether it is a metric or not. Justify your answers.
+
+a) For $d_1$:
+
+Non-negativity: It is non-negative since it's a square root of an absolute value.
+
+Symmetry: $d_1(x, y) = \sqrt{|x-y|} = \sqrt{|y-x|} = d_1(y, x)$.
+
+Triangle inequality: $\sqrt{|x-z|} \leq \sqrt{|x-y|} + \sqrt{|y-z|}$.
+Using the properties of square roots, it is equivalent to $|x-z| \leq |x-y| + |y-z|$.
+
+Definiteness: This is obvious from the definition.
+
+$d_1$ is a valid metric.
+
+b) For $d_2$:
+
+This is not a metric because it fails definiteness.
+Let $x = -2$ and $y = 2$.
+You will get that $d_2(x, y) = 0$ even though $x \neq y$.
+
+$d_2$ is not a valid metric.
+
+c) For $d_3$:
+
+This is not a metric because it fails symmetry.
+$d_2(x, y) = |x - 2y|$ is not equal to $d_2(y, x) = |y - 2x|$ in general.
+
+$d_3$ is not a valid metric.
+
+
+Problem 6. Using only the definition of the limit of a sequence in the Euclidean space $\RR^2$,
+prove that
+\[\lim_{n \to \infty} \left(\frac{2n}{n+3}, \frac{1-n}{n}\right) = (2, -1)\]
+
+We need to show that
+\[\sqrt{(a_n - L)^2 + (b_n - M)^2} < \epsilon\]
+
+where $a_n = \frac{2n}{n+3}$, $b_n = \frac{1-n}{n}$, $L = 2$, $M = -1$:
+\[\sqrt{\left(\frac{2n}{n+3} - 2\right)^2 + \left(\frac{1-n}{n} + 1\right)^2} < \epsilon\]
+
+Our goal is to show that for every $\epsilon > 0$, $\exists N \in \NN$ such that
+$\forall n \geq N$, the above inequality holds.
+
+The expression simplifies to $\sqrt{\frac{36}{(n+3)^2} + \frac{1}{n^2}} < \epsilon$
+$\forall n \geq N$.
+
+Since both terms inside the square root are positive, we can turn it into two separate
+inequalities.
+
+We get
+
+\[\frac{36}{(n+3)^2} < \frac{\epsilon^2}{2}\]
+
+\[\frac{1}{n^2} < \frac{\epsilon^2}{2}\]
+
+Solving these yields $n > \sqrt{\frac{72}{\epsilon^2}} - 3$ and $n > \frac{1}{\sqrt{\epsilon/2}}$.
+
+If we choose $N$ to be the larger of these two inequalities, then
+
+$\sqrt{\left(\frac{2n}{n+3} - 2\right)^2 + \left(\frac{1-n}{n} + 1\right)^2} < \epsilon$
+
+$\forall n \geq N$.
+
+\end{document}

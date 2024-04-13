@@ -1,0 +1,284 @@
+\documentclass[12]{amsart}
+\usepackage{amssymb}
+\usepackage{eucal}
+\usepackage{amscd}
+\usepackage{graphicx}
+\usepackage{mathtools}
+\usepackage{xcolor}
+\usepackage{bm}
+
+
+
+\newtheorem{thm}{Theorem}
+\newtheorem*{extracredit}{Extra Credit Problem}
+\newtheorem{lem}[thm]{Lemma}
+\newtheorem{cor}[thm]{Corollary}
+\newtheorem{pro}[thm]{Proposition}
+\theoremstyle{definition}
+\newtheorem{rem}[thm]{Remark}
+
+\newtheorem{exm}[thm]{Example}
+\newtheorem{xca}{Problem}
+\newcommand{\probl}{Problem}
+\newtheorem*{exer}{\probl}
+\newenvironment{exercise}[1]{\renewcommand{\probl}{#1}\begin{exer}}
+{\end{exer}}
+\newcommand{\be}{\begin{equation*}}
+\newcommand{\ee}{\end{equation*}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\cl}{\overline}
+\newcommand{\sskip}{\newpage}
+
+\newcommand{\norm}[1]{\lVert#1\rVert}
+\newcommand{\m}[1]{$ #1 $}
+\newcommand{\lskip}{\bigskip}
+\newcommand{\der}[2]{\frac{\partial#1}{\partial #2}}
+
+
+\DeclareMathOperator{\im}{im} \DeclareMathOperator{\rank}{rank}
+\DeclareMathOperator{\Mor}{Mor} \DeclareMathOperator{\coker}{coker}
+\DeclareMathOperator{\supp}{supp} \DeclareMathOperator{\For}{For}
+\DeclareMathOperator{\Hom}{Hom} \DeclareMathOperator{\End}{End}
+\DeclareMathOperator{\Int}{Int} \DeclareMathOperator{\order}{order}
+\DeclareMathOperator{\ad}{ad} \DeclareMathOperator{\Ad}{Ad}
+\DeclareMathOperator{\GL}{GL} \DeclareMathOperator{\SL}{SL}
+\DeclareMathOperator{\SO}{SO} \DeclareMathOperator{\Sp}{Sp}
+\DeclareMathOperator{\SU}{SU} \DeclareMathOperator{\tr}{tr}
+\DeclareMathOperator{\Aut}{Aut} \DeclareMathOperator{\re}{Re}
+\DeclareMathOperator{\imag}{Im} \DeclareMathOperator{\Card}{Card}
+\newcommand{\Sd}{\ensuremath{\surd}}
+
+
+\begin{document}
+
+\centerline{ \bf Math 3220-1: Homework 9, due 04/10/2024}
+\bigskip
+\centerline{ \bf Show all work. Homework has to be uploaded to GradeScope.}
+\bigskip
+\noindent Name (PRINT): Lincoln Sand\hskip 2.5in ID: u1358804
+\smallskip
+
+\hrule
+
+\bigskip
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{xca} %1
+Let $f:\R^2\to\R^2$ be defined by the equation
+$$
+f(x,y)=(e^x\cos{y}, e^x\sin{y}).
+$$
+\begin{itemize}
+\item [(a)] Show that $f$ is one-to-one on the set $A=\{(x,y)\in\R^2: 0<y<2\pi\}.$
+\smallskip
+\item[(b)]What is the set $B=f(A)$?
+\smallskip
+\item[(c)] If $g$ is the inverse function, find $Dg(0,1)$.
+\end{itemize}
+\end{xca}
+
+
+a) Suppose $f(x_1, y_1) = f(x_2, y_2)$. Then:
+
+\[(e^{x_1} \cos(y_1), e^{x_1} \sin(y_1)) = (e^{x_2} \cos(y_2), e^{x_2} \sin(y_2))\]
+
+This gives us two equations:
+\[e^{x_1} \cos(y_1) = e^{x_2} \cos(y_2)\]
+\[e^{x_1} \sin(y_1) = e^{x_2} \sin(y_2)\]
+
+Dividing the second equation by the first (assuming none of the $\cos$ terms
+are $0$, which is guarenteed by $0 < y < 2 \pi$):
+\[\frac{\sin(y_1)}{\cos(y_1)} = \frac{\sin(y_2)}{\cos(y_2)} \implies \tan(y_1) = \tan(y_2)\]
+
+Since $y_1$ and $y_2$ are in $(0, 2 \pi)$, $\tan$ is injective. This means that
+$y_1$ = $y_2$.
+
+This means we can reduce the equation to:
+\[e^{x_1} = e^{x_2} \implies x_1 = x_2\]
+
+Thus, $(x_1, y_1) = (x_2, y_2)$ and $f$ is one-to-one.
+
+b) Since $x$ can be any real number, $x^{x}$ covers all positive real numbers.
+
+Since $y \neq 0$ and $y \neq 2 \pi$, the second term cannot be $0$.
+
+So, the set $B$ is $\{(u, v) \in \R^2 : u > 0\} \cup \{(u, v) \in \R^2 : u = 0, v > 0\}$.
+
+c) To find $Dg(0, 1)$, we have to find a point $(x_0, y_0)$ in $A$ such that
+$f(x_0, y_0) = (0, 1)$, compute $Df(x_0, y_0)$, and then invert it.
+
+\[Df(x, y) = \begin{bmatrix}
+    e^{x} \cos(y) & -e^{x} \sin(y) \\
+    e^{x} \sin(y) & e^{x} \cos(y)
+\end{bmatrix}\]
+
+\[Df\left(0, \frac{\pi}{2}\right) = \begin{bmatrix}
+    0 & -1 \\
+    1 & 0
+\end{bmatrix}\]
+
+The inverse is $\begin{bmatrix}
+    0 & 1 \\
+    -1 & 0
+\end{bmatrix}$.
+
+Thus, $Dg(0, 1) = \begin{bmatrix}
+    0 & 1 \\
+    -1 & 0
+\end{bmatrix}$.
+
+
+\sskip
+\begin{xca} %2
+Use the Inverse Function Theorem to determine the points of $\R$ near which the $\sin$ function has a smooth local inverse function.
+What is the derivative of the inverse function when it exists?
+\end{xca}
+
+
+$\sin : \R \to \R$ is continuously differentiable everywhere.
+
+The derivative of $\sin(x)$ is $\cos(x)$.
+
+To find where the $\sin$ function has a smooth local inverse,
+we need to determine where $\cos(x) \neq 0$.
+
+$\cos(x) = 0$ when $x = \frac{\pi}{2} + k \pi$ for any integer $k$.
+So, the $\sin$ function will have a smooth local inverse at points
+where $x \neq \frac{\pi}{2} + k \pi$.
+
+Now, we have to find the derivative of the inverse function.
+
+If $y = \sin^{-1}(x)$, then:
+\[\frac{dx}{dy} = \frac{1}{\frac{dy}{dx}}\]
+
+Given $y = \sin(x)$, and $\frac{dy}{dx} = \cos(x)$, we have:
+\[\frac{d}{dx}\left(\sin^{-1}(x)\right) = \frac{1}{\cos(y)}\]
+
+Since $y = \sin^{-1}(x)$ and using the identity that $\sin^{2}(x) + \cos^{2}(x) = 1$,
+we can write:
+\[\cos(y) = \sqrt{1 - \sin^{2}(y)} = \sqrt{1 - x^2}\]
+
+So, the derivative of the inverse $\sin$ function is:
+\[\frac{d}{dx}\left(\sin^{-1}(x)\right) = \frac{1}{\sqrt{1 - x^2}}\]
+
+The derivative exists and is valid for $-1 < x < 1$, correponding to where
+the $\sin$ function is defined and smooth, excluding the points where $\cos(x) = 0$.
+
+
+\sskip
+\begin{xca} %3
+Are there any points on the graph of the equation $x^3+3xy^2+2y^3=1$ where it may not be possible to solve for $y$ as a smooth function of $x$ in some neighborhood of the point?
+\end{xca}
+
+
+We'll use the Implicit Function Theorem for this.
+
+We need to find where the partial derivative of the function with respect to $y$,
+$\frac{\partial}{\partial y} = 6xy + 6y^2$, equals $0$;
+because at these points the Implicit Function Theorem
+does not guarentee existence of a smooth function.
+
+$6xy + 6y^2 = 0$ when $y = 0$ or $y = -x$.
+
+When $y = 0$, substituting into the original equation $x^3 + 3xy^2 + 2y^3 = 1$
+gives $x^3 = 1$, so $x = 1$. Thus, the point of interest is $(1, 0)$.
+
+When $y = -x$, substituting into the original equation gives $-4x^3 = 1$,
+resulting in $x^3 = -\frac{1}{4}$.
+
+Thus, it might not be possible to solve for a smooth function of $x$
+in some neightborhood of $(1, 0)$. At this point, the Implicit Function
+Theorem does not guarentee existence of a smooth function because the partial
+derivative with respect to $y$ is $0$.
+
+The other place is the intersection of $y = -x$ and $x^3 = -\frac{1}{4}$.
+This intersection occurs at $x = \left(-\frac{1}{4}\right)^{1/3}$.
+Thus, a smooth function of $x$ is also not guarenteed in the neighborhood
+of $(\left(-\frac{1}{4}\right)^{1/3}, -\left(-\frac{1}{4}\right)^{1/3})$.
+
+
+\sskip
+\begin{xca} %4
+Consider the set $S$ described by the equation
+$$
+xz+yz+\sin{(x+y+z)}=0.
+$$
+Can $S$ be represented as a smooth parameterized 2-surface near the point $(0,0,0)$? (justify your answer). If so, find an equation of a tangent space to $S$ at this point.
+\end{xca}
+
+
+Let's first find the gradient of the function:
+\[\nabla F = \left(z + \cos(x+y+z), z + \cos(x+y+z), x + y + \cos(x+y+z)\right)\]
+
+Evaluated at the point $(0, 0, 0)$ gives $(1, 1, 1)$.
+
+Since the gradient is non-zero at $(0, 0, 0)$, the set $S$ can be represented
+as a smooth parameterized 2-surface near this point.
+
+Let's now find it. The tangent space is given by:
+\[\nabla F(a, b, c) \cdot (x-a, y-b, z-c) = 0\]
+
+Substituting in $\nabla F(0, 0, 0) = (1, 1, 1)$ and $(a, b, c) = (0, 0, 0)$ gives:
+\[1 \cdot (x-0) + 1 \cdot (y-0) + 1 \cdot (z-0) = 0\]
+
+which simplifies to:
+\[x + y + z = 0\]
+
+This is the equation for the tangent space to $S$ at $(0, 0, 0)$.
+
+
+\sskip
+\begin{xca} %5
+
+For the system of equations
+\begin{align}
+\notag x^2+y^2-z^2 & =0,\\
+\notag x+y+z &=0,
+\end{align}
+at which points of the solution set $S$ is there a neighborhood in which $S$ is a smooth curve? At each such point  find an equation of the tangent line.
+\end{xca}
+
+
+First let's compute the gradients:
+\[(2x, 2y, -2z)\]
+\[(1, 1, 1)\]
+
+For these to be parallel, then $x = y = -z$ must be true. From the second
+equation we are given, $x + y + z = 0$, we have that $-z = x + y$. This means that
+$x = y = x+y$, which is only true if $x = y = -z = 0$. This is the zero case from
+before, which means that the two vectors are always linearly independent
+except at $(0, 0, 0)$.
+
+So, at $(0, 0, 0)$, the condition for the existence of a smooth curve is not
+satisfied, but it is satisfied everywhere else.
+
+Substituting $z = -x -y$ into the first equation gives $-2xy = 0 \implies xy = 0$.
+This means that $y = 0$ when $x \neq 0$.
+Using the second equation gives $z = -x$.
+
+So, the points of the solution set $S$ are of the form $(x, 0, -x)$
+for $x \neq 0$.
+
+This means that $\nabla F = (2x, 0, 2x)$.
+
+Now, to compute the normal of the tangent space, we need to compute
+$\nabla F(x, 0, -x) \times \nabla G(x, 0, -x) = (2x, 0, 2x) \times (1, 1, 1)$.
+
+This works out to $(-2x, 0, 2x)$.
+
+Using the point-direction form of a line, we eventually get:
+\[\frac{z+x}{2x} = t\]
+
+This means that $x = x$, $y = 0$, and $z = 2xt - x$.
+
+For each value of $t$, this set of equations describes the coordinates of a point
+on the tangent line at $(x, 0, -x)$ on the solution set $S$.
+
+
+\end{document}

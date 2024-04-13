@@ -1,0 +1,207 @@
+\documentclass[answers]{exam}
+\title{Foundations of Analysis, HW 3}
+\author{James Cameron}
+\date{}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{graphicx}
+\usepackage{amsthm}
+
+\newtheorem{thm}{Theorem}
+\newtheorem{hthm}[thm]{*Theorem}
+\newtheorem{lemma}[thm]{Lemma}
+\newtheorem{cor}[thm]{Corollary}
+\newtheorem{obs}[thm]{Observation}
+\newtheorem{prop}[thm]{Proposition}
+\newtheorem{con}[thm]{Conjecture}
+\newtheorem{exer}[thm]{Exercise}
+
+\newtheorem{scho}[thm]{Scholium}
+\newtheorem*{Thm}{Theorem}
+\newtheorem*{Con}{Conjecture}
+\newtheorem*{Axiom}{Axiom}
+
+\theoremstyle{remark}
+\newtheorem{remark}[thm]{Remark}
+\newtheorem{notation}[thm]{Notation}
+
+
+\theoremstyle{definition}
+\newtheorem{Def}[thm]{Definition}
+\newtheorem{example}[thm]{Example}
+\newtheorem{ques}[thm]{Question}
+\everymath{\displaystyle}
+
+\pagestyle{head}
+\header{\bfseries\large Foundations of Analysis}{\bfseries\large Homework 4 \ifprintanswers (solutions) \fi}{\bfseries\large Fall, 2023}
+\headrule
+
+\DeclareMathOperator{\sech}{sech}
+\newcommand{\NN}{\mathbb{N}}
+\newcommand{\RR}{\mathbb{R}}
+\newcommand{\QQ}{\mathbb{Q}}
+\newcommand{\ZZ}{\mathbb{Z}}
+\newcommand{\dV}{\;\mathrm{d}V}
+\newcommand{\dA}{\;\mathrm{d}A}
+\newcommand{\dx}{\;\mathrm{d}x}
+\newcommand{\dy}{\;\mathrm{d}y}
+\newcommand{\dz}{\;\mathrm{d}z}
+\pointname{}
+\newcommand{\cA}{\mathcal{A}}
+\newcommand{\Bb}{\mathcal{B}}
+\newcommand{\Ww}{\mathcal{W}}
+\newcommand{\Dd}{\mathcal{D}}
+\newcommand{\Ss}{\mathcal{S}}
+\newcommand{\Ee}{\mathcal{E}}
+\DeclareMathOperator{\im}{im}
+\begin{document}
+% \maketitle
+
+% \noindent
+% This week on the homework you will get practice with induction. \\
+
+
+% \noindent
+ This is due Saturday 9/23 by 11:59 pm on Gradescope. Please either neatly write up your solutions or type them up. You can find a .tex template on Canvas. Your proofs should be written in complete sentences and paragraphs, using a combination of words and symbols. They should be \textbf{correct, clear, and concise}. You will be graded on all three, especially the first two!
+
+\noindent
+
+
+\begin{questions}
+
+\question \textbf{Directly from the definition of the the limit of a sequence}, show that $\lim_{n \to \infty} \sqrt{4+n}-\sqrt{n}=0$. (So for this problem you can't use any of the theorems we proved about limits converging).
+
+\begin{solution}
+
+
+$\lim_{n \to \infty} \sqrt{4+n}-\sqrt{n}=0 \iff \forall \epsilon > 0, \exists M \in \NN, M > 0,$ such that if $n > M$, then $|a_n - 0| < \epsilon$
+
+\[|\sqrt{4+n}-\sqrt{n}| < \epsilon\]
+
+Since $4+n > n \forall n \in \RR$, then $\sqrt{4+n} > \sqrt{n} \forall n \in \RR$.
+This means that $\sqrt{4+n} - \sqrt{n} > 0 \forall n \in \RR$.
+
+\[\implies \sqrt{4+n}-\sqrt{n} < \epsilon\]
+\[\implies \sqrt{4+n} < \epsilon + \sqrt{n}\]
+\[\implies 4+n < \epsilon^2 + 2 \epsilon \sqrt{n} + n\]
+\[\implies 4 < \epsilon^2 + 2 \epsilon \sqrt{n}\]
+\[\implies 0 < \epsilon^2 + 2 \epsilon \sqrt{n} - 4\]
+\[\implies -2 \epsilon \sqrt{n} < \epsilon^2 - 4\]
+\[\implies \epsilon \sqrt{n} < -2 \epsilon^2 + 2\]
+\[\implies \sqrt{n} < -2 \epsilon + \frac{2}{\epsilon}\]
+\[\implies n < 4 \epsilon^2 + 2 \frac{2}{\epsilon} \cdot (-2 \epsilon) + \frac{4}{\epsilon^2}\]
+\[\implies n < 4 \epsilon^2 - 8 + \frac{4}{\epsilon^2}\]
+
+Let $M$ equal $4 \epsilon^2 - 8 + \frac{4}{\epsilon^2}$.
+
+$\qed$.
+
+
+
+\end{solution}
+
+
+\question \textbf{Directly from the definition of the limit of a sequence}, show that $\left\lbrace \sin \left(n \frac{\pi}{4} \right) \right\rbrace_{n=0}^{\infty}$ does not converge.
+
+\begin{solution}
+
+Claim: $\left\lbrace \sin \left(n \frac{\pi}{4} \right) \right\rbrace_{n=0}^{\infty}$ does not converge.
+
+
+We will show this by contradition.
+
+Assume it does converge:
+
+\[\left|\sin \left(n \frac{\pi}{4} \right) \right| < \epsilon\]
+\[\sin \left(n \frac{\pi}{4} \right) < \pm \epsilon\]
+\[n \frac{\pi}{4}< \sin^{-1} \left(\pm \epsilon\right)\]
+\[n < \frac{4}{\pi} \sin^{-1} \left(\pm \epsilon\right)\]
+
+Well, the range of arcsin is contained within the interval $[-1, 1]$
+(if we assume a 1-1 mapping with $sin$ as is standard/typical),
+so, the maximum of the right side becomes $\frac{4}{\pi} \cdot 1 = \frac{4}{\pi}$.
+We can just choose a natural number $n$ greater than $\frac{4}{\pi}$ and our
+inequality is contradicted. Therefore the sequence does not converge.
+
+
+
+ \end{solution}
+
+
+
+
+
+\question Suppose that $\{a_n\}$ is a sequence that converges to some $a \in \RR$, and that $b,c \in \RR$. Suppose moreover that for all $n$ we have that $b \le a_n \le c$. Show that $b \le a \le c$. 
+\begin{solution}
+
+\[\forall n \in \NN, b \le a_n \le c\]
+\[\implies b-a \leq a_n - a \leq c-a\]
+Since $c > a$, $c-a \geq 0$.
+
+Since $a > b$,  $b - a \leq 0$.
+
+\[\implies b-a \leq 0 \leq c-a\]
+\[\implies b \leq a \leq c\]
+
+$\qed$.
+
+
+
+\end{solution}
+
+\question Suppose that $\{a_n\}$ converges to $a$, where each $a_n \ge 0$, and that $k \in \NN$. Show that $\{a_n^{1/k} \}$ converges to $a^{1/k}$. \textbf{Hint:} Use the geometric series, i.e that $(x-y)(x^{k-1}+x^{k-2}y+ \dots y^{k-1})=x^k-y^k$.
+\begin{solution}
+
+
+$a_n$ converges to $a$
+
+Claim: $a_n^{\frac{1}{k}}$ converges to $a^{\frac{1}{k}}$.
+
+\[a_n - a < \epsilon\]
+\[a_n < a + \epsilon\]
+\[a_n^{\frac{1}{k}} < (a + \epsilon)^{\frac{1}{k}}\]
+Let $G$ be all of the terms involving $\epsilon$
+(i.e. all of the terms that involve multiplying by a power of $\epsilon$).
+\[a_n^{\frac{1}{k}} < a^{\frac{1}{k}} + G\]
+\[a_n^{\frac{1}{k}} - a^{\frac{1}{k}} < G\]
+Since $G$ is all terms involving $\epsilon$,
+and $\epsilon$ is arbitrarily small,
+that must mean that $a_n^{\frac{1}{k}}$ converges to $a^{\frac{1}{k}}$.
+
+
+
+
+
+\end{solution}
+
+
+\question Define a sequence $\{a_n\}$ by $a_1=1$ and for $n \ge 1$ by $a_{n+1}= \sqrt{a_n+1}$. Show that $\{a_n\}$ converges and compute the limit of this sequence. \textbf{Hint:} Show that the sequence is monotone and bounded.
+
+\begin{solution}
+
+
+The sequence is trivially monotone since it is adding a positive amount to itself
+at each step. So it must always be increasing.
+
+Showing that is is bounded is trickier.
+
+Let us take $2$. This must necessarily be an upper bound for the sequence
+because of the fact that $1 + \sqrt(g)$ where $g < 3$ will always be less than $1+3 = 4$.
+
+Since it is bounded and monotone, it must converge.
+
+
+Now, what does it converge to?
+
+The limit of this sequence is $\sqrt{e}$.
+
+We can compute this by looking at the definition for $e$:
+$e = \lim_{n \to \infty} \left(1 + \frac{1}{n} \right)^{n}$
+
+
+
+\end{solution}
+
+
+\end{questions}
+\end{document}

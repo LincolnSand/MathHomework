@@ -1,0 +1,228 @@
+\documentclass{amsart}
+\usepackage{amssymb}
+\usepackage{eucal}
+\usepackage{amscd}
+\usepackage{graphicx}
+\usepackage{mathtools}
+\usepackage{xcolor}
+\usepackage{bm}
+
+
+\newtheorem{thm}{Theorem}
+\newtheorem*{extracredit}{Extra Credit Problem}
+\newtheorem{lem}[thm]{Lemma}
+\newtheorem{cor}[thm]{Corollary}
+\newtheorem{pro}[thm]{Proposition}
+\theoremstyle{definition}
+\newtheorem{rem}[thm]{Remark}
+
+\newtheorem{exm}[thm]{Example}
+\newtheorem{xca}{Problem}
+\newcommand{\probl}{Problem}
+\newtheorem*{exer}{\probl}
+\newenvironment{exercise}[1]{\renewcommand{\probl}{#1}\begin{exer}}
+{\end{exer}}
+\newcommand{\be}{\begin{equation*}}
+\newcommand{\ee}{\end{equation*}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Q}{\mathbb{Q}}
+%\newcommand{\e}{\text{e}}
+\newcommand{\C}{\mathbb{C}}
+
+\newcommand{\cl}{\overline}
+\newcommand{\sskip}{\bigskip}
+\newcommand{\norm}[1]{\lVert#1\rVert}
+\newcommand{\m}[1]{$ #1 $}
+\newcommand{\lskip}{\newpage}
+
+
+\DeclareMathOperator{\im}{im} \DeclareMathOperator{\rank}{rank}
+\DeclareMathOperator{\Mor}{Mor} \DeclareMathOperator{\coker}{coker}
+\DeclareMathOperator{\supp}{supp} \DeclareMathOperator{\For}{For}
+\DeclareMathOperator{\Hom}{Hom} \DeclareMathOperator{\End}{End}
+\DeclareMathOperator{\Int}{Int} \DeclareMathOperator{\order}{order}
+\DeclareMathOperator{\ad}{ad} \DeclareMathOperator{\Ad}{Ad}
+\DeclareMathOperator{\GL}{GL} \DeclareMathOperator{\SL}{SL}
+\DeclareMathOperator{\SO}{SO} \DeclareMathOperator{\Sp}{Sp}
+\DeclareMathOperator{\SU}{SU} \DeclareMathOperator{\tr}{tr}
+\DeclareMathOperator{\Aut}{Aut} \DeclareMathOperator{\re}{Re}
+\DeclareMathOperator{\imag}{Im} \DeclareMathOperator{\Card}{Card}
+\newcommand{\Sd}{\ensuremath{\surd}}
+
+
+
+\begin{document}
+\centerline{ \bf Math 3220-1: Homework 3, due 01/31/2024 }
+\bigskip
+\centerline{ \bf Show all work. Homework has to be uploaded to GradeScope.}
+\bigskip
+\noindent Name (PRINT):\hskip 2.5in ID:
+\smallskip
+
+\hrule
+
+\bigskip
+Unless stated otherwise, $\R^d$ is the Euclidean space with the "usual" inner product, norm and metric.
+
+\bigskip
+
+\begin{xca}
+Prove that three norms we  defined on $\R^d$ are related as follows:
+$$
+d^{-1}\norm{x}_1\leq \norm{x}_\infty\leq \norm{x}\leq \norm{x}_1.
+$$
+\end{xca}
+
+Proof of $d^{-1}\norm x_1 \leq \norm x_{\infty}$:
+
+The $\norm{x}_\infty$-norm is the max value of its components.
+
+The $\norm{x}_1$-norm is the sum of the absolute values of its components.
+
+Therefore, $\norm{x}_\infty$-norm is less than or equal to each term
+in the sum $\norm{x}_1$-norm.
+
+Since there are d terms in $\norm{x}_1$, $d \cdot \norm{x}_infty$ is less than or equal
+to $\norm{x}_1$, or equivalently, $d^{-1} \norm[x]_1 \leq \norm{x}_\infty$.
+
+
+Proof of $\norm x_{\infty} \leq \norm x$:
+
+Since $|x_i| \leq \norm{x}_infty$ for all i, and given the definition of $\norm{x}$,
+each component's square contributes to $\norm{x}^2$.
+
+It follows that $\norm{x}_infty^2$ is less than or equal to the sum of the squares of
+each component.
+
+Taking the square root gives us the desired inequality.
+
+
+Proof of $\norm x \leq \norm x_1$:
+
+By the Cauchy-Schwarz inequality, $\left(\sum_{i=1}^d |x_i|\right)^2 \leq d \sum_{i=1}^d x_i^2$.
+
+Taking the square roots of each side, we get that:
+
+$\norm{x}_1 \leq \sqrt{d} \cdot \norm{x}$.
+
+Since $\sqrt{d} \geq 1$, we get $\norm{x} \leq \norm{x}_1$.
+
+
+Combining these three inequalities together gives us the desired proposition.
+
+
+\lskip
+
+
+
+
+\begin{xca}
+
+Let $$D=\{(x_1,x_2)\in \R^2:  x_2\in \mathbb{Q}\}$$
+Find
+\begin{itemize}
+\item [(a)] The interior $D^\circ$ of $D$
+\smallskip
+\item [(b)] The closure $\cl{D}$ of $D$
+\smallskip
+\item [(c)] The boundary $\partial(D)$ od $D$
+\end{itemize}
+\smallskip
+Justify your answers.
+\end{xca}
+
+
+a) Interior: Because any open ball is sure to contain
+irrational numbers within it in $\R^2$, then the interior must be $\emptyset$.
+
+$D^\circ = \emptyset$
+
+b) Closure: Because no matter the value, for any given real number, you can find a
+rational number that is arbitrarily close to it, the closure is all of $\R^2$.
+
+$\cl{D} = \R^2$
+
+c) Boundary:
+
+$\partial(D) = \R^2 \setminus \emptyset = \R^2$
+
+
+
+\lskip
+
+
+
+
+
+
+\begin{xca}
+Let $$D=\{(x_1,x_2)\in \R^2:  \norm{(x_1, x_2)}<1\}\cup \{(x_1,x_2):x_2=0, -2<x_1<2\}$$
+Find
+\begin{itemize}
+\item [(a)] The interior $D^\circ$ of $D$
+\smallskip
+\item [(b)] The closure $\cl{D}$ of $D$
+\smallskip
+\item [(c)] The boundary $\partial(D)$ od $D$
+\end{itemize}
+\smallskip
+Justify your answers.
+\end{xca}
+
+
+a) The first part (in the union) is already an interior since it is the open disk
+in $\R^2$.
+
+The second part is a line segment in $\R^2$ and since you cannot fit a ball around
+any point and be contained on the line segment in $\R^2$, its interior is $\emptyset$.
+
+Therefore, $D^\circ = \{(x_1,x_2)\in \R^2:  \norm{(x_1, x_2)}<1\} \cup \emptyset = \{(x_1,x_2)\in \R^2:  \norm{(x_1, x_2)}<1\}$
+
+b) The closure is the same as $D$, but unioned with the endpoints of the line segment
+as well as the boundary line of the unit disk.
+
+So, $\cl{D} = \{(x_1,x_2)\in \R^2:  \norm{(x_1, x_2)} \leq 1\}\cup \{(x_1,x_2):x_2 = 0, -2 \leq x_1 \leq 2\}$
+
+c) The boundary is the boundary line of the unit disk unioned with the line segment
+plus the line segment's endpoints, but excluding the parts of the line segment that fall
+within the unit disk interior.
+
+In other words, it is given by:
+
+$\partial{D} = \{(x_1,x_2)\in \R^2:  \norm{(x_1, x_2)} = 1\} \cup \{(x_1,x_2):x_2=0, -2 \leq x_1 \leq -1\} \cup \{(x_1,x_2):x_2=0, 1 \leq x_1 \leq 2\}$
+
+
+
+\lskip
+
+
+
+
+
+\begin{xca}
+Let $D$ be a subset of $X$ and $c$ an element of $\cl{D}-D$. Prove that every neighborhood of $c$ contains infinitely many points of $D$.
+\end{xca}
+
+Let's prove this bu contradiction.
+
+Assume that $\exists$ a neighborhood of c that contains only a finite number of
+points of D. Let this neighborhood be N. Since N is a neighborhood of c, it contains an
+open set O such that $c \in O$.
+
+Because c is a limit point of D, every open set containing c must intersect D
+in some point other than c. Given our assumption that N contains only a finite number
+of points of D, we can remove these finite points from O to form a new set O' that
+still contains c.
+
+However, O' does not contain any points of D, which contradicts the definition of c
+being a limit point of D. A limit point is defined as a point where every neighborhood
+intersects with the set in at least one point other than itself.
+
+Since assuming the negative leads to a contradiction, the proposition must be true.
+
+\lskip
+
+
+\end{document}

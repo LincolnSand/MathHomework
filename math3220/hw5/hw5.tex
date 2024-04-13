@@ -1,0 +1,220 @@
+\documentclass[12]{amsart}
+\usepackage{amssymb}
+\usepackage{eucal}
+\usepackage{amscd}
+\usepackage{graphicx}
+\usepackage{mathtools}
+\usepackage{xcolor}
+\usepackage{bm}
+
+
+
+\newtheorem{thm}{Theorem}
+\newtheorem*{extracredit}{Extra Credit Problem}
+\newtheorem{lem}[thm]{Lemma}
+\newtheorem{cor}[thm]{Corollary}
+\newtheorem{pro}[thm]{Proposition}
+\theoremstyle{definition}
+\newtheorem{rem}[thm]{Remark}
+
+\newtheorem{exm}[thm]{Example}
+\newtheorem{xca}{Problem}
+\newcommand{\probl}{Problem}
+\newtheorem*{exer}{\probl}
+\newenvironment{exercise}[1]{\renewcommand{\probl}{#1}\begin{exer}}
+{\end{exer}}
+\newcommand{\be}{\begin{equation*}}
+\newcommand{\ee}{\end{equation*}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\cl}{\overline}
+\newcommand{\sskip}{\newpage}
+\newcommand{\norm}[1]{\lVert#1\rVert}
+\newcommand{\m}[1]{$ #1 $}
+\newcommand{\lskip}{\bigskip}
+
+
+\DeclareMathOperator{\im}{im} \DeclareMathOperator{\rank}{rank}
+\DeclareMathOperator{\Mor}{Mor} \DeclareMathOperator{\coker}{coker}
+\DeclareMathOperator{\supp}{supp} \DeclareMathOperator{\For}{For}
+\DeclareMathOperator{\Hom}{Hom} \DeclareMathOperator{\End}{End}
+\DeclareMathOperator{\Int}{Int} \DeclareMathOperator{\order}{order}
+\DeclareMathOperator{\ad}{ad} \DeclareMathOperator{\Ad}{Ad}
+\DeclareMathOperator{\GL}{GL} \DeclareMathOperator{\SL}{SL}
+\DeclareMathOperator{\SO}{SO} \DeclareMathOperator{\Sp}{Sp}
+\DeclareMathOperator{\SU}{SU} \DeclareMathOperator{\tr}{tr}
+\DeclareMathOperator{\Aut}{Aut} \DeclareMathOperator{\re}{Re}
+\DeclareMathOperator{\imag}{Im} \DeclareMathOperator{\Card}{Card}
+\newcommand{\Sd}{\ensuremath{\surd}}
+
+
+\begin{document}
+
+\centerline{ \bf Math 3220-1: Homework 5, due 02/21/2024}
+\bigskip
+\centerline{ \bf Show all work}
+\bigskip
+\noindent Name (PRINT): Lincoln Sand \hskip 2.5in ID: u1358804
+\smallskip
+
+\hrule
+
+\bigskip
+\
+\begin{xca} %1
+Let  $f$ be the function $f:\R-\{0\}\to \R$ defined by
+$$
+f(x)=\sin{(1/x)}
+$$
+Show that $\lim_{x\to 0}f(x)$ does not exist.
+
+\bigskip
+Does $f$ have a continuous extension to $\R$?  Justify your answer.
+
+\bigskip
+Comment: This is a review problem from Math 3210.
+
+\end{xca}
+
+
+To demonstrate that $f(x) = \sin(1/x)$ has no limit as x approaches 0,
+we must show that the function values do not approach a single finite value
+as x gets arbitrarily close to 0.
+
+The function is defined on $\R \setminus \{0\}$, so x can be any value except 0 itself.
+
+Let us first note the fact that $\sin(1/x)$ oscillates infinitely as x approaches 0.
+This is because as x gets closer to 0, 1/x grows without any bound, which causes
+the sine function to oscillate between -1 and 1 infinitely many times in any
+neighborhood of 0. This means there is no value approached by f within
+any neighborhood of 0.
+
+Let us consider two sequences that approach 0: $x_n = \frac{1}{2 n \pi}$ and
+$y_n = \frac{1}{(2 n + 1) \pi}$, where n is a positive integer.
+Notice that $f(x_n) = \sin(2 n \pi) = 0$ and $f(y_n) = \sin((2 n + 1) \pi) = 0$.
+However, if we choose other sequences that approach 0, we can get f to oscillate
+between -1 and 1, showing that the limit is not stable.
+
+From above, for any proposed limit L as x approaches 0, we can always find
+values of x arbitrarily close to 0 for which f(x) is not arbitrarily close
+to L (due to the oscillatory nature of sine).
+
+
+For a function to have a continuous extension to $\R$, it must be possible
+to define the function at the points where it is currently undefined in a way
+such that the extended function is continuous at those points. For the function
+$f(x) = \sin(1/x)$, this would mean defining $f(0)$.
+
+However, since $\lim_{x \to 0} f(x)$ does not exist, there is no single real number
+that we could assign to $f(0)$ to make f continuous at 0. This means that we can not
+define a continuous extension to $\R$ for the function $f(x) = \sin(1/x)$.
+
+
+\sskip
+
+\begin{xca}%1
+Consider the function $f:\mathbb R^2\to \mathbb R$ defined by
+
+$$
+f(x,y)=
+\begin{cases}
+\dfrac{xy^2}{x^2+y^2} &\text{if $(x,y)\neq(0,0)$}\\
+0 &\text{if $(x,y)=(0,0)$}.
+\end{cases}
+$$
+Is this function continuous at $(0,0)$? Justify your answer.
+
+\end{xca}
+
+To determine if $f : \R^2 \to R$ is continuous at $(0, 0)$,
+we need to check if $\lim_{(x,y) \to (0, 0)} = f(0, 0)$.
+
+A function is continuous at a point if the limit of the function as it approaches
+that point is equal to the function's value at that point.
+
+Here, $f(0, 0) = 0$, so we need to verify if:
+\[\lim_{(x, y) \to (0, 0)} \frac{x y^2}{x^2 + y^2} = 0\]
+
+We can solve this with direct substitution techniques.
+Let $x = r \cos(\theta)$ and $y = r \sin(\theta)$. In polar coordinates,
+the limit $(x, y) \to (0, 0)$ is equivalent to $r \to 0$ regardless of $\theta$.
+
+\[\lim_{(x, y) \to (0, 0)} \frac{x y^2}{x^2 + y^2} = \lim_{r \to 0} \frac{r \cos(\theta) r^2 \sin^2(\theta)}{r^2 (\cos^2(\theta) + \sin^2(\theta))}\]
+\[= \lim_{r \to 0} \frac{r^3 \cos(\theta) \sin^2(\theta)}{r^2} = \lim_{r \to 0} r \cos(\theta) \sin^2(\theta)\]
+
+Note that $|\cos(\theta) \sin^2(\theta)| \leq 1$ $\forall \theta$, so the above limit
+approaches 0 as r approaches 0. This suggests that the function $f(x, y)$
+approaches 0 as $(x, y)$ approaches $(0, 0)$, which matches $f(0, 0)$.
+Thus, $f$ is continuous at $(0, 0)$.
+
+
+\sskip
+
+\begin{xca} %2
+Does the function $f:\mathbb R^2-\{0,0\}\to \mathbb R$ defined by
+
+$$
+f(x,y)=\frac{x}{\sqrt{x^2+y^2}}
+$$
+have a limit as $(x,y)$ approaches $(0,0)$? Justify your answer.
+
+\end{xca}
+
+We can use a similar technique as the previous problem.
+With $r = \cos(\theta)$ and $r = \sin(\theta)$, and the resulting equality:
+$r = \sqrt{x^2 + y^2}$, we have:
+
+\[\frac{x}{\sqrt{x^2 + y^2}} = \frac{r \cos(\theta)}{r} = \cos(\theta)\]
+
+This expression depends solely on $\theta$ and not r. This means the behavior of
+f as $(x, y)$ approaches $(0, 0)$ depends on the angle of the path approaching it.
+
+We can show this further by using path testing. Let's consider approaching
+$(0, 0)$ along different paths:
+
+Along the x-axis: If $y = 0$, then $\theta = 0$ or $\pi$ and $\cos(\theta) = 1$ or $-1$.
+So, $f(x, 0) = 1$ as x approaches 0 from the positive side and $f(x, 0) = -1$
+as x approaches 0 from the negative side.
+
+Along the y-axis: If $x = 0$, then $\theta = \pi/2$ or $-\pi/2$, and $\cos(\theta) = 0$.
+So, $f(0, y) = 0$.
+
+Since the limit along different paths differ as $(x, y)$ approach $(0, 0)$
+ranges from $-1$ to 1 (depending on the path), this means the limit of
+$f(x, y)$ as $(x, y)$ approaches $(0, 0)$ does not exist.
+
+\sskip
+
+
+\begin{xca} %2
+Let $X$ be a metric space, and let $c\in X$. Show that the function $f:X\to\R$ defined by
+$$
+f(x)=d(c,x)
+$$
+is continuous. (hint: use the inequality $|d(x,z)-d(y,z)|\leq d(x,y)$ for any $x, y, z\in X$.
+
+\end{xca}
+
+Let $x, y \in X$ and $\epsilon > 0$ be given. We want to show that
+$\exists \delta > 0$ such that if $d(x, y) < \delta$, then $|f(x) - f(y)| < \epsilon$.
+
+The function $f$ is defined as $f(x) = d(c, x)$ $\forall x \in X$. Therefore,
+the difference $|f(x) - f(y)|$ can be written as:
+\[|f(x) - f(y)| = |d(c, x) - d(c, y)|\]
+Using the given inequality, we have:
+\[|d(c, x) - d(c, y)| \leq d(x, y)\]
+
+For continuity, we want $|d(c, x) - d(c, y)| < \epsilon$. From the above inequality,
+this will be satisfied if $d(x, y) < \epsilon$. Thus, we can choose $\delta = \epsilon$.
+
+Thus, for any $\epsilon > 0$, if we set $\delta = \epsilon$, then whenever
+$d(x, y) < \delta$, it follows that $|f(x) - f(y)| < \epsilon$.
+This shows that $f(x) = d(c, x)$ is continuous $\forall x \in X$ since the choice
+of $\delta$ does not depend on the specific points x and y, but only on the distance
+between them and the fixed point c.
+
+
+\end{document}
