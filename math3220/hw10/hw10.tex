@@ -1,0 +1,205 @@
+\documentclass{article}
+\usepackage{amssymb}
+\usepackage{eucal}
+\usepackage{amscd}
+\usepackage{graphicx}
+\usepackage{mathtools}
+\usepackage{xcolor}
+\usepackage{bm}
+\usepackage{breqn}
+
+\newtheorem{thm}{Theorem}
+\newtheorem{lem}[thm]{Lemma}
+\newtheorem{cor}[thm]{Corollary}
+\newtheorem{pro}[thm]{Proposition}
+\newtheorem{rem}[thm]{Remark}
+
+\newtheorem{exm}[thm]{Example}
+\newtheorem{xca}{Problem}
+\newcommand{\probl}{Problem}
+\newenvironment{exercise}[1]{\renewcommand{\probl}{#1}\begin{exer}}
+{\end{exer}}
+\newcommand{\be}{\begin{equation*}}
+\newcommand{\ee}{\end{equation*}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\cl}{\overline}
+\newcommand{\sskip}{\newpage
+}
+\newcommand{\norm}[1]{\lVert#1\rVert}
+\newcommand{\m}[1]{$ #1 $}
+\newcommand{\lskip}{\bigskip}
+\newcommand{\der}[2]{\frac{\partial#1}{\partial #2}}
+
+\DeclareMathOperator{\im}{im} \DeclareMathOperator{\rank}{rank}
+\DeclareMathOperator{\Mor}{Mor} \DeclareMathOperator{\coker}{coker}
+\DeclareMathOperator{\supp}{supp} \DeclareMathOperator{\For}{For}
+\DeclareMathOperator{\Hom}{Hom} \DeclareMathOperator{\End}{End}
+\DeclareMathOperator{\Int}{Int} \DeclareMathOperator{\order}{order}
+\DeclareMathOperator{\ad}{ad} \DeclareMathOperator{\Ad}{Ad}
+\DeclareMathOperator{\GL}{GL} \DeclareMathOperator{\SL}{SL}
+\DeclareMathOperator{\SO}{SO} \DeclareMathOperator{\Sp}{Sp}
+\DeclareMathOperator{\SU}{SU} \DeclareMathOperator{\tr}{tr}
+\DeclareMathOperator{\Aut}{Aut} \DeclareMathOperator{\re}{Re}
+\DeclareMathOperator{\imag}{Im} \DeclareMathOperator{\Card}{Card}
+\newcommand{\Sd}{\ensuremath{\surd}}
+
+\begin{document}
+
+\centerline{ \bf Math 3220-1: Homework 10 (corrected), due 04/22/2024}
+\bigskip
+\centerline{ \bf Show all work. Homework has to be uploaded to GradeScope.}
+\bigskip
+\noindent Name (PRINT): Lincoln Sand\hskip 2.5in ID: u1358804
+\smallskip
+
+\hrule
+
+\bigskip
+
+\begin{xca} %1
+Find the degree $n=3$ Taylor's Formula for the function $f(x)=x^3-x^2-4x+4$  with $a=1$ .
+\end{xca}
+
+\[P_3(x) = f(a) + f'(a)(x-a) + \frac{f''(a)}{2!}(x-a)^2 + \frac{f'''(a)}{3!}(x-a)^3\]
+
+Now we have to find the derivatives of $f(x)$:
+
+\[f'(x) = 3x^2 - 2x - 4\]
+\[f''(x) = 6x - 2\]
+\[f'''(x) = 6\]
+
+Now, we evaluate the functions at $a = 1$:
+
+\[f(1) = 0\]
+\[f'(1) = -3\]
+\[f''(1) = 4\]
+\[f'''(1) = 6\]
+
+Thus,
+\[P_3(x) = -3x + 3 + 2(x-1)^2 + (x-1)^3\]
+
+\sskip
+
+\begin{xca} %2
+Find the degree $n=2$ Taylor Formula for $f(x,y)=x^2+xy$ at the point $a=(1,2)$.
+\end{xca}
+
+\begin{dmath}
+    P_2(x, y) = f(a) + \frac{\partial f}{\partial x}(a) (x - x_0) + \frac{\partial f}{\partial y}(a) (y - y_0) + \frac{1}{2} \cdot \left(\frac{\partial^2 f}{\partial x^2}(a) (x-x_0)^2 + 2 \frac{\partial^2 f}{\partial x \partial y}(a) (x-x_0) (y-y_0) + \frac{\partial^2 f}{\partial y^2}(a) (y-y_0)^2\right)
+\end{dmath}
+
+Now, let's calculate the derivatives:
+\[\frac{\partial f}{\partial x} = 2x + y\]
+\[\frac{\partial f}{\partial y} = x\]
+\[\frac{\partial^2 f}{\partial x^2} = 2\]
+\[\frac{\partial^2 f}{\partial x \partial y} = 1\]
+\[\frac{\partial^2 f}{\partial y^2} = 0\]
+
+Evaluating at $a = (1, 2)$:
+\[f(1, 2) = 3\]
+\[\frac{\partial f}{\partial x}(1, 2) = 4\]
+\[\frac{\partial f}{\partial y} = 1\]
+\[\frac{\partial^2 f}{\partial x^2}(1, 2) = 2\]
+\[\frac{\partial^2 f}{\partial x \partial y}(1, 2) = 1\]
+\[\frac{\partial^2 f}{\partial y^2}(1, 2) = 0\]
+
+Plugging these in gives:
+\begin{dmath}
+    P_2(x, y) = 3 + 4 (x - 1) + (y - 2) + (x-1)^2 + (x-1) (y-2)
+\end{dmath}
+
+\sskip
+
+\begin{xca} %3
+Find all points of relative maximum and relative minimum and all saddle points for $f(x,y)=y^3+y^2+x^2-2xy-3y$.
+\end{xca}
+
+Since we need to find the zero points of the first derivatives,
+let's first compute the first partial derivatives:
+\[\frac{\partial f}{\partial x}(x, y) = 2x - 2y\]
+\[\frac{\partial f}{\partial y}(x, y) = 3y^2 + 2y - 2x - 3\]
+
+We now need to solve for:
+\[2x - 2y = 0\]
+and:
+\[3y^2 + 2y - 2x - 3\]
+
+From $2x - 2y = 0$, we get that $x = y$.
+
+Substituting $x = y$ into the second equation gives $3y^2 - 3 = 0$.
+This turns into $y^2 = 1$, which means $y = \pm 1$.
+
+Substituting $y = 1$ into $x = y$ gives the critical point $(1, 1)$.
+
+Similarly, substituting $y = -1$ into $x = y$
+gives the critical point $(-1, -1)$.
+
+Computing the second derivatives gives:
+\[f_{xx}(x, y) = 2\]
+\[f_{xy}(x, y) = -2\]
+\[f_{yy}(x, y) = 6y + 2\]
+
+The Hessian is thus:
+\[\begin{bmatrix}
+    2 & -2 \\
+    -2 & 6y + 2
+\end{bmatrix}\]
+
+Evaluating the determinant $\nabla = f_{xx} f_{yy} - f{xy}^2$ at the
+critical points gives:
+
+At $(1, 1)$:
+\[f_{yy}(1, 1) = 8\]
+\[\nabla = 12\]
+
+At $(-1, -1)$:
+\[f_{yy}(-1, -1) = -4\]
+\[\nabla = -12\]
+
+For $(1, 1)$, since $\nabla > 0$ and $f_{xx} > 0$,
+this point is a relative minimum.
+
+For $(-1, -1)$, since $\nabla < 0$, this point
+is a saddle point.
+
+\sskip
+
+\begin{xca} %4
+Prove Corollary 9.5.6 (hint: you may want to use the fact that if $U\subset \R^p$ is an open and connected set, then 
+every two points  $\mathbf{a}$ and $\mathbf{b}$ of $U$ can be joined by a piecewise linear path).
+\end{xca}
+
+First, let's recall what Corollary 9.5.6 is (taken from 9.5 pdf page 3):
+Suppose $U$ is connected and f is a differentiable function on $U$. If $\nabla f(x) = 0$ $\forall x \in U$, then $f$ is a constant function.
+
+Let $a$ and $b$ be any two points in $U$. Since $U$ is connected and open,
+there exists a piecewise linear path connecting $a$ and $b$.
+
+We can think of this path as a continuous function $p : [0, 1] \to U$
+such that $p(0) = a$ and $p(1) = b$ and where each segment of $p$
+is a straight line.
+
+If we compose this function with $f$ and use the chain rule,
+we get:
+\[(f \circ p)'(t) = \nabla f(p(t)) \cdot p'(t); \forall t \in [0, 1]\]
+
+Given that $\nabla f = 0$ $\forall x \in U$, that means that
+$f(p(t)) = 0$ $\forall t \in [0, 1]$.
+
+That means we can rewrite the above as:
+\[(f \circ p)'(t) = 0 \cdot p'(t) = 0; \forall t \in [0, 1]\]
+
+Since $(f \circ p)'(t) = 0$ over $[0, 1]$, by the Fundamental Theorem of
+Calculus, $f \circ p$ must be constant over $[0, 1]$.
+This means that $f(p(0)) = f(p(1))$, i.e. $f(a) = f(b)$.
+
+Since $a$ and $b$ are arbitrary points in $U$ and we've shown that
+$f(a) = f(b)$, it clearly means that $f$ must be constant over $U$.
+
+\sskip
+
+\end{document}
